@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <head>
         <title>D&D Character Sheet</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -16,18 +16,28 @@
     <body>
         <header></header>
 
-        <main role="main">
-            <section>
+        <main role="main" id="dungeons_and_dragons__character_sheet" v-if="!loading">
+            <section v-if="view__introduction">
                 <div class="section__content">
                     <h1 class="section__header">Dungeons & Dragons Character Sheet</h1>
 
                     <div class="section__description">
-                        <div class="section__copy-block">
-                            Broadly speaking, this is the front-end of a service to manage Dungeons and Dragons character sheets.
-                        </div>
+                        <div class="section__copy-block" v-html="message__introduction_1"></div>
 
+                        <div class="section__copy-block" v-html="message__introduction_2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section__content">
+                    <h1 class="section__header">{{ character.name }}</h1>
+
+                    <div class="section__description">
                         <div class="section__copy-block">
-                            <strong>More specifically,</strong> this is the front-end of a service to manage Dungeons and Dragons character information. This includes, but will not be limited to:
+                            {{ character.name }} is an {{ character.race }}<span v-if="character.sub_race">, a {{ character.sub_race }}</span>.
+                            <br>
+                            Trained as a {{ character.class.category }}, {{ character.name }} is {{character.class.description | lowercase}}.
                         </div>
                     </div>
                 </div>
@@ -38,9 +48,9 @@
             <div class="footer__content">
                 Created by <a href="http://saltor.nyc">Sal Torcivia</a>.
             </div>
-
         </footer>
 
-        <script src="./build/js/dungeons_and_dragons_character_sheet.min.js"></script>
+        <script src="./build/js/dungeons_and_dragons__libraries.js"></script>
+        <script src="./build/js/dungeons_and_dragons__character_sheet.min.js"></script>
     </body>
 </html>

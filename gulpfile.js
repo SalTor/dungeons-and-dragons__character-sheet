@@ -12,7 +12,8 @@ let gulp         = require('gulp'),
     header       = require('gulp-header'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
-    rename       = require('gulp-rename')
+    rename       = require('gulp-rename'),
+    json_minify  = require('gulp-json-minify')
 
 let sass_dir = './development/scss/dungeons_and_dragons_character_sheet.scss',
     current_dir = './',
@@ -58,7 +59,7 @@ gulp.task('js', function () {
 
     return gulp.src([`./development/js/dungeons_and_dragons_character_sheet.js`])
         .pipe(production ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
-        .pipe(concat(`dungeons_and_dragons_character_sheet.min.js`, { newLine: `;\n\n` }))
+        .pipe(concat(`dungeons_and_dragons__character_sheet.min.js`, { newLine: `;\n\n` }))
         .pipe(babel({ presets: ['es2015'] }))
         .pipe(header(header_banner, { today }))
         .pipe(production ? gutil.noop() : sourcemaps.write('./maps'))
@@ -67,16 +68,30 @@ gulp.task('js', function () {
         .pipe(production ? gutil.noop() : browserSync.stream())
 })
 
+gulp.task('libraries', function () {
+    let production = gutil.env.production,
+        library_files = [
+            `node_modules/promise-polyfill/promise.min.js`,
+            `node_modules/fetch-ie8/fetch.js`,
+            `node_modules/vue/dist/vue${production ? '.min' : ''}.js`
+        ]
+
+    return gulp.src(library_files)
+        .pipe(concat(`dungeons_and_dragons__libraries.js`))
+        .pipe(gulp.dest("public/build/js"))
+})
+
 gulp.task("copy", function () {
     gulp.src([ "node_modules/normalize.css/normalize.css" ])
         .pipe(gulp.dest("public/build/css"))
 
     gulp.src("development/js/example_response.json", { base: process.cwd() })
         .pipe(rename('character_sheet__player_name.json'))
+        .pipe(json_minify())
         .pipe(gulp.dest("public/data"))
 })
 
-gulp.task('browser-sync', ["copy", "css", "js"], function() {
+gulp.task('browser-sync', ["copy", "css", "libraries", "js"], function() {
     browserSync.init({ server: { baseDir: './public' } })
 
     gulp.watch(['./development/scss/**/*.scss', './development/scss/*.scss'], ['css'])
