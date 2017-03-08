@@ -1,0 +1,45 @@
+@import "base/typography";
+@import "base/color-palette";
+@import "base/keyframes";
+@import "base/mixins";
+@import "base/tag-specific";
+
+@import "components/section";
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    padding: 0;
+    margin:  0;
+
+    font-size: 16px;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+header {
+    width: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    flex: 0 0 auto;
+
+    padding: 25px 25px 5px 25px;
+}
+
+.footer__content {
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+
+    font-size: .75em;
+    text-align: right;
+}
