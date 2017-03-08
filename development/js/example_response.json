@@ -1,0 +1,41 @@
+[
+    {
+        "race": "Elf",
+        "sub_race": "High Elf",
+        "class": {
+            "category": "Wizard",
+            "description": "A scholarly magic-user capable of manipulating the structures of reality",
+            "starting_wealth": "4d4 x 10gp"
+        },
+        "background": {
+            "category": "Sage",
+            "description": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.",
+        },
+        "feature": {
+            "category": "Researcher",
+            "description": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+        },
+        "name": "Aust",
+        "sex": "Male",
+        "age": 200,
+        "size": "medium",
+        "height": "6ft 3inches",
+        "weight": "150lbs",
+        "speed": 30,
+        "languages": [ "Draconic", "Common" ],
+        "alignment": "Neutral",
+        "personality_trait": "I am horribly, horribly awkward in social situations.",
+        "specialty": "Scribe",
+        "ideal": "Self-Improvement. The goal of a life of study is the betterment of oneself.",
+        "bond": "I have an ancient text that holds terrible secrets that must not fall into the wrong hands.",
+        "flaw": "Unlocking an ancient mystery is worth the price of a civilization.",
+        "inspiration": "I've had horrible dreams of the elementals crying out for help, I must see what I can do.",
+        "ability_scores": {"strength": 0, "dexterity": 0, "constitution": 0, "intelligence": 0, "wisdom": 0, "charisma": 0, "acrobatics": 0, "animal handling": 0, "arcana": 0, "atheletics": 0, "deception": 0, "history": 0, "insight": 0, "intimidation": 0, "investigation": 0, "medicine": 0, "nature": 0, "perception": 0, "performance": 0, "persuasion": 0, "religion": 0, "sleight of hand": 0, "sealth": 0, "survival": 0},
+        "hit_dice": "1d6",
+        "primary_ability": "intelligence",
+        "saving_throw_proficiencies": ["intelligence", "wisdom"],
+        "armor_weapon_proficiences": ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"],
+        "skill_proficiencies": ["arcana", "history"],
+        "tool_proficiences": []
+    }
+]

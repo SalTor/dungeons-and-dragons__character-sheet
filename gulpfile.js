@@ -11,7 +11,8 @@ let gulp         = require('gulp'),
     browserSync  = require('browser-sync').create(),
     header       = require('gulp-header'),
     concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify')
+    uglify       = require('gulp-uglify'),
+    rename       = require('gulp-rename')
 
 let sass_dir = './development/scss/dungeons_and_dragons_character_sheet.scss',
     current_dir = './',
@@ -67,10 +68,12 @@ gulp.task('js', function () {
 })
 
 gulp.task("copy", function () {
-    gulp.src([
-        "node_modules/normalize.css/normalize.css"
-    ])
+    gulp.src([ "node_modules/normalize.css/normalize.css" ])
         .pipe(gulp.dest("public/build/css"))
+
+    gulp.src("development/js/example_response.json", { base: process.cwd() })
+        .pipe(rename('character_sheet__player_name.json'))
+        .pipe(gulp.dest("public/data"))
 })
 
 gulp.task('browser-sync', ["copy", "css", "js"], function() {
