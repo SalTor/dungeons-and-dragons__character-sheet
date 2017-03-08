@@ -28,8 +28,6 @@ let dungeons_and_dragons__character_sheet = new Vue({
                 .then(data => {
                     this.character = data[0]
 
-                    Vue.set(this.character, "pronoun", this.character.sex === "Male" ? "he" : "she")
-
                     this.loading = false
                 })
         }
