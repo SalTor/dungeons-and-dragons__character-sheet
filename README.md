@@ -15,5 +15,7 @@ Broadly speaking, this is the front-end of a service to manage Dungeons and Drag
 |                          |                            | Personality|
 |                          |                            | Proficiency|
 
+Certain details of a character will be computed by a more robust API. One which has access to the enormous amount of detail necessary to make decisions on things such as ability score improvements based on level and class, or multiclassing. This front end will only be responsible for displaying the information it receives from said API.
+
 # Contributor List
 1. [Sal Torcivia](http://saltor.nyc) (creator)
