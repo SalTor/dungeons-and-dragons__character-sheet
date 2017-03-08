@@ -24,14 +24,14 @@
                     <div class="section__description">
                         <div class="section__copy-block" v-html="message__introduction_1"></div>
 
-                        <div class="section__copy-block" v-html="message__introduction_2"></div>
-                    </div>
-                </div>
-            </section>
+                        <div class="section__copy-block">
+                            <p v-html="message__introduction_2"></p>
 
-            <section>
-                <div class="section__content">
-                    <button class="button button_intro-toggle" v-on:click="view__introduction = !view__introduction">Show Introduction</button>
+                            <ul>
+                                <li v-for="item in message__introduction_2_list">{{item}}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -48,6 +48,13 @@
                     </div>
                 </div>
             </section>
+
+            <button class="button button_intro-toggle" v-on:click="view__introduction = !view__introduction">
+                <span>
+                    <span v-if="view__introduction">Hide</span>
+                    <span v-else>Show</span>
+                </span> Introduction
+            </button>
         </main>
 
         <footer>

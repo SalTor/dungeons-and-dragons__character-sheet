@@ -5,16 +5,20 @@
     padding: 10px 20px;
 
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid $color__wet-asphalt;
     border-radius: 5px;
 
+    color: $color__wet-asphalt;
+
     &:hover {
-        background-color: black;
+        background-color: $color__wet-asphalt;
 
         color: white;
     }
 
     &_intro-toggle {
-
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
     }
 }

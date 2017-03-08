@@ -18,6 +18,7 @@ let dungeons_and_dragons__character_sheet = new Vue({
         view__introduction: false,
         message__introduction_1: "Broadly speaking, this is the front-end of a service to manage Dungeons and Dragons character sheets.",
         message__introduction_2: "<strong>More specifically,</strong> this is the front-end of a service to manage Dungeons and Dragons character information. This includes, but will not be limited to:",
+        message__introduction_2_list: [ "Stats", "Name", "Alignment", "Inventory", "Experience", "Saving throws" ],
         character: []
     },
     methods: {
