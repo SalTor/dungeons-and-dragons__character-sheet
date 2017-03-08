@@ -5,13 +5,14 @@
 @import "base/tag-specific";
 
 @import "components/section";
+@import "components/button";
 
 body {
     display: flex;
     flex-direction: column;
 
     min-height: 100vh;
-    padding: 0;
+    padding: 25px 0;
     margin:  0;
 
     font-size: 16px;

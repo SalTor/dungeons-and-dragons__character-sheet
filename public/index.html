@@ -31,6 +31,12 @@
 
             <section>
                 <div class="section__content">
+                    <button class="button button_intro-toggle" v-on:click="view__introduction = !view__introduction">Show Introduction</button>
+                </div>
+            </section>
+
+            <section>
+                <div class="section__content">
                     <h1 class="section__header">{{ character.name }}</h1>
 
                     <div class="section__description">

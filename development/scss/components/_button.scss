@@ -1,0 +1,20 @@
+.button {
+    transition: all .25s ease;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 20px;
+
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: black;
+
+        color: white;
+    }
+
+    &_intro-toggle {
+
+    }
+}
