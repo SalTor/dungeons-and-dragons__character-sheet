@@ -7,6 +7,9 @@ import Footer from "./components/Footer.vue"
 import Dashboard from "./components/Dashboard.vue"
 import NotFound from "./components/NotFound.vue"
 
+require('../../node_modules/normalize.css/normalize.css')
+require('../scss/dungeons_and_dragons_character_sheet.scss')
+
 Vue.component('app-navigation', Navigation)
 Vue.component('app-introduction', Introduction)
 Vue.component('app-footer', Footer)
