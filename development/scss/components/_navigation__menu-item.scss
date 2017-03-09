@@ -1,0 +1,25 @@
+.navigation__menu-item {
+    transition: all .25s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+    width: auto;
+    padding: 0 15px;
+
+    background-color: white;
+    border: 1px solid white;
+
+    &:not(:first-child) {
+        margin-left: 15px;
+    }
+
+    &:hover {
+        background-color: $color__wet-asphalt;
+
+        .navigation__link {
+            color: white;
+        }
+    }
+}

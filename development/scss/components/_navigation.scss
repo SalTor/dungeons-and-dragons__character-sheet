@@ -1,0 +1,14 @@
+@import "navigation__menu-item";
+@import "navigation__link";
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: inherit;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
