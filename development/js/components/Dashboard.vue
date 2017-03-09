@@ -1,7 +1,20 @@
 <template>
     <main role="main">
         <section>
-            <div class="section__content"></div>
+            <div class="section__content">
+                <h1 class="section__header">Dashboard</h1>
+            </div>
+        </section>
+
+        <section>
+            <div class="section__content">
+                <div class="field-wrapper field-wrapper_direction_vertical">
+                    <label for="character-name" class="input__label">Character Name</label>
+                    <input id="character-name" title="Character Name"
+                           :placeholder="character.name"
+                           type="text" class="input input_disabled">
+                </div>
+            </div>
         </section>
     </main>
 </template>
@@ -11,12 +24,6 @@
 
     export default {
         name: "app-dashboard",
-        data() {
-            return {
-                character: [],
-                loading: true
-            }
-        },
         mounted() {
             this.fetch_user_data()
 
@@ -29,6 +36,12 @@
 
                 return string
             })
+        },
+        data() {
+            return {
+                character: [],
+                loading: true
+            }
         },
         methods: {
             fetch_user_data() {

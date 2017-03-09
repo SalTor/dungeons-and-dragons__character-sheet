@@ -1,0 +1,11 @@
+@import "input__label";
+
+.input {
+    &[type="text"] {
+
+    }
+
+    &_disabled {
+        cursor: not-allowed;
+    }
+}

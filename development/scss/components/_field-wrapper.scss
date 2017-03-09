@@ -1,0 +1,10 @@
+.field-wrapper {
+    display: flex;
+
+    position: relative;
+
+    &_direction_vertical {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
