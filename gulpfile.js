@@ -7,11 +7,9 @@ let gulp         = require('gulp'),
     source       = require('vinyl-source-stream'),
     sourcemaps   = require('gulp-sourcemaps'),
     bourbon      = require('node-bourbon'),
-    babel        = require('gulp-babel'),
     browserSync  = require('browser-sync').create(),
     header       = require('gulp-header'),
     concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify'),
     rename       = require('gulp-rename'),
     json_minify  = require('gulp-json-minify')
 
@@ -40,7 +38,7 @@ let sass_dir = './development/scss/dungeons_and_dragons_character_sheet.scss',
     }
 
 gulp.task('default', ['browser-sync'])
-gulp.task('build',   ['css', 'js'])
+gulp.task('build',   ['css'])
 
 gulp.task('css', function() {
     let production = gutil.env.production
@@ -51,20 +49,6 @@ gulp.task('css', function() {
         .pipe(autoprefixer({browsers: ['last 4 versions']}))
         .pipe(production ? gutil.noop() : sourcemaps.write())
         .pipe(gulp.dest(`${build_dir}/css`))
-        .pipe(production ? gutil.noop() : browserSync.stream())
-})
-
-gulp.task('js', function () {
-    let production = gutil.env.production
-
-    return gulp.src([`./development/js/dungeons_and_dragons_character_sheet.js`])
-        .pipe(production ? gutil.noop() : sourcemaps.init({ loadMaps: true }))
-        .pipe(concat(`dungeons_and_dragons__character_sheet.min.js`, { newLine: `;\n\n` }))
-        .pipe(babel({ presets: ['es2015'] }))
-        .pipe(header(header_banner, { today }))
-        .pipe(production ? gutil.noop() : sourcemaps.write('./maps'))
-        .pipe(production ? uglify(uglify_options) : gutil.noop())
-        .pipe(gulp.dest(`${build_dir}/js`))
         .pipe(production ? gutil.noop() : browserSync.stream())
 })
 
@@ -91,11 +75,10 @@ gulp.task("copy", function () {
         .pipe(gulp.dest("public/data"))
 })
 
-gulp.task('browser-sync', ["copy", "css", "libraries", "js"], function() {
+gulp.task('browser-sync', ["copy", "css"], function() {
     browserSync.init({ server: { baseDir: './public' } })
 
     gulp.watch(['./development/scss/**/*.scss', './development/scss/*.scss'], ['css'])
-    gulp.watch(['./development/js/dungeons_and_dragons_character_sheet.js'], ['js'])
 
     gulp.watch(['public/index.html'])
         .on('change', function () {

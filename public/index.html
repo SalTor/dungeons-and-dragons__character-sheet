@@ -14,60 +14,8 @@
     </head>
 
     <body>
-        <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
-            <header>
-                <nav></nav>
-            </header>
+        <div id="dungeons_and_dragons__character_sheet"></div>
 
-            <main role="main" v-if="!loading">
-                <section v-if="view__introduction">
-                    <div class="section__content">
-                        <h1 class="section__header">Dungeons & Dragons Character Sheet</h1>
-
-                        <div class="section__description">
-                            <div class="section__copy-block" v-html="message__introduction_1"></div>
-
-                            <div class="section__copy-block">
-                                <p v-html="message__introduction_2"></p>
-
-                                <ul>
-                                    <li v-for="item in message__introduction_2_list">{{item}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <div class="section__content">
-                        <h1 class="section__header">{{ character.name }}</h1>
-
-                        <div class="section__description">
-                            <div class="section__copy-block">
-                                {{ character.name }} is an {{ character.race }}<span v-if="character.sub_race">, a {{ character.sub_race }}</span>.
-                                <br>
-                                Trained as a {{ character.class.category }}, {{ character.name }} is {{character.class.description | lowercase}}.
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <button class="button button_intro-toggle" v-on:click="view__introduction = !view__introduction">
-                <span>
-                    <span v-if="view__introduction">Hide</span>
-                    <span v-else>Show</span>
-                </span> Introduction
-                </button>
-            </main>
-
-            <footer>
-                <div class="footer__content">
-                    Created by <a href="http://saltor.nyc">Sal Torcivia</a>.
-                </div>
-            </footer>
-        </div>
-
-        <script src="./build/js/dungeons_and_dragons__libraries.js"></script>
-        <script src="./build/js/dungeons_and_dragons__character_sheet.min.js"></script>
+        <script src="./build/js/d_and_d__bundle.js"></script>
     </body>
 </html>
