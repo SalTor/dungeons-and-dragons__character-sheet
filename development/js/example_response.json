@@ -22,6 +22,13 @@
         "height": "6ft 3inches",
         "weight": "150lbs",
         "speed": 30,
+        "armor_class": 14,
+        "hitpoints": {
+            "max": 52,
+            "current": 43
+        },
+        "experience": 56500,
+        "level": 9,
         "languages": [ "Draconic", "Common" ],
         "alignment": "Neutral",
         "personality_trait": "I am horribly, horribly awkward in social situations.",
@@ -36,6 +43,62 @@
         "saving_throw_proficiencies": ["intelligence", "wisdom"],
         "armor_weapon_proficiences": ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"],
         "skill_proficiencies": ["arcana", "history"],
-        "tool_proficiences": []
+        "tool_proficiences": [],
+        "inventory": [
+            {"healing potion": 2},
+            "air elemental crests",
+            {
+                "coins": [
+                    {"gold_pieces": 155},
+                    {"electrum_pieces": 90},
+                    {"platinum_pieces": 65}
+                ]
+            },
+            "Scroll of transmute rock",
+            "Scroll of Maximilian's earth and grasp",
+            "Scroll of earth bind",
+            {
+                "gold_bracelet": {
+                    "amount": 2,
+                    "value_each": {
+                        "gold_pieces": 30
+                    }
+                }
+            },
+            {
+                "vestment": {
+                    "amount": 2,
+                    "value_each": {
+                        "gold_pieces": 40
+                    }
+                }
+            },
+            {
+                "Turquoise stone": {
+                    "amount": 13,
+                    "value_each": {
+                        "gold_pieces": 10
+                    }
+                }
+            },
+            "Scroll of Expeditious Retreat",
+            "Scroll of Entangle",
+            "Scroll of Shield",
+            "Drift globe",
+            "Dagger of light",
+            {
+                "A key": {
+                    "context": "Found in a room in a monastery up North."
+                }
+            },
+            {
+                "Mirabar tradebar": {
+                    "amount": 4,
+                    "value_each": {
+                        "gold_pieces": 5
+                    }
+                }
+            }
+        ]
     }
 ]

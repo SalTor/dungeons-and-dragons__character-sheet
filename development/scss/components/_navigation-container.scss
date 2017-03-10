@@ -1,4 +1,7 @@
 .navigation-container {
+    display: flex;
+    justify-content: space-between;
+
     height: 50px;
     width: 100%;
     max-width: 1200px;

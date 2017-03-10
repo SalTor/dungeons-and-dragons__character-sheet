@@ -2,12 +2,22 @@
     <header>
         <nav class="navigation-container">
             <ul class="navigation">
-                <li class="navigation__menu-item">
-                    <router-link class="navigation__link" to="/">Dashboard</router-link>
-                </li>
-                <li class="navigation__menu-item">
-                    <router-link class="navigation__link" to="/faq">Frequently Asked Questions</router-link>
-                </li>
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/">
+                    Dashboard</router-link>
+            </ul>
+
+            <ul class="navigation">
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/combat">
+                    Combat</router-link>
+
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/inventory">
+                    Inventory</router-link>
+
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/stats">
+                    Player Stats</router-link>
+
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/description">
+                    Description</router-link>
             </ul>
         </nav>
     </header>
@@ -15,7 +25,7 @@
 
 <script>
     export default {
-        name: 'app-navigation',
+        name: 'navigation',
         data() {
             return {}
         }

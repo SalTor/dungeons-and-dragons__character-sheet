@@ -2,12 +2,10 @@
     <main role="main">
         <section>
             <div class="section__content">
-                <h1>Welcome back, {{character.name}}.</h1>
+                <h1 class="section__header">Here's the run down.</h1>
+
                 <div class="field-wrapper field-wrapper_direction_vertical">
-                    <label for="character-name" class="input__label">Character Name</label>
-                    <input id="character-name" title="Character Name"
-                           :placeholder="character.name"
-                           type="text" class="input input_disabled">
+
                 </div>
             </div>
         </section>
@@ -18,7 +16,7 @@
     import Vue from "vue"
 
     export default {
-        name: "dashboard",
+        name: "stats",
         props: ["character"],
         data() {
             return {}

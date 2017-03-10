@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'app-footer',
+        name: 'footer',
         data() {
             return {}
         }
