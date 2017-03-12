@@ -15,30 +15,38 @@
 .stat {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 
     position: relative;
 
-    border: 1px solid black;
-    border-radius: 4px;
+    min-height: 75px;
+    padding-bottom: 10px;
+
+    background-color: $color__turquoise;
+
+    color: white;
 
     &:not(:last-child) {
         margin-bottom: 20px;
     }
 
     &__name {
-        margin-top: 5px;
-        padding: 0 5px;
+        align-self: stretch;
+
+        padding: 5px;
+
+        background-color: $color__green-sea;
 
         font-size: .75em;
-        font-weight: bold;
         text-transform: uppercase;
+        text-align: center;
     }
     &__value {
         margin-top: 10px;
         margin-bottom: 10px;
 
-        font-size: 1.1em;
+        font-size: 1.5em;
     }
     &__modifier {
         z-index: 1;
@@ -48,12 +56,8 @@
 
         height: 1em;
         width:  2em;
-        padding: 5px;
-        margin-bottom: -15px;
 
-        background-color: white;
-        border: 1px solid;
-        border-radius: 50%;
+        background-color: $color__turquoise;
 
         font-size: 1em;
     }
