@@ -20,25 +20,22 @@
 
     position: relative;
 
-    min-height: 75px;
-    padding-bottom: 10px;
+    min-height: 105px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 
     background-color: $color__turquoise;
 
     color: white;
 
-    &:not(:last-child) {
-        margin-bottom: 20px;
-    }
-
     &__name {
         align-self: stretch;
 
-        padding: 5px;
+        padding: 10px;
 
         background-color: $color__green-sea;
 
-        font-size: .75em;
+        font-size: .9em;
         text-transform: uppercase;
         text-align: center;
     }
@@ -60,7 +57,7 @@
 
         background-color: $color__turquoise;
 
-        font-size: 1em;
+        font-size: 1.25em;
         font-family: $font__inconsolata;
     }
 }
@@ -74,28 +71,28 @@
     display: flex;
     justify-content: flex-start;
 
-    margin-left: 30px;
+    margin-left: 20px;
 
     background-color: $color__green-sea;
 
     color: white;
 
-    &_inspiration, &_proficiency {
-
-    }
-
-    &_inspiration, &_proficiency {
+    &_perception, &_inspiration, &_proficiency {
         display: flex;
         justify-content: flex-start;
         align-items: center;
 
-        height: 2em;
-        padding-right: 10px;
+        padding-right: 20px;
         margin-bottom: 20px;
+
+        border-radius: 25px;
+    }
+    &_perception {
+        margin-left: 0;
     }
 
     &__value {
-        &_inspiration, &_proficiency {
+        &_perception, &_inspiration, &_proficiency {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -103,16 +100,18 @@
             height: 15px;
             width:  15px;
             margin-right: 5px;
-            margin-left: -20px;
             padding: 10px;
 
             background-color: $color__turquoise;
-            border: 3px solid $color__green-sea;
+            border: 5px solid $color__green-sea;
             border-radius: 50%;
 
             font-size: 1.2em;
             font-family: $font__inconsolata;
             text-align: center;
+        }
+        &_perception {
+            margin-left: 0;
         }
     }
     &__name {

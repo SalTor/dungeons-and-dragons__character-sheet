@@ -30,7 +30,10 @@
                             </div>
                         </div>
 
-                        <div class="modifier modifier__passive-wisdom"></div>
+                        <div class="modifier modifier_perception">
+                            <div class="modifier__value modifier__value_perception">{{ user.passive_wisdom | sign }}</div>
+                            <div class="modifier__name modifier__name_proficiency">Passive wisdom (perception)</div>
+                        </div>
                     </div>
                 </div>
             </div>
