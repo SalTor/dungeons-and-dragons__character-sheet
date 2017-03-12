@@ -1,0 +1,30 @@
+.stats-and-modifiers__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-and-modifiers {
+    display: flex;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+    min-height: 50px;
+
+    border: 1px solid black;
+    border-radius: 4px;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    &__name {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

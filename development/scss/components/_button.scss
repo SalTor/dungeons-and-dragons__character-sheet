@@ -1,7 +1,5 @@
 .button {
     transition: all .25s ease;
-    width: 100%;
-    max-width: 200px;
     padding: 10px 20px;
 
     cursor: pointer;
@@ -14,11 +12,5 @@
         background-color: $color__wet-asphalt;
 
         color: white;
-    }
-
-    &_intro-toggle {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
     }
 }

@@ -14,10 +14,10 @@
                     Inventory</router-link>
 
                 <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/stats">
-                    Player Stats</router-link>
+                    Stats</router-link>
 
-                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/description">
-                    Description</router-link>
+                <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/background">
+                    Background</router-link>
             </ul>
         </nav>
     </header>

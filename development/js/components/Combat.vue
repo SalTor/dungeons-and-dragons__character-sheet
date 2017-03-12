@@ -20,6 +20,8 @@
             return {
 
             }
+        },
+        methods: {
         }
     }
 </script>

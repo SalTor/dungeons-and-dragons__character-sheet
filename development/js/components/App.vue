@@ -2,7 +2,7 @@
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
         <app-navigation></app-navigation>
 
-        <router-view :character="character"></router-view>
+        <router-view :user="character"></router-view>
 
         <app-footer></app-footer>
     </div>

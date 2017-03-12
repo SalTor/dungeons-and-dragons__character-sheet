@@ -11,7 +11,7 @@ import Dashboard from "./components/Dashboard.vue"
 import Combat from "./components/Combat.vue"
 import Inventory from "./components/Inventory.vue"
 import Stats from "./components/Stats.vue"
-import Description from "./components/Description.vue"
+import Background from "./components/Background.vue"
 
 
 require('../../node_modules/normalize.css/normalize.css')
@@ -30,12 +30,10 @@ const router = new VueRouter({
         { path: '/combat',      component: Combat },
         { path: '/inventory',   component: Inventory },
         { path: '/stats',       component: Stats },
-        { path: '/description', component: Description },
+        { path: '/background',  component: Background },
         { path: '*', component: NotFound }
     ],
-    base: __dirname + 'public',
-    history: true,
-    mode: 'history'
+    base: __dirname + 'public'
 })
 
 new Vue({
