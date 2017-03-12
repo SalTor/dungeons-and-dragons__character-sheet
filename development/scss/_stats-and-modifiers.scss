@@ -7,6 +7,11 @@
     display: flex;
 }
 
+.stats-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .stat {
     display: flex;
     flex-direction: column;
@@ -23,14 +28,15 @@
 
     &__name {
         margin-top: 5px;
+        padding: 0 5px;
 
         font-size: .75em;
         font-weight: bold;
         text-transform: uppercase;
     }
     &__value {
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
 
         font-size: 1.1em;
     }
@@ -50,5 +56,69 @@
         border-radius: 50%;
 
         font-size: 1em;
+    }
+}
+
+.modifiers-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modifier {
+    display: flex;
+    justify-content: flex-start;
+
+    margin-left: 20px;
+
+    &_inspiration, &_proficiency {
+        height: 1.8em;
+    }
+
+    &_inspiration {
+        margin-top: -.5em;
+    }
+
+    &_inspiration, &_proficiency {
+        display: flex;
+        align-items: center;
+
+        padding-right: 10px;
+        margin-bottom: 20px;
+
+        border: 1px solid black;
+        border-radius: 2px;
+    }
+
+    &__value {
+        &_inspiration, &_proficiency {
+            min-height: 10px;
+            min-width:  10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 7px 11px;
+            margin-right: 10px;
+            margin-left: -10px;
+
+            background-color: white;
+            border: 1px solid black;
+
+            font-size: 1.2em;
+        }
+        &_proficiency {
+            border-radius: 50%;
+        }
+    }
+    &__name {
+        font-size: .5em;
+
+        &_inspiration, &_proficiency {
+            width: 100%;
+
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 }

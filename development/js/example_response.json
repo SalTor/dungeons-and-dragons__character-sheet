@@ -37,6 +37,7 @@
         "bond": "I have an ancient text that holds terrible secrets that must not fall into the wrong hands.",
         "flaw": "Unlocking an ancient mystery is worth the price of a civilization.",
         "inspiration": "I've had horrible dreams of the elementals crying out for help, I must see what I can do.",
+        "inspiration_modifier": 0,
         "stats": {
             "strength": 10,
             "dexterity": 18,
@@ -77,6 +78,7 @@
         "spell_save_dc": 17,
         "spell_attack_bonus": 8,
         "primary_ability": "intelligence",
+        "proficiency_bonus": 4,
         "saving_throw_proficiencies": ["intelligence", "wisdom"],
         "armor_weapon_proficiencies": ["daggers", "darts", "slings", "quarterstaffs", "light crossbows"],
         "skill_proficiencies": ["arcana", "history"],
