@@ -8,16 +8,12 @@
                     <div class="stats-and-modifiers__container">
                         <div class="stats-and-modifiers">
                             <div class="stats-container">
-                                <div class="stat" v-for="(value, stat) in character.stats">
+                                <div class="stat" v-for="(value, stat) in user.stats">
                                     <div class="stat__name">{{ stat }}</div>
 
-                                    <div class="stat__value">
-                                        <span>{{ value }}</span>
-                                    </div>
+                                    <div class="stat__value"><span>{{ value }}</span></div>
 
-                                    <div class="stat__modifier">
-                                        {{ modifier(stat) }}
-                                    </div>
+                                    <div class="stat__modifier">{{ stat | modifier | sign }}</div>
                                 </div>
                             </div>
 
@@ -29,52 +25,51 @@
                         <div class="modifier modifier__passive-wisdom"></div>
                     </div>
 
-                    <!--<div>Hitpoints: {{character.hitpoints.max}}/{{character.hitpoints.current}}</div>-->
+                    <!--<div>Hitpoints: {{user.hitpoints.max}}/{{user.hitpoints.current}}</div>-->
 
-                    <div>Speed: {{character.speed}}</div>
+                    <div>Speed: {{user.speed}}</div>
 
-                    <div>Armor Class: {{character.armor_class}}</div>
+                    <div>Armor Class: {{user.armor_class}}</div>
 
-                    <div>Level: {{character.level}}</div>
+                    <div>Level: {{user.level}}</div>
 
-                    <div>Experience: {{character.experience}}</div>
+                    <div>Experience: {{user.experience}}</div>
 
-                    <div>Hit Dice: {{character.hit_dice}}</div>
+                    <div>Hit Dice: {{user.hit_dice}}</div>
 
-                    <div>Spell Save DC: {{character.spell_save_dc}}</div>
+                    <div>Spell Save DC: {{user.spell_save_dc}}</div>
 
-                    <div>Spell Attack Bonus: {{character.spell_attack_bonus}}</div>
+                    <div>Spell Attack Bonus: {{user.spell_attack_bonus}}</div>
 
-                    <div>Primary Ability (Spellcasting ability): {{character.primary_ability}}</div>
+                    <div>Primary Ability (Spellcasting ability): {{user.primary_ability}}</div>
 
                     <div>
                         Saving throw proficiencies
                         <ul>
-                            <li v-for="proficiency in character.saving_throw_proficiencies">{{proficiency}}</li>
+                            <li v-for="proficiency in user.saving_throw_proficiencies">{{proficiency}}</li>
                         </ul>
                     </div>
 
-                    <div v-if="character.armor_weapon_proficiencies">
+                    <div v-if="user.armor_weapon_proficiencies">
                         Armor & Weapon proficiencies
                         <ul>
-                            <li v-for="proficiency in character.armor_weapon_proficiencies">{{proficiency}}</li>
+                            <li v-for="proficiency in user.armor_weapon_proficiencies">{{proficiency}}</li>
                         </ul>
                     </div>
 
                     <div>
                         Skill proficiencies
                         <ul>
-                            <li v-for="proficiency in character.skill_proficiencies">{{proficiency}}</li>
+                            <li v-for="proficiency in user.skill_proficiencies">{{proficiency}}</li>
                         </ul>
                     </div>
 
-                    <div v-if="character.tool_proficiencies">
+                    <div v-if="user.tool_proficiencies">
                         Tool proficiencies
                         <ul>
-                            <li v-for="proficiency in character.tool_proficiencies">{{proficiency}}</li>
+                            <li v-for="proficiency in user.tool_proficiencies">{{proficiency}}</li>
                         </ul>
                     </div>
-                    <button class="button" v-on:click="test_me()">Click Me</button>
                 </div>
             </div>
         </section>
@@ -88,30 +83,15 @@
         name: "stats",
         props: ["user"],
         created() {
-            Vue.filter('sign', number => number >= 0 ? `+${number}` : `${number}`)
+            Vue.filter('sign', number => number > 0 ? `+${number}` : `${number}`)
+            Vue.filter('modifier', saving_throw => {
+                return this.user.saving_throw_modifiers[saving_throw]
+            })
         },
         data() {
-            return {
-                character: Object.assign({}, this.user)
-            }
+            return {}
         },
-        methods: {
-            modifier() {
-                console.log(this.character.saving_throw_modifiers)
-//                this.character.saving_throw_modifiers.map(modifier => {
-//                    console.log(modifier)
-//                })
-//                this.character.skill_modifiers.map(modifier => {
-//                    console.log(modifier)
-//                })
-            },
-            test_me() {
-                console.log(`character`, this.character)
-                console.log(`user`, this.user)
-                this.user.map(attribute => {
-                    console.log(attribute)
-                })
-            }
+        mounted() {
         }
     }
 </script>

@@ -10,21 +10,45 @@
 .stat {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 
     position: relative;
-    min-height: 50px;
 
     border: 1px solid black;
     border-radius: 4px;
 
     &:not(:last-child) {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     &__name {
+        margin-top: 5px;
+
+        font-size: .75em;
         font-weight: bold;
         text-transform: uppercase;
+    }
+    &__value {
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        font-size: 1.1em;
+    }
+    &__modifier {
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 1em;
+        width:  2em;
+        padding: 5px;
+        margin-bottom: -15px;
+
+        background-color: white;
+        border: 1px solid;
+        border-radius: 50%;
+
+        font-size: 1em;
     }
 }
