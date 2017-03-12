@@ -32,52 +32,6 @@
 
                         <div class="modifier modifier__passive-wisdom"></div>
                     </div>
-
-                    <div>Hitpoints: {{ user.hitpoints.max }}/{{ user.hitpoints.current }}</div>
-
-                    <div>Speed: {{user.speed}}</div>
-
-                    <div>Armor Class: {{user.armor_class}}</div>
-
-                    <div>Level: {{user.level}}</div>
-
-                    <div>Experience: {{user.experience}}</div>
-
-                    <div>Hit Dice: {{user.hit_dice}}</div>
-
-                    <div>Spell Save DC: {{user.spell_save_dc}}</div>
-
-                    <div>Spell Attack Bonus: {{user.spell_attack_bonus}}</div>
-
-                    <div>Primary Ability (Spellcasting ability): {{user.primary_ability}}</div>
-
-                    <div>
-                        Saving throw proficiencies
-                        <ul>
-                            <li v-for="proficiency in user.saving_throw_proficiencies">{{proficiency}}</li>
-                        </ul>
-                    </div>
-
-                    <div v-if="user.armor_weapon_proficiencies">
-                        Armor & Weapon proficiencies
-                        <ul>
-                            <li v-for="proficiency in user.armor_weapon_proficiencies">{{proficiency}}</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        Skill proficiencies
-                        <ul>
-                            <li v-for="proficiency in user.skill_proficiencies">{{proficiency}}</li>
-                        </ul>
-                    </div>
-
-                    <div v-if="user.tool_proficiencies">
-                        Tool proficiencies
-                        <ul>
-                            <li v-for="proficiency in user.tool_proficiencies">{{proficiency}}</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </section>
@@ -91,7 +45,7 @@
         name: "stats",
         props: ["user"],
         created() {
-            Vue.filter('sign', number => number > 0 ? `+${number}` : `${number}`)
+            Vue.filter('sign', number => number > 0 ? `+${number}` : number === 0 ? ` 0` : `${number}`)
             Vue.filter('modifier', saving_throw => this.user.saving_throw_modifiers[saving_throw])
         },
         data() {

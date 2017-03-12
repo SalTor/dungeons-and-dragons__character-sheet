@@ -2,11 +2,11 @@
     <main role="main">
         <section>
             <div class="section__content">
-                <h1>Welcome back, {{character.name}}.</h1>
+                <h1>Welcome back, {{user.name}}.</h1>
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <label for="character-name" class="input__label">Character Name</label>
                     <input id="character-name" title="Character Name"
-                           :placeholder="character.name"
+                           :placeholder="user.name"
                            type="text" class="input input_disabled">
                 </div>
             </div>
@@ -19,7 +19,7 @@
 
     export default {
         name: "dashboard",
-        props: ["character"],
+        props: ["user"],
         data() {
             return {}
         }

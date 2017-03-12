@@ -2,7 +2,7 @@
     <main role="main">
         <section>
             <div class="section__content">
-                <h1 class="section__header">Here's some background on {{character.name}}</h1>
+                <h1 class="section__header">Here's some background on {{user.name}}</h1>
 
                 <div class="field-wrapper field-wrapper_direction_vertical">
 
@@ -17,7 +17,7 @@
 
     export default {
         name: "description",
-        props: ["character"],
+        props: ["user"],
         data() {
             return {}
         }

@@ -47,6 +47,7 @@
         margin-bottom: 10px;
 
         font-size: 1.5em;
+        font-family: $font__inconsolata;
     }
     &__modifier {
         z-index: 1;
@@ -60,6 +61,7 @@
         background-color: $color__turquoise;
 
         font-size: 1em;
+        font-family: $font__inconsolata;
     }
 }
 
@@ -72,56 +74,53 @@
     display: flex;
     justify-content: flex-start;
 
-    margin-left: 20px;
+    margin-left: 30px;
+
+    background-color: $color__green-sea;
+
+    color: white;
 
     &_inspiration, &_proficiency {
-        height: 1.8em;
-    }
 
-    &_inspiration {
-        margin-top: -.5em;
     }
 
     &_inspiration, &_proficiency {
         display: flex;
+        justify-content: flex-start;
         align-items: center;
 
+        height: 2em;
         padding-right: 10px;
         margin-bottom: 20px;
-
-        border: 1px solid black;
-        border-radius: 2px;
     }
 
     &__value {
         &_inspiration, &_proficiency {
-            min-height: 10px;
-            min-width:  10px;
-
             display: flex;
             justify-content: center;
             align-items: center;
 
-            padding: 7px 11px;
-            margin-right: 10px;
-            margin-left: -10px;
+            height: 15px;
+            width:  15px;
+            margin-right: 5px;
+            margin-left: -20px;
+            padding: 10px;
 
-            background-color: white;
-            border: 1px solid black;
+            background-color: $color__turquoise;
+            border: 3px solid $color__green-sea;
+            border-radius: 50%;
 
             font-size: 1.2em;
-        }
-        &_proficiency {
-            border-radius: 50%;
+            font-family: $font__inconsolata;
+            text-align: center;
         }
     }
     &__name {
-        font-size: .5em;
+        font-size: .75em;
 
         &_inspiration, &_proficiency {
             width: 100%;
 
-            font-weight: bold;
             text-transform: uppercase;
         }
     }
