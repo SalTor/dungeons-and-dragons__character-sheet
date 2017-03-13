@@ -27,6 +27,17 @@
                                     <div class="modifier__value modifier__value_proficiency">{{ user.proficiency_bonus | sign }}</div>
                                     <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
                                 </div>
+
+                                <div class="modifier-group">
+                                    <div class="modifier" v-for="(value, name) in user.saving_throw_modifiers">
+                                        <div class="modifier__state"
+                                            :class="proficient(name) ? 'modifier__state_active' : ''"></div>
+                                        <div class="modifier__value">{{ value | sign }}</div>
+                                        <div class="modifier__name">{{ name }}</div>
+                                    </div>
+
+                                    <div class="modifier-group__title">Saving Throws</div>
+                                </div>
                             </div>
                         </div>
 
@@ -48,13 +59,18 @@
         name: "stats",
         props: ["user"],
         created() {
-            Vue.filter('sign', number => number > 0 ? `+${number}` : number === 0 ? ` 0` : `${number}`)
+            Vue.filter('sign', number => number >= 0 ? `+${number}` : `${number}`)
             Vue.filter('modifier', saving_throw => this.user.saving_throw_modifiers[saving_throw])
         },
         data() {
             return {}
         },
         mounted() {
+        },
+        methods: {
+            proficient(stat) {
+                return this.user.saving_throw_proficiencies.includes(stat)
+            }
         }
     }
 </script>
