@@ -29,14 +29,25 @@
                                 </div>
 
                                 <div class="modifier-group">
+                                    <div class="modifier-group__title">Saving Throws</div>
+
                                     <div class="modifier" v-for="(value, name) in user.saving_throw_modifiers">
                                         <div class="modifier__state"
                                             :class="proficient(name) ? 'modifier__state_active' : ''"></div>
                                         <div class="modifier__value">{{ value | sign }}</div>
                                         <div class="modifier__name">{{ name }}</div>
                                     </div>
+                                </div>
 
-                                    <div class="modifier-group__title">Saving Throws</div>
+                                <div class="modifier-group">
+                                    <div class="modifier-group__title">Skills</div>
+
+                                    <div class="modifier" v-for="(value, name) in user.skill_modifiers">
+                                        <div class="modifier__state"
+                                            :class="proficient(name) ? 'modifier__state_active' : ''"></div>
+                                        <div class="modifier__value">{{ value | sign }}</div>
+                                        <div class="modifier__name">{{ name }}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +80,7 @@
         },
         methods: {
             proficient(stat) {
-                return this.user.saving_throw_proficiencies.includes(stat)
+                return this.user.saving_throw_proficiencies.includes(stat) || this.user.skill_proficiencies.includes(stat)
             }
         }
     }
