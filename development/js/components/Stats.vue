@@ -31,9 +31,8 @@
                                 <div class="stat" v-for="(value, stat) in user.stats">
                                     <div class="stat__name">{{ stat }}</div>
 
-                                    <div class="field-group">
+                                    <div class="field-group stat__val-mod">
                                         <div class="stat__value"><span>{{ value }}</span></div>
-
                                         <div class="stat__modifier">{{ stat | modifier | sign }}</div>
                                     </div>
                                 </div>

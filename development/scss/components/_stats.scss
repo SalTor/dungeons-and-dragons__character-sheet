@@ -7,24 +7,34 @@
 
 .stat {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    align-items: baseline;
 
     color: black;
 
     &:not(:last-child) {
-        margin-bottom: 15px;
+        margin-bottom: 5px;
     }
 
     &__name {
-        font-size: 1.25em;
+        font-size: .75em;
         text-transform: capitalize;
     }
     &__value, &__modifier {
-        font-size: 1.2em;
         font-family: $font__inconsolata;
+    }
+    &__value {
+        margin-left: 5px;
+
+        border-bottom: 1px solid black;
     }
     &__modifier {
         margin-left: 5px;
+    }
+    &__val-mod {
+        display: flex;
+        justify-content: flex-end;
+
+        min-width: 50px;
     }
 }

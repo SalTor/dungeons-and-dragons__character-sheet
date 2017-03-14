@@ -58,17 +58,13 @@
             background-color: black;
         }
         &_special {
-            height: 16px;
-            width:  16px;
-
-            background-color: black;
+            border: none;
 
             .fa {
                 transform: translateY(-50%) translateX(-50%);
                 position: absolute;
                 top: 50%;
-                left: 48%;
-                color: gold;
+                left: 50%;
             }
         }
     }
@@ -89,7 +85,6 @@
             align-items: center;
 
             margin-right: 8px;
-            margin-left: 23px;
 
             text-align: center;
         }
