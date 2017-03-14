@@ -23,11 +23,13 @@
         "weight": "150lbs",
         "speed": 30,
         "armor_class": 14,
+        "initiative_modifier": 4,
         "hitpoints": {
             "max": 52,
             "current": 43
         },
         "experience": 56500,
+        "percent_progress_until_level": 0.8828125,
         "level": 9,
         "languages": [ "Draconic", "Common" ],
         "alignment": "Neutral",
@@ -48,7 +50,7 @@
         },
         "saving_throw_modifiers": {
             "strength": 0,
-            "dexterity": 2,
+            "dexterity": 4,
             "constitution": 2,
             "intelligence": 9,
             "wisdom": 5,
@@ -74,7 +76,10 @@
             "stealth": 4,
             "survival": 1
         },
-        "hit_dice": "1d6",
+        "hit_dice": {
+            "die": "1d6",
+            "total": 4
+        },
         "spell_save_dc": 17,
         "spell_attack_bonus": 8,
         "primary_ability": "intelligence",

@@ -1,0 +1,30 @@
+.stats-container {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 624px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    color: black;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    &__name {
+        font-size: 1.25em;
+        text-transform: capitalize;
+    }
+    &__value, &__modifier {
+        font-size: 1.2em;
+        font-family: $font__inconsolata;
+    }
+    &__modifier {
+        margin-left: 5px;
+    }
+}

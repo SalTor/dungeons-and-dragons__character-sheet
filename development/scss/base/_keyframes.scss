@@ -1,0 +1,26 @@
+@keyframes spread-out {
+    from {
+        width: 48px;
+    }
+    to {
+        width: 160px;
+    }
+}
+
+@keyframes grow-down_stat {
+    from {
+        height: 36px;
+    }
+    to {
+        height: 125px;
+    }
+}
+
+@keyframes slide-down_modifier-set {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
