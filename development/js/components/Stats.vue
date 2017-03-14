@@ -39,6 +39,14 @@
                             </div>
 
                             <div class="modifiers-container">
+                                <div class="modifier modifier_proficiency">
+                                    <div class="modifier__state modifier__state_special">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="modifier__value modifier__value_proficiency">{{ user.proficiency_bonus | sign }}</div>
+                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
+                                </div>
+
                                 <div class="modifier modifier_perception">
                                     <div class="modifier__state modifier__state_special">
                                         <i class="fa fa-star"></i>
@@ -53,14 +61,6 @@
                                     </div>
                                     <div class="modifier__value modifier__value_inspiration">{{ user.inspiration_modifier | sign }}</div>
                                     <div class="modifier__name modifier__name_inspiration">Inspiration</div>
-                                </div>
-
-                                <div class="modifier modifier_proficiency">
-                                    <div class="modifier__state modifier__state_special">
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="modifier__value modifier__value_proficiency">{{ user.proficiency_bonus | sign }}</div>
-                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
                                 </div>
 
                                 <div class="modifier-group">
