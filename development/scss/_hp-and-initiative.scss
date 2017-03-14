@@ -1,0 +1,61 @@
+.hp-ac-initiative {
+    display: flex;
+    align-items: center;
+
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 25px 75px;
+
+    color: white;
+}
+
+.hitpoints {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    height: 75px;
+    margin-right: 10px;
+
+    text-align: center;
+
+    &__icon {
+        height: 75px;
+        width:  75px;
+    }
+    &__value {
+        transform: translateY(-50%) translateX(-50%);
+        position: absolute;
+        top:  50%;
+        left: 50%;
+
+        color: black;
+        font-size: 2em;
+        font-family: $font__inconsolata;
+    }
+}
+
+.armor-class, .initiative {
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    color: black;
+    font-size: 1.25em;
+    line-height: 1;
+
+    &__mononym {
+        margin-left: 5px;
+        padding-bottom: 2px;
+
+        font-size: .75em;
+        text-transform: capitalize;
+        text-align: center;
+    }
+
+    &__value {
+        font-family: $font__inconsolata;
+    }
+}

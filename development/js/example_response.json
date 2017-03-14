@@ -90,14 +90,18 @@
         "tool_proficiences": [],
         "passive_wisdom": 3,
         "inventory": [
-            {"healing potion": 2},
+            {
+                "healing potion": {
+                    "amount": 2
+                }
+            },
             "air elemental crests",
             {
-                "coins": [
-                    {"gold_pieces": 155},
-                    {"electrum_pieces": 90},
-                    {"platinum_pieces": 65}
-                ]
+                "coins": {
+                    "gold_pieces": 155,
+                    "electrum_pieces": 90,
+                    "platinum_pieces": 65
+                }
             },
             "Scroll of transmute rock",
             "Scroll of Maximilian's earth and grasp",
