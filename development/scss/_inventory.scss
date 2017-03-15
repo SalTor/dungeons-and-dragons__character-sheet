@@ -4,10 +4,20 @@
     align-items: flex-start;
 
     &__item {
+        display: flex;
+
         &:not(:empty) {
             margin: 5px;
+        }
+    }
+}
 
-            text-transform: capitalize;
+.item {
+    &__name {
+        margin-right: 5px;
+
+        &_multiple {
+            margin-left: 5px;
         }
     }
 }

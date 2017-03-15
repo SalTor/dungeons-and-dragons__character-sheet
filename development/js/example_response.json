@@ -89,63 +89,49 @@
         "skill_proficiencies": ["arcana", "history"],
         "tool_proficiences": [],
         "passive_wisdom": 3,
+        "coin_pouch": { "gp": 155, "ep": 90, "pp": 65 },
         "inventory": [
+            {"name": "Healing potion",      "amount": 2},
+            {"name": "Air elemental crest", "amount": 3},
+            {"name": "Scroll of Transmute rock"},
+            {"name": "Scroll of Maximilian's earth and grasp"},
+            {"name": "Scroll of Earth bind"},
             {
-                "healing potion": {
-                    "amount": 2
-                }
-            },
-            "air elemental crests",
-            {
-                "coins": {
-                    "gold_pieces": 155,
-                    "electrum_pieces": 90,
-                    "platinum_pieces": 65
-                }
-            },
-            "Scroll of transmute rock",
-            "Scroll of Maximilian's earth and grasp",
-            "Scroll of earth bind",
-            {
-                "gold_bracelet": {
-                    "amount": 2,
-                    "value_each": {
-                        "gold_pieces": 30
-                    }
+                "name": "Gold bracelet",
+                "amount": 2,
+                "value": {
+                    "gp": 30
                 }
             },
             {
-                "vestment": {
-                    "amount": 2,
-                    "value_each": {
-                        "gold_pieces": 40
-                    }
+                "name": "Vestment",
+                "context": "Obtained from fighting Earth Cultists.",
+                "amount": 2,
+                "value": {
+                    "gp": 40
                 }
             },
             {
-                "Turquoise stone": {
-                    "amount": 13,
-                    "value_each": {
-                        "gold_pieces": 10
-                    }
+                "name": "Turquoise stone",
+                "amount": 13,
+                "value": {
+                    "gp": 10
                 }
             },
-            "Scroll of Expeditious Retreat",
-            "Scroll of Entangle",
-            "Scroll of Shield",
-            "Drift globe",
-            "Dagger of light",
+            {"name": "Scroll of Expeditious Retreat"},
+            {"name": "Scroll of Entangle"},
+            {"name": "Scroll of Shield"},
+            {"name": "Drift globe"},
+            {"name": "Dagger of light"},
             {
-                "A key": {
-                    "context": "Found in a room in a monastery up North."
-                }
+                "name": "A key",
+                "context": "Found in a room in a monastery up North."
             },
             {
-                "Mirabar tradebar": {
-                    "amount": 4,
-                    "value_each": {
-                        "gold_pieces": 5
-                    }
+                "name": "Mirabar tradebar",
+                "amount": 4,
+                "value": {
+                    "gp": 5
                 }
             }
         ]

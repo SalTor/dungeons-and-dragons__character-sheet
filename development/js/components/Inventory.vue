@@ -6,7 +6,23 @@
 
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <div class="inventory">
-                        <div class="inventory__item" v-for="item in user.inventory ">{{ item | item }}</div>
+                        <div class="inventory__item">
+                            <div class="item__name">Coin pouch:</div>
+
+                            <div class="item__contents">
+                                <span class="content coins" v-for="(amount, id) in user.coin_pouch">{{ test(id, amount) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="inventory__item" v-for="item in user.inventory">
+                            <span class="item__amount" v-if="item.amount">{{ item.amount }} <i class="fa fa-close"></i></span>
+                            <span class="item__name" :class="item.amount ? 'item__name_multiple' : ''">{{ item.name }}</span>
+                            <span v-if="item.amount">
+                                <span class="item__value coins" v-if="item.value">
+                                    (<span v-for="(amount, id) in item.value">{{ amount }} {{ id }} ea.</span>)
+                                </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,31 +37,26 @@
         name: "inventory",
         props: ["user"],
         data() {
-            return {}
+            return {
+                coin_pouch: {}
+            }
         },
         created() {
-            Vue.filter("item", value => {
-                if(typeof value === "string") {
-                    return value
-                } else {
-                    for(let item in value) {
-                        if(value.hasOwnProperty(item)) {
-                            console.log(item)
+            Vue.filter("details", entry => {
+                let name = entry.name,
+                    amount = entry.amount,
+                    value = entry.value, total
 
-                            for(let attr in value[item]) {
-                                if(typeof value[item][attr] === "object") {
-                                    console.log(`\t${attr}:`)
-                                    for(let detail in value[item][attr]) {
-                                        console.log(`\t\t${detail}: ${value[item][attr][detail]}`)
-                                    }
-                                } else {
-                                    console.log(`\t${attr}: ${value[item][attr]}`)
-                                }
-                            }
-                        }
-                    }
-                }
+                console.log(value)
+
+                return `${name} - ${amount} (${value} ea., totalling ${total})`
             })
+        },
+        mounted() {},
+        methods: {
+            test(type, amount) {
+                return `${amount}${type}, `
+            }
         }
     }
 </script>
