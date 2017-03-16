@@ -41,6 +41,7 @@
     "url-loader": "^0.5.8",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.2.1",
+    "vue-clickaway": "^2.1.0",
     "vue-loader": "^11.1.4",
     "vue-router": "^2.3.0",
     "vue-template-compiler": "^2.2.1",

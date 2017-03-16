@@ -41,8 +41,7 @@
     position: relative;
 
     padding: 0;
-
-    &:not(:empty) { margin: 5px; }
+    margin: 15px;
 
     &__name {
         display: flex;
@@ -79,6 +78,8 @@
         display: flex;
         align-items: center;
 
+        position: relative;
+
         padding: 5px 6px;
 
         cursor: pointer;
@@ -99,6 +100,48 @@
 
             color: white;
             font-family: $font__inconsolata;
+        }
+    }
+
+    &__info {
+        transition: all .25s ease;
+        transform: translateX(-50%);
+        position: absolute;
+        top: -38px;
+        left: 50%;
+
+        display: block;
+
+        padding: 5px;
+
+        white-space: nowrap;
+        background-color: white;
+        border: 1px solid #ccc;
+
+        color: black;
+
+        &.fade-enter-active, &.fade-leave-active {
+            opacity: 1;
+        }
+        &.fade-enter, &.fade-leave-to {
+            opacity: 0;
+        }
+
+        &:after {
+            transform-origin: center center;
+            transform: rotate(45deg) translateX(-50%);
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+
+            height: 10px;
+            width:  10px;
+
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-left: none;
         }
     }
 
@@ -129,16 +172,17 @@
     &__modifier-container {
         transition: all .25s ease;
         transform: translateX(-50%);
-        z-index: -1;
         display: flex;
+        justify-content: flex-end;
+        align-items: center;
 
         position: absolute;
-        top: -40px;
+        top: -48px;
         left: 50%;
 
-        padding: 5px;
+        padding: 8px;
 
-        opacity: 0;
+        background-color: white;
         border: 1px solid #ccc;
 
         &:after {
@@ -158,10 +202,11 @@
             border-left: none;
         }
 
-        &_active {
-            z-index: 1;
-
+        &.fade-enter-active, &.fade-leave-active {
             opacity: 1;
+        }
+        &.fade-enter, &.fade-leave-to {
+            opacity: 0;
         }
     }
 }
@@ -169,5 +214,11 @@
 .item-modifier {
     &:not(:last-child) {
         margin-right: 10px;
+    }
+
+    &[type="number"] {
+        max-width: 60px;
+
+        text-align: right;
     }
 }
