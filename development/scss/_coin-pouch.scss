@@ -1,0 +1,42 @@
+.coins {
+    font-family: $font__inconsolata;
+    text-transform: lowercase;
+}
+
+.coin-pouch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        margin-bottom: 15px;
+
+        font-size: 1.5em;
+        text-decoration: underline;
+    }
+
+    &__coins-container { }
+
+    &__coinage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 50px;
+        min-width:  50px;
+        padding: 10px;
+
+        $coinage-color: #9a9a9a;
+        background-color: transparent;
+        border: 2px solid $coinage-color;
+        border-radius: 50%;
+
+        color: black;
+        font-size: 1.2em;
+        font-family: $font__inconsolata;
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}

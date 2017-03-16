@@ -2,26 +2,26 @@
     <main role="main">
         <section>
             <div class="section__content section__content_extra-space-above">
-                <h1 class="section__header">This is what we've got.</h1>
-
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <div class="inventory">
-                        <div class="inventory__item">
-                            <div class="item__name">Coin pouch:</div>
+                        <div class="inventory__item-container">
+                            <div class="item" v-for="(amount, id) in user.coin_pouch">
+                                <div class="item__name">{{ id | coin_type }}</div>
 
-                            <div class="item__contents">
-                                <span class="content coins" v-for="(amount, id) in user.coin_pouch">{{ test(id, amount) }}</span>
+                                <div class="item__amount">x{{ amount }}</div>
                             </div>
-                        </div>
+                            <div class="item" v-for="item in user.inventory">
+                                <div class="item__name">{{ item.name }}</div>
 
-                        <div class="inventory__item" v-for="item in user.inventory">
-                            <span class="item__amount" v-if="item.amount">{{ item.amount }} <i class="fa fa-close"></i></span>
-                            <span class="item__name" :class="item.amount ? 'item__name_multiple' : ''">{{ item.name }}</span>
-                            <span v-if="item.amount">
-                                <span class="item__value coins" v-if="item.value">
-                                    (<span v-for="(amount, id) in item.value">{{ amount }} {{ id }} ea.</span>)
-                                </span>
-                            </span>
+                                <div class="item__amount-and-value" v-if="item.amount || item.value">
+                                    <div v-if="item.amount">x{{ item.amount }}</div>
+                                    <div class="item__value" v-for="(amount, id) in item.value">&nbsp;({{ amount }}{{ id }} {{ item.amount > 1 ? "ea." : "" }})</div>
+                                </div>
+
+                                <div class="item__context-toggle" @click="test(item)" v-if="item.context">
+                                    <span>i</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,6 @@
         props: ["user"],
         data() {
             return {
-                coin_pouch: {}
             }
         },
         created() {
@@ -51,11 +50,50 @@
 
                 return `${name} - ${amount} (${value} ea., totalling ${total})`
             })
+            Vue.filter("coin_type", coin_id => {
+                let coin = ""
+
+                switch(coin_id) {
+                    case "gp":
+                        coin = "Gold Pieces"
+                        break
+                    case "sp":
+                        coin = "Silver Pieces"
+                        break
+                    case "cp":
+                        coin = "Copper Pieces"
+                        break
+                    case "ep":
+                        coin = "Electrum Pieces"
+                        break
+                    case "pp":
+                        coin = "Platinum Pieces"
+                        break
+                    default:
+                        break
+                }
+
+                return coin
+            })
         },
         mounted() {},
         methods: {
-            test(type, amount) {
-                return `${amount}${type}, `
+            test(item) {
+                alert(item.context)
+            },
+            coinage(type, amount) {
+                return `${amount}${type}`
+            },
+            calculate__random_hash() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1)
+            },
+            calculate__unique_id() {
+                return this.calculate__random_hash() + this.calculate__random_hash()
+                    + '-' + this.calculate__random_hash() + '-' + this.calculate__random_hash()
+                    + '-' + this.calculate__random_hash() + '-' + this.calculate__random_hash()
+                    + this.calculate__random_hash() + this.calculate__random_hash()
             }
         }
     }
