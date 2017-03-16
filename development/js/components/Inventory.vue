@@ -8,8 +8,18 @@
                             <div class="item" v-for="(amount, id) in user.coin_pouch">
                                 <div class="item__name">{{ id | coin_type }}</div>
 
-                                <div class="item__amount">x{{ amount }}</div>
+                                <div class="item__amount" @click="coin_modifying(id)">
+                                    x{{ amount }}
+
+                                    <div class="item__modifier-container" :class="[ id === coin_being_modified ? 'item__modifier-container_active' : '' ]">
+                                        <div class="item-modifier item-modifier_increase"><i class="fa fa-plus"></i></div>
+                                        <div class="item-modifier item-modifier_decrease"><i class="fa fa-minus"></i></div>
+                                        <div class="item-modifier item-modifier_edit"><i class="fa fa-pencil"></i></div>
+                                        <div class="item-modifier item-modifier_remove"><i class="fa fa-eraser"></i></div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="item" v-for="item in user.inventory">
                                 <div class="item__name">{{ item.name }}</div>
 
@@ -18,7 +28,7 @@
                                     <div class="item__value" v-for="(amount, id) in item.value">&nbsp;({{ amount }}{{ id }} {{ item.amount > 1 ? "ea." : "" }})</div>
                                 </div>
 
-                                <div class="item__context-toggle" @click="test(item)" v-if="item.context">
+                                <div class="item__context-toggle" v-if="item.context">
                                     <span>i</span>
                                 </div>
                             </div>
@@ -38,6 +48,7 @@
         props: ["user"],
         data() {
             return {
+                coin_being_modified: ``
             }
         },
         created() {
@@ -78,8 +89,12 @@
         },
         mounted() {},
         methods: {
-            test(item) {
-                alert(item.context)
+            coin_modifying(id) {
+                if(id === this.coin_being_modified) {
+                    this.coin_being_modified = ``
+                } else {
+                    this.coin_being_modified = id
+                }
             },
             coinage(type, amount) {
                 return `${amount}${type}`
