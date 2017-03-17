@@ -49,6 +49,7 @@
         height: 30px;
         width:  30px;
 
+        cursor: pointer;
         background-color: white;
         border: 1px solid #ccc;
         border-radius: 50%;
@@ -68,6 +69,30 @@
             background-color: #ccc;
 
             color: white;
+        }
+    }
+
+    &__item-creator {
+        transition: all .25s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 25px;
+
+        background-color: rgba(0, 0, 0, 0.39);
+
+        &.fade-enter-active, &.fade-leave-active {
+            opacity: 1;
+        }
+        &.fade-enter, &.fade-leave-to {
+            opacity: 0;
         }
     }
 }
@@ -287,5 +312,18 @@
         max-width: 60px;
 
         text-align: right;
+    }
+}
+
+.item-creator {
+    &__field-container {
+        min-height: 200px;
+        width:  300px;
+        padding: 25px;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: white;
     }
 }

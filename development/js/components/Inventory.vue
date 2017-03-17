@@ -13,7 +13,7 @@
 
                                     <transition name="fade">
                                         <div class="item__modifier-container" @click.stop v-on-clickaway="finish_coin_modifying" v-if="coin.type === coin_being_modified">
-                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="coin.amount" :step="amount_step" min="0" @keydown="alert($event)">
+                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="coin.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
                                         </div>
                                     </transition>
                                 </div>
@@ -38,7 +38,7 @@
 
                                     <transition name="fade">
                                         <div class="item__modifier-container" @click.stop v-on-clickaway="finish_item_modifying" v-if="item.name === item_being_modified">
-                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="item.amount" :step="amount_step" min="0" @keydown="alert($event)">
+                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="item.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
                                         </div>
                                     </transition>
                                 </div>
@@ -55,12 +55,51 @@
                             </div>
                         </div>
 
-                        <div class="inventory__create-item">
+                        <div class="inventory__create-item" @click="item_being_created = true">
                             <i class="fa fa-plus"></i>
                         </div>
-
-                        
                     </div>
+
+                    <transition name="fade">
+                        <div class="inventory__item-creator" v-if="item_being_created">
+                            <div class="item-creator__field-container" v-on-clickaway="terminate_item_creation">
+                                <div class="field__label-and-input">
+                                    <label class="field__label">Item Name</label>
+                                    <input type="text" class="field__input" title="Item Name" v-model="new_item_name">
+                                </div>
+
+                                <div class="field__label-and-input">
+                                    <label class="field__label">Amount</label>
+                                    <input type="number" v-model="new_item_amount" class="field__input" title="Amount of Item" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
+                                </div>
+
+                                <div class="field-group">
+                                    <div class="field__label-and-input">
+                                        <label class="field__label">Value</label>
+
+                                        <div class="field-group">
+                                            <input type="number" class="item__value-each" :step="amount_step" min="0" @keydown="update_shift_amount($event)" title="Value Each" v-model="new_item_value__amount">
+
+                                            <select name="value_unit" title="Value Units" v-model="new_item_value__currency">
+                                                <option value="gp">gold</option>
+                                                <option value="cp">copper</option>
+                                                <option value="sp">silver</option>
+                                                <option value="ep">electrum</option>
+                                                <option value="pp">platinum</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field__label-and-input">
+                                    <label class="field__label">Context</label>
+                                    <textarea title="Context" cols="30" rows="10" class="field__input" v-model="new_item_context"></textarea>
+                                </div>
+
+                                <button class="button" @click="create_item(user.inventory)">Create Item</button>
+                            </div>
+                        </div>
+                    </transition>
                 </div>
             </div>
         </section>
@@ -81,7 +120,13 @@
                 item_being_focused: ``,
                 item_being_modified: ``,
                 item_delete: ``,
-                amount_step: 1
+                item_being_created: false,
+                amount_step: 1,
+                new_item_name: ``,
+                new_item_amount: 1,
+                new_item_value__currency: `gp`,
+                new_item_value__amount: 0,
+                new_item_context: undefined
             }
         },
         created() {
@@ -131,7 +176,28 @@
             hello() {
                 console.log('hello')
             },
-            alert(event) {
+            create_item(array) {
+                let new_item = {
+                    name: this.new_item_name,
+                    amount: this.new_item_amount,
+                    context: this.new_item_context,
+                    value: {}
+                }
+                new_item.value[this.new_item_value__currency] = this.new_item_value__amount
+
+                console.log(array)
+                array.push(new_item)
+                console.log(array)
+                console.log(`${this.new_item_name}: x${this.new_item_amount} (worth ${this.new_item_value__amount}${this.new_item_value__currency}). ${this.new_item_context}`)
+
+                this.item_being_created = false
+                this.new_item_name = ``
+                this.new_item_amount = 1
+                this.new_item_value__currency = `gp`
+                this.new_item_value__amount = 0
+                this.new_item_context = undefined
+            },
+            update_shift_amount(event) {
                 if (event.shiftKey) {
                     this.amount_step = 10
                 } else {
@@ -190,6 +256,12 @@
 
                 origin.splice(origin.indexOf(item), 1)
             },
+            terminate_item_creation() {
+                if(this.item_being_created) {
+                    this.item_being_created = false
+                }
+            },
+
             coinage(type, amount) {
                 return `${amount}${type}`
             },
