@@ -28,6 +28,34 @@
         margin-bottom: 5px;
     }
     &__input {
+        height: 25px;
         margin-bottom: 10px;
+
+        border: 1px solid #ccc;
+
+        &[type="number"] {
+            font-family: $font__inconsolata;
+        }
+
+        &_inline {
+            margin-right: 10px;
+        }
+        &_text-area {
+            min-height: 50px;
+            min-width: 100%;
+            max-width: 100%;
+        }
+        &_select {
+            height: inherit;
+            width: 100%;
+
+            background-color: transparent;
+            border: none;
+        }
+    }
+    &__select-wrapper {
+        height: 25px;
+
+        border: 1px solid #ccc;
     }
 }

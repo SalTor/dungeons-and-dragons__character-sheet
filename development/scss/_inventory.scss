@@ -74,6 +74,7 @@
 
     &__item-creator {
         transition: all .25s ease;
+
         position: fixed;
         top: 0;
         left: 0;
@@ -84,9 +85,8 @@
         justify-content: center;
         align-items: center;
 
-        padding: 25px;
-
-        background-color: rgba(0, 0, 0, 0.39);
+        cursor: pointer;
+        background-color: rgba(46, 204, 113, 0.55);
 
         &.fade-enter-active, &.fade-leave-active {
             opacity: 1;
@@ -114,7 +114,6 @@
         background-color: #eee;
         border: 1px solid #ccc;
 
-        overflow-x: scroll;
         font-size: 1.2em;
         white-space: nowrap;
 

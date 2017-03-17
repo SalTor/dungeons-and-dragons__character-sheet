@@ -62,42 +62,44 @@
 
                     <transition name="fade">
                         <div class="inventory__item-creator" v-if="item_being_created">
-                            <div class="item-creator__field-container" v-on-clickaway="terminate_item_creation">
+                            <form class="item-creator__field-container" v-on-clickaway="terminate_item_creation" @submit="create_item(user.inventory)">
                                 <div class="field__label-and-input">
                                     <label class="field__label">Item Name</label>
-                                    <input type="text" class="field__input" title="Item Name" v-model="new_item_name">
+                                    <input v-model="new_item_name" class="field__input" type="text" title="Item Name" required>
                                 </div>
 
                                 <div class="field__label-and-input">
-                                    <label class="field__label">Amount</label>
-                                    <input type="number" v-model="new_item_amount" class="field__input" title="Amount of Item" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
+                                    <label class="field__label">How many do you have?</label>
+                                    <input v-model="new_item_amount" class="field__input" :step="amount_step" min="0" @keydown="update_shift_amount($event)" type="number" title="Amount of Item">
                                 </div>
 
                                 <div class="field-group">
                                     <div class="field__label-and-input">
-                                        <label class="field__label">Value</label>
+                                        <label class="field__label">Is there an explicitly listed value?</label>
 
                                         <div class="field-group">
-                                            <input type="number" class="item__value-each" :step="amount_step" min="0" @keydown="update_shift_amount($event)" title="Value Each" v-model="new_item_value__amount">
+                                            <input v-model="new_item_value__amount" class="field__input field__input_inline" :step="amount_step" min="0" @keydown="update_shift_amount($event)" type="number"  title="Value Each">
 
-                                            <select name="value_unit" title="Value Units" v-model="new_item_value__currency">
-                                                <option value="gp">gold</option>
-                                                <option value="cp">copper</option>
-                                                <option value="sp">silver</option>
-                                                <option value="ep">electrum</option>
-                                                <option value="pp">platinum</option>
-                                            </select>
+                                            <div class="field__select-wrapper">
+                                                <select class="field__input_select" name="value_unit" title="Value Units" v-model="new_item_value__currency">
+                                                    <option value="gp">gold</option>
+                                                    <option value="cp">copper</option>
+                                                    <option value="sp">silver</option>
+                                                    <option value="ep">electrum</option>
+                                                    <option value="pp">platinum</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="field__label-and-input">
                                     <label class="field__label">Context</label>
-                                    <textarea title="Context" cols="30" rows="10" class="field__input" v-model="new_item_context"></textarea>
+                                    <textarea title="Context" class="field__input field__input_text-area" v-model="new_item_context"></textarea>
                                 </div>
 
-                                <button class="button" @click="create_item(user.inventory)">Create Item</button>
-                            </div>
+                                <button class="button" type="submit">Create Item</button>
+                            </form>
                         </div>
                     </transition>
                 </div>
