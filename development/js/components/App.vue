@@ -10,6 +10,7 @@
 
 <script>
     import Vue from "vue"
+    require("fetch-ie8")
 
     export default {
         name: 'app',

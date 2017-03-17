@@ -9,7 +9,7 @@
                                 <div class="item__name" :title="coin.type | coin_type">{{ coin.type | coin_type }}</div>
 
                                 <div class="item__amount" @click="coin_modifying(coin.type)" :title="coin.amount | number">
-                                    x{{ coin.amount | number }}
+                                    {{ coin.amount | number }}
 
                                     <transition name="fade">
                                         <div class="item__modifier-container" @click.stop v-on-clickaway="finish_coin_modifying" v-if="coin.type === coin_being_modified">
@@ -20,13 +20,21 @@
                             </div>
 
                             <div class="item" v-for="item in user.inventory">
-                                <div class="item__name">{{ item.name }}</div>
+                                <div class="item__name item__name_removeable" @click="item_deleting(item.name)">{{ item.name }}</div>
+
+                                <transition name="fade">
+                                    <div class="item__remove" v-if="item_delete === item.name" v-on-clickaway="stop_item_delete" @click.stop="remove(item, user.inventory)">
+                                        <span>
+                                            <i class="fa fa-trash-o"></i>&nbsp;remove
+                                        </span>
+                                    </div>
+                                </transition>
 
                                 <div class="item__amount-and-value" v-if="item.amount || item.value" @click="item_modifying(item.name)">
                                     <div v-if="item.amount">
-                                        x{{ item.amount | number }}
+                                        {{ item.amount | number }}
                                     </div>
-                                    <div class="item__value" v-for="(amount, id) in item.value">&nbsp;({{ amount | number }}{{ id }} {{ item.amount > 1 ? "ea." : "" }})</div>
+                                    <div class="item__value" v-if="item.amount > 0" v-for="(amount, id) in item.value">&nbsp;({{ amount | number }}{{ id }}{{ item.amount > 1 ? " ea." : "" }})</div>
 
                                     <transition name="fade">
                                         <div class="item__modifier-container" @click.stop v-on-clickaway="finish_item_modifying" v-if="item.name === item_being_modified">
@@ -46,6 +54,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="inventory__create-item">
+                            <i class="fa fa-plus"></i>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -66,6 +80,7 @@
                 coin_being_modified: ``,
                 item_being_focused: ``,
                 item_being_modified: ``,
+                item_delete: ``,
                 amount_step: 1
             }
         },
@@ -159,6 +174,21 @@
                 } else {
                     this.item_being_modified = item
                 }
+            },
+            item_deleting(item) {
+                if(item === this.item_delete) {
+                    this.item_delete = ``
+                } else {
+                    this.item_delete = item
+                }
+            },
+            stop_item_delete() {
+                this.item_delete = ``
+            },
+            remove(item, origin) {
+                this.item_delete = ``
+
+                origin.splice(origin.indexOf(item), 1)
             },
             coinage(type, amount) {
                 return `${amount}${type}`
