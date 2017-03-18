@@ -28,7 +28,7 @@
         margin-bottom: 5px;
     }
     &__input {
-        height: 25px;
+        height: 23px;
         margin-bottom: 10px;
 
         border: 1px solid #ccc;
@@ -38,10 +38,11 @@
         }
 
         &_inline {
-            margin-right: 10px;
+            margin-right: 5px;
         }
         &_text-area {
             min-height: 50px;
+            max-height: 50px;
             min-width: 100%;
             max-width: 100%;
         }

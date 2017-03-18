@@ -13,4 +13,17 @@
 
         color: white;
     }
+
+    &_create-item {
+        background-color: $color__turquoise;
+        border-color: $color__turquoise;
+
+        color: white;
+
+        &:hover {
+            background-color: transparent;
+
+            color: $color__turquoise;
+        }
+    }
 }

@@ -86,7 +86,7 @@
         align-items: center;
 
         cursor: pointer;
-        background-color: rgba(46, 204, 113, 0.55);
+        background-color: rgba(189, 195, 199, 0.44);
 
         &.fade-enter-active, &.fade-leave-active {
             opacity: 1;
@@ -324,5 +324,18 @@
         flex-direction: column;
 
         background-color: white;
+    }
+    &__field-label {
+        font-size: 1.2em;
+    }
+    &__value,
+    &__amount {
+        max-width: 75px;
+
+        text-align: right;
+    }
+    &__name {
+        font-style: italic;
+        text-indent: 10px;
     }
 }
