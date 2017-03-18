@@ -1,10 +1,19 @@
 .stats-and-modifiers__container {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 419px) {
+        width: 100%;
+    }
 }
 
 .stats-and-modifiers {
     display: flex;
+
+    @media (max-width: 419px) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 }
 
 @import "components/stats";

@@ -7,7 +7,9 @@
     margin-left: 20px;
 
     @media (max-width: 419px) {
-        margin-left: 5px;
+        margin-left: 0;
+
+        max-width: none;
     }
 }
 
@@ -23,7 +25,11 @@
     color: white;
 
     @media (max-width: 419px) {
+        align-items: stretch;
+
         margin-top: 0;
+
+        width: 100%;
     }
 
     &__title {
@@ -48,10 +54,15 @@
 
     margin-bottom: 5px;
 
-    overflow: hidden;
     border: 1px solid #ccc;
 
     color: black;
+
+    &_proficiency, &_perception, &_inspiration {
+        @media (max-width: 419px) {
+            width: 100%;
+        }
+    }
 
     &__state {
         transition: all .25s ease;
@@ -78,23 +89,34 @@
         border-right: 1px solid #ccc;
 
         text-transform: capitalize;
-        text-align: center;
+
+        @media (max-width: 419px) {
+            flex: 1;
+            text-align: right;
+        }
     }
     &__value {
-        margin-right: 8px;
-        margin-left:  8px;
+        margin-right: 9px;
+        margin-left:  9px;
 
         font-family: $font__inconsolata;
-        text-align: right;
+        text-align: center;
 
         &_perception, &_inspiration, &_proficiency {
             display: flex;
-            justify-content: center;
             align-items: center;
 
-            margin-right: 8px;
+            @media (min-width: 420px) {
+                justify-content: center;
+            }
+        }
 
-            text-align: center;
+        @media (max-width: 419px) {
+            flex: 0;
+
+            min-width: 54px;
+
+            text-align: left;
         }
     }
 }

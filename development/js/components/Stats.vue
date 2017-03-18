@@ -44,13 +44,13 @@
 
                             <div class="modifiers-container">
                                 <div class="modifier modifier_proficiency">
-                                    <div class="modifier__name modifier__name_proficiency">Proficiency</div>
+                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
 
                                     <div class="modifier__value modifier__value_proficiency">{{ user.proficiency_bonus | sign }}</div>
                                 </div>
 
                                 <div class="modifier modifier_perception">
-                                    <div class="modifier__name modifier__name_proficiency">Perception</div>
+                                    <div class="modifier__name modifier__name_perception">Perception</div>
 
                                     <div class="modifier__value modifier__value_perception">{{ user.passive_wisdom | sign }}</div>
                                 </div>

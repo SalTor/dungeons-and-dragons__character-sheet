@@ -25,7 +25,8 @@
     text-align: center;
 
     @media (max-width: 419px) {
-        margin-left: 8px;
+        margin-left: 0;
+        margin-bottom: 3px;
     }
 
     &__icon {
@@ -53,15 +54,30 @@
 
     color: black;
 
+    @media (max-width: 419px) {
+        width: 100%;
+    }
+
     &__mononym {
+        flex: 1;
         padding: 5px 10px;
 
         background-color: #eee;
         border-right: 1px solid #ccc;
+
+        @media (max-width: 419px) {
+            text-align: right;
+        }
     }
 
     &__value {
+        flex: 0;
+
         padding: 5px 8px;
+
+        @media (max-width: 419px) {
+            min-width: 54px;
+        }
     }
 }
 
