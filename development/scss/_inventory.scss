@@ -122,6 +122,24 @@
         }
     }
 
+    &__amount,
+    &__amount-and-value {
+        display: flex;
+        align-items: center;
+
+        position: relative;
+
+        padding: 5px 10px;
+
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-left: none;
+
+        font-size: .9em;
+        font-family: $font__inconsolata;
+    }
+
+
     &__remove {
         z-index: 2;
         transition: all .25s ease;
@@ -146,23 +164,6 @@
         &.fade-enter, &.fade-leave-to {
             opacity: 0;
         }
-    }
-
-    &__amount,
-    &__amount-and-value {
-        display: flex;
-        align-items: center;
-
-        position: relative;
-
-        padding: 5px 10px;
-
-        cursor: pointer;
-        border: 1px solid #ccc;
-        border-left: none;
-
-        font-size: .9em;
-        font-family: $font__inconsolata;
     }
 
     &__context-toggle {

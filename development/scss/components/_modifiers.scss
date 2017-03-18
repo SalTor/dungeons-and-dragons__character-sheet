@@ -1,18 +1,30 @@
 .modifiers-container {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
 
     max-width: 250px;
-    margin-left: 40px;
+    margin-left: 20px;
+
+    @media (max-width: 419px) {
+        margin-left: 5px;
+    }
 }
 
 .modifier-group {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: 35px;
 
     overflow: hidden;
 
     color: white;
+
+    @media (max-width: 419px) {
+        margin-top: 0;
+    }
 
     &__title {
         z-index: 2;
@@ -30,51 +42,47 @@
 .modifier {
     display: flex;
     justify-content: flex-start;
-    align-items: baseline;
+    align-items: center;
 
     position: relative;
 
-    color: black;
+    margin-bottom: 5px;
 
-    &_perception, &_inspiration, &_proficiency {
-        margin-bottom: 5px;
-    }
+    overflow: hidden;
+    border: 1px solid #ccc;
+
+    color: black;
 
     &__state {
         transition: all .25s ease;
 
         transform: translateY(-50%);
         position: absolute;
-        top: 50%;
+        top: 15px;
         left: 0;
 
-        height: 10px;
-        width:  10px;
+        height: 30px;
+        width: 5px;
 
-        border: 1px solid black;
-        border-radius: 50%;
+        background-color: #eee;
 
-        &_active {
-            background-color: black;
-        }
+        &_active,
         &_special {
-            border: none;
-
-            .fa {
-                transform: translateY(-50%) translateX(-50%);
-                position: absolute;
-                top: 50%;
-                left: 50%;
-            }
+            background-color: #ccc;
         }
     }
+    &__name {
+        padding: 5px 7px;
 
+        background-color: #eee;
+        border-right: 1px solid #ccc;
+
+        text-transform: capitalize;
+        text-align: center;
+    }
     &__value {
-        min-width: 10px;
         margin-right: 8px;
-        margin-left:  20px;
-
-        border-bottom: 1px solid;
+        margin-left:  8px;
 
         font-family: $font__inconsolata;
         text-align: right;
@@ -88,9 +96,5 @@
 
             text-align: center;
         }
-    }
-    &__name {
-        font-size: .75em;
-        text-transform: capitalize;
     }
 }

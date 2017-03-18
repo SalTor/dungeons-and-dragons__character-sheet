@@ -90,7 +90,9 @@
         "tool_proficiences": [],
         "passive_wisdom": 3,
         "coin_pouch": [
-            {"type": "gp", "amount": 155}, {"type": "ep", "amount": 90}, {"type": "pp", "amount": 65}
+            {"type": "gp", "amount": 155},
+            {"type": "ep", "amount":  90},
+            {"type": "pp", "amount":  65}
         ],
         "inventory": [
             {"name": "Healing potion",      "amount": 2},

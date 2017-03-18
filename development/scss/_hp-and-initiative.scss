@@ -1,12 +1,15 @@
 .hp-ac-initiative {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 
     margin-top: 15px;
-    margin-bottom: 10px;
-    padding: 25px 75px;
+    margin-bottom: 5px;
 
     color: white;
+
+    @media (max-width: 419px) {
+        margin-top: 0;
+    }
 }
 
 .hitpoints {
@@ -17,18 +20,23 @@
 
     height: 75px;
     margin-right: 10px;
+    margin-left: 78px;
 
     text-align: center;
+
+    @media (max-width: 419px) {
+        margin-left: 8px;
+    }
 
     &__icon {
         height: 75px;
         width:  75px;
     }
     &__value {
-        transform: translateY(-50%) translateX(-50%);
+        transform: translateX(-50%);
         position: absolute;
-        top:  50%;
         left: 50%;
+        bottom: 13px;
 
         color: black;
         font-size: 2em;
@@ -36,26 +44,27 @@
     }
 }
 
-.armor-class, .initiative {
+.armor-class,
+.initiative {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
 
-    overflow: hidden;
+    border: 1px solid #ccc;
 
     color: black;
-    font-size: 1.25em;
-    line-height: 1;
 
     &__mononym {
-        margin-left: 5px;
-        padding-bottom: 2px;
+        padding: 5px 10px;
 
-        font-size: .75em;
-        text-transform: capitalize;
-        text-align: center;
+        background-color: #eee;
+        border-right: 1px solid #ccc;
     }
 
     &__value {
-        font-family: $font__inconsolata;
+        padding: 5px 8px;
     }
+}
+
+.armor-class {
+    margin-bottom: 5px;
 }
