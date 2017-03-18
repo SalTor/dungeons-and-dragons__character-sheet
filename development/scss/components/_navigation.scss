@@ -10,4 +10,64 @@
     margin: 0;
 
     list-style: none;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        align-items: flex-end;
+
+        width: 100%;
+    }
+
+    &__toggle-and-logo {
+        z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        position: relative;
+
+        height: 50px;
+        padding-right: 25px;
+
+        background-color: $color__wet-asphalt;
+
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
+    &__toggle {
+        transition: all .25s ease;
+        transform-origin: right center;
+        position: relative;
+
+        height: 20px;
+        width:  20px;
+
+        outline: none;
+        transform: rotate(-45deg);
+
+        &:before, &:after {
+            content: "";
+
+            position: absolute;
+
+            width: 20px;
+            height: 2px;
+
+            background-color: white;
+
+            transform-origin: center center;
+        }
+
+        &:before {
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+
+        &_active {
+            transform: rotate(0);
+        }
+    }
 }

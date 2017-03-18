@@ -1,10 +1,40 @@
 .navigation-container {
+    z-index: 2;
+}
+
+.navigation-wrapper {
+    z-index: 1;
     display: flex;
     justify-content: space-between;
 
     height: 50px;
-    width: 100%;
     max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
+
+    @media (max-width: 1248px) {
+        padding: 0 25px;
+    }
+    @media (max-width: 767px) {
+        transition: all .25s ease;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+
+        height: auto;
+        width: 100%;
+        padding: 25px 0;
+
+        background-color: $color__wet-asphalt;
+
+        transform: translateY(calc(-100% - 50px));
+
+        &_open {
+            transform: translateY(0);
+        }
+    }
 }

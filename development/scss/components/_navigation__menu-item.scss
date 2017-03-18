@@ -1,5 +1,4 @@
 .navigation__menu-item {
-    transition: all .25s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,18 +8,41 @@
     padding: 0 15px;
 
     cursor: pointer;
-    background-color: white;
+    background-color: $color__wet-asphalt;
     border: 1px solid white;
 
-    color: $color__wet-asphalt;
+    color: white;
+
+    transition: all .25s ease;
 
     &:not(:first-child) {
         margin-left: 15px;
     }
 
-    &:hover {
+    &:hover,
+    &_active {
+        background-color: white;
+
+        color: $color__wet-asphalt;
+    }
+
+    @media (max-width: 767px) {
+        margin-left: 0;
+        margin-right: 15px;
+
         background-color: $color__wet-asphalt;
 
         color: white;
+
+        &:hover,
+        &_active {
+            background-color: white;
+            color: $color__wet-asphalt;
+        }
+
+        &:only-child,
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
     }
 }
