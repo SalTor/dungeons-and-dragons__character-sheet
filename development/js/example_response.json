@@ -99,9 +99,9 @@
         "inventory": [
             {"name": "Healing potion",      "amount": 2},
             {"name": "Air elemental crest", "amount": 3},
-            {"name": "Scroll of Transmute rock"},
-            {"name": "Scroll of Maximilian's earth and grasp"},
-            {"name": "Scroll of Earth bind"},
+            {"name": "Scroll of Transmute rock", "amount": 1},
+            {"name": "Scroll of Maximilian's earth and grasp", "amount": 1},
+            {"name": "Scroll of Earth bind", "amount": 1},
             {
                 "name": "Gold bracelet",
                 "amount": 2,
@@ -124,14 +124,15 @@
                     "gp": 10
                 }
             },
-            {"name": "Scroll of Expeditious Retreat"},
-            {"name": "Scroll of Entangle"},
-            {"name": "Scroll of Shield"},
-            {"name": "Drift globe"},
-            {"name": "Dagger of light"},
+            {"name": "Scroll of Expeditious Retreat", "amount": 1},
+            {"name": "Scroll of Entangle", "amount": 1},
+            {"name": "Scroll of Shield", "amount": 1},
+            {"name": "Drift globe", "amount": 1},
+            {"name": "Dagger of light", "amount": 1},
             {
                 "name": "A key",
-                "context": "Found in a room in a monastery up North."
+                "context": "Found in a room in a monastery up North.",
+                "amount": 1
             },
             {
                 "name": "Mirabar tradebar",

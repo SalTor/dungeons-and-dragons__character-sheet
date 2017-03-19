@@ -34,15 +34,18 @@
                                     </div>
                                 </transition>
 
-                                <div class="item__amount-and-value" v-if="item.amount || item.value" @click="item_modifying(item.name)">
-                                    <div v-if="item.amount">
-                                        {{ item.amount | number }}
+                                <div class="item__amount-and-value" @click="item_modifying(item.name)">
+                                    <div v-if="item.amount > 1">
+                                        {{ item.amount | number }}<i v-if="item.value">&nbsp;</i>
                                     </div>
-                                    <div class="item__value" v-if="item.amount > 0" v-for="(amount, id) in item.value"><span v-if="amount > 0">&nbsp;({{ amount | number }}{{ id }}{{ item.amount > 1 ? " ea." : "" }})</span></div>
+                                    <div class="item__value" v-if="item.amount > 0" v-for="(amount, id) in item.value">
+                                        <span v-if="item.amount > 1">(</span><span v-if="amount > 0">{{ amount | number }}{{ id }}{{ item.amount > 1 ? " ea." : "" }}</span><span v-if="item.amount > 1">)</span>
+                                    </div>
+                                    <span class="item__increment-amount" @click.stop="item.amount++" v-if="item.amount < 2 && !item.value">+1</span>
 
                                     <transition name="fade">
                                         <div class="item__modifier-container" @click.stop v-on-clickaway="finish_item_modifying" v-if="item.name === item_being_modified">
-                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="item.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
+                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="item.amount" :step="amount_step" min="1" @keydown="update_shift_amount($event)">
                                         </div>
                                     </transition>
                                 </div>
@@ -126,7 +129,7 @@
                 item_being_created: false,
                 amount_step: 1,
                 new_item_name: ``,
-                new_item_amount: 0,
+                new_item_amount: 1,
                 new_item_value__currency: `gp`,
                 new_item_value__amount: 0,
                 new_item_context: undefined
@@ -183,10 +186,12 @@
                 let new_item = {
                     name: this.new_item_name,
                     amount: this.new_item_amount,
-                    context: this.new_item_context,
-                    value: {}
+                    context: this.new_item_context
                 }
-                new_item.value[this.new_item_value__currency] = this.new_item_value__amount
+                if(this.new_item_value__amount > 0) {
+                    new_item.value = {}
+                    new_item.value[this.new_item_value__currency] = this.new_item_value__amount
+                }
 
                 console.log(array)
                 array.push(new_item)
