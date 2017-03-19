@@ -11,11 +11,6 @@
     margin-right: auto;
     margin-left:  auto;
 
-    @media (max-width: 767px) {
-        padding-top: 0;
-        margin-top: -15px;
-    }
-
     &__title {
         margin-top: 30px;
         margin-bottom: 15px;
@@ -28,38 +23,36 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: flex-start;
 
-        @media (max-width: 767px) {
+        @media (max-width: 419px) {
             flex-direction: column;
+            align-items: center;
             flex-wrap: nowrap;
-            justify-content: flex-start;
-            align-items: flex-start;
         }
     }
 
     &__create-item {
         transition: all .25s ease;
+        transform: translateX(-50%);
         position: absolute;
-        top: 10px;
-        right: 0;
+        top: 0;
+        left: 50%;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         height: 30px;
-        width:  30px;
+        padding: 2px 20px;
 
         cursor: pointer;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 50%;
+        background-color: $color__turquoise;
+        border: 1px solid $color__turquoise;
+        border-radius: 3px;
 
-        &:hover {
-            background-color: #ccc;
-
-            color: white;
-        }
+        color: white;
+        text-transform: uppercase;
     }
 
     &__item-creator {
@@ -95,20 +88,57 @@
     padding: 0;
     margin: 15px;
 
+    font-size: 1.2em;
+
+    @media (max-width: 419px) {
+        width: 100%;
+    }
+
+    &__group {
+        &_coins {
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    }
+    &__wrapper {
+        &_coins {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            width: 100%;
+            max-width: 500px;
+            margin-right: auto;
+            margin-left:  auto;
+        }
+    }
+
+    &_coin {
+        min-width: 210px;
+        margin: 15px;
+    }
+
     &__name {
         display: flex;
 
-        padding: 5px 10px;
+        padding: 7px 10px;
 
         user-select: none;
         background-color: #eee;
         border: 1px solid #ccc;
 
-        font-size: 1.2em;
-        text-align: center;
-
         &_removeable {
             cursor: pointer;
+        }
+        &_coin {
+            flex: 1;
+
+            white-space: nowrap;
+        }
+
+        @media (max-width: 419px) {
+            flex: 1;
         }
     }
 
@@ -126,8 +156,13 @@
         border: 1px solid #ccc;
         border-left: none;
 
-        font-size: .9em;
         font-family: $font__inconsolata;
+
+        &_coin {
+            justify-content: flex-end;
+
+            min-width: 40px;
+        }
     }
 
 
@@ -227,6 +262,10 @@
             border-top: none;
             border-left: none;
         }
+
+        @media (max-width: 419px) {
+            left: -35vw;
+        }
     }
 
     &__context {
@@ -261,7 +300,7 @@
         align-items: center;
 
         position: absolute;
-        top: -48px;
+        top: -55px;
         left: 50%;
 
         padding: 8px;

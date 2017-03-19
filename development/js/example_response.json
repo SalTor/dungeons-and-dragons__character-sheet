@@ -91,6 +91,8 @@
         "passive_wisdom": 3,
         "coin_pouch": [
             {"type": "gp", "amount": 155},
+            {"type": "cp", "amount":   0},
+            {"type": "sp", "amount":   0},
             {"type": "ep", "amount":  90},
             {"type": "pp", "amount":  65}
         ],

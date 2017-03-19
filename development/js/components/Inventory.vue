@@ -4,18 +4,22 @@
             <div class="section__content section__content_extra-space-above">
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <div class="inventory">
+                        <div class="inventory__create-item" @click="item_being_created = true">create item</div>
+
                         <div class="inventory__item-container">
-                            <div class="item" v-for="coin in user.coin_pouch">
-                                <div class="item__name" :title="coin.type | coin_type">{{ coin.type | coin_type }}</div>
+                            <div class="item__group item__group_coins">
+                                <div class="item__wrapper item__wrapper_coins">
+                                    <div class="item item_group item_coin" v-for="coin in user.coin_pouch">
+                                        <div class="item__name item__name_coin" :title="coin.type | coin_type">{{ coin.type | coin_type }}</div>
 
-                                <div class="item__amount" @click="coin_modifying(coin.type)" :title="coin.amount | number">
-                                    {{ coin.amount | number }}
-
-                                    <transition name="fade">
-                                        <div class="item__modifier-container" @click.stop v-on-clickaway="finish_coin_modifying" v-if="coin.type === coin_being_modified">
-                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="coin.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
+                                        <div class="item__amount item__amount_coin" @click="coin_modifying(coin.type)" :title="coin.amount | number">{{ coin.amount | number }}
+                                            <transition name="fade">
+                                                <div class="item__modifier-container" @click.stop v-on-clickaway="finish_coin_modifying" v-if="coin.type === coin_being_modified">
+                                                    <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="coin.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
+                                                </div>
+                                            </transition>
                                         </div>
-                                    </transition>
+                                    </div>
                                 </div>
                             </div>
 
@@ -53,10 +57,6 @@
                                     </transition>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="inventory__create-item" @click="item_being_created = true">
-                            <i class="fa fa-plus"></i>
                         </div>
                     </div>
 
