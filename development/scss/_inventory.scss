@@ -27,7 +27,7 @@
 
         @media (max-width: 419px) {
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: nowrap;
         }
     }
@@ -44,9 +44,10 @@
         align-items: center;
 
         height: 30px;
-        padding: 2px 20px;
+        padding: 5px 30px;
 
         cursor: pointer;
+        white-space: nowrap;
         background-color: $color__turquoise;
         border: 1px solid $color__turquoise;
         border-radius: 3px;
@@ -88,17 +89,11 @@
     padding: 0;
     margin: 15px;
 
-    font-size: 1.2em;
-
-    @media (max-width: 419px) {
-        width: 100%;
-    }
-
     &__group {
         &_coins {
             width: 100%;
             margin-top: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 45px;
         }
     }
     &__wrapper {
@@ -107,16 +102,26 @@
             justify-content: center;
             flex-wrap: wrap;
 
-            width: 100%;
             max-width: 500px;
             margin-right: auto;
             margin-left:  auto;
+
+            @media (max-width: 529px) {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
     }
 
     &_coin {
         min-width: 210px;
         margin: 15px;
+    }
+
+    &__name,
+    &__amount,
+    &__amount-and-value {
+        font-size: 1.2em;
     }
 
     &__name {
