@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="modifier-group">
-                                    <div class="modifier" v-for="(value, name) in user.skill_modifiers" :class="proficient(name, user.skill_proficiencies) ? 'modifier_special' : ''">
+                                    <div class="modifier" v-for="(value, name) in user.skill_modifiers">
                                         <div class="modifier__name">{{ name }}</div>
 
                                         <div class="modifier__value">{{ value | sign }}<span v-if="value < 10">&nbsp;</span></div>
