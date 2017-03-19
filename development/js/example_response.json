@@ -147,38 +147,53 @@
         "spell_book": {
             "cantrips": ["Mage hand", "Fire bolt", "Prestidigitation", "Blade ward", "Minor Illusion", "Acid Splash"],
             "spells": {
-                "1": [
-                    {"prepared": false, "name": "Burning hands"},
-                    {"prepared": true,  "name": "Magic missile"},
-                    {"prepared": true,  "name": "Shield"},
-                    {"prepared": true,  "name": "Witchbold"},
-                    {"prepared": true,  "name": "Silent image"},
-                    {"prepared": false, "name": "Protect from Evil + Good"},
-                    {"prepared": true,  "name": "Expeditious Retreat"},
-                    {"prepared": false, "name": "Color spray"},
-                    {"prepared": false, "name": "Detect Magic", "ritual": true}
-                ],
-                "2": [
-                    {"prepared": false, "name": "Phantasmal Force"},
-                    {"prepared": true,  "name": "Web"},
-                    {"prepared": true,  "name": "Scorching ray"},
-                    {"prepared": false, "name": "Flame arrows"}
-                ],
-                "3": [
-                    {"prepared": true,  "name": "Counterspell"},
-                    {"prepared": false, "name": "Lightning bolt"},
-                    {"prepared": false, "name": "Water breathing", "ritual": true},
-                    {"prepared": true,  "name": "Dispel Magic"},
-                    {"prepared": true,  "name": "Fly"},
-                    {"prepared": false, "name": "Leomund's Tiny Hut"}
-                ],
-                "4": [
-                    {"prepared": true,  "name": "Banishment"},
-                    {"prepared": true,  "name": "Greater Invisibility"}
-                ],
-                "5": [
-                    {"prepared": false, "name": "Wall of Force"}
-                ]
+                "1": {
+                    "slots": {"total": 4, "expended": 0},
+                    "entries": [
+                        {"prepared": false, "name": "Burning hands"},
+                        {"prepared": true,  "name": "Magic missile"},
+                        {"prepared": true,  "name": "Shield"},
+                        {"prepared": true,  "name": "Witchbold"},
+                        {"prepared": true,  "name": "Silent image"},
+                        {"prepared": false, "name": "Protect from Evil + Good"},
+                        {"prepared": true,  "name": "Expeditious Retreat"},
+                        {"prepared": false, "name": "Color spray"},
+                        {"prepared": false, "name": "Detect Magic", "ritual": true}
+                    ]
+                },
+                "2": {
+                    "slots": {"total": 3, "expended": 0},
+                    "entries": [
+                        {"prepared": false, "name": "Phantasmal Force"},
+                        {"prepared": true,  "name": "Web"},
+                        {"prepared": true,  "name": "Scorching ray"},
+                        {"prepared": false, "name": "Flame arrows"}
+                    ]
+                },
+                "3": {
+                    "slots": {"total": 3, "expended": 0},
+                    "entries": [
+                        {"prepared": true,  "name": "Counterspell"},
+                        {"prepared": false, "name": "Lightning bolt"},
+                        {"prepared": false, "name": "Water breathing", "ritual": true},
+                        {"prepared": true,  "name": "Dispel Magic"},
+                        {"prepared": true,  "name": "Fly"},
+                        {"prepared": false, "name": "Leomund's Tiny Hut"}
+                    ]
+                },
+                "4": {
+                    "slots": {"total": 3, "expended": 0},
+                    "entries": [
+                        {"prepared": true,  "name": "Banishment"},
+                        {"prepared": true,  "name": "Greater Invisibility"}
+                    ]
+                },
+                "5": {
+                    "slots": {"total": 1, "expended": 0},
+                    "entries": [
+                        {"prepared": false, "name": "Wall of Force"}
+                    ]
+                }
             }
         }
     }

@@ -1,8 +1,43 @@
 .spell-book {
     padding-top: 25px;
 
+    @media (max-width: 767px) {
+        padding-top: 0;
+    }
+
     &__cantrips {
         margin-bottom: 25px;
+
+        @media (max-width: 767px) {
+            margin-bottom: 15px;
+        }
+    }
+    &__spells {
+        display: flex;
+        flex-wrap: wrap;
+
+        @media (min-width: 768px) {
+            justify-content: center;
+        }
+        @media (max-width: 767px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.cantrips {
+    &__title {
+        margin-bottom: 5px;
+
+        border-bottom: 1px solid black;
+
+        font-size: 1.3em;
+
+        @media (max-width: 767px) {
+            margin-left: 0;
+            margin-bottom: 10px;
+        }
     }
     &__spells {
         display: flex;
@@ -10,33 +45,94 @@
     }
 }
 
-.cantrips {
-    &__title {
-        margin-left: 10px;
+.cantrip {
+    padding: 5px 10px;
+    margin: 10px;
+    margin-left: 0;
+    margin-bottom: 0;
 
-        border-bottom: 1px solid black;
+    background-color: #eee;
+    border: 1px solid #ccc;
 
-        font-size: 1.3em;
-    }
-    &__spells {
-        display: flex;
-        flex-wrap: wrap;
+    @media (max-width: 767px) {
+        margin: 5px;
+        margin-left: 0;
+        margin-bottom: 0;
     }
 }
 
 .spell-tier {
     margin-bottom: 45px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
+        min-width: 250px;
+        margin-right: 20px;
+    }
+    @media (max-width: 767px) {
         flex: 1;
+
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 10px;
     }
 
     &__title {
-        margin-left: 10px;
+        display: flex;
+        justify-content: space-between;
 
-        border-bottom: 1px solid black;
+        padding: 0 10px;
 
+        background-color: $color__turquoise;
+        border: 2px solid $color__green-sea;
+        border-bottom: 0;
+
+        color: white;
         font-size: 1.3em;
+        font-family: $font__inconsolata;
+    }
+    &__slot-modifiers {
+        display: flex;
+        align-items: center;
+
+        color: white;
+        font-size: .75em;
+    }
+    &__slot-modifier {
+        margin: 5px;
+
+        cursor: pointer;
+
+        transition: all .25s ease;
+
+        &_reset {
+            font-size: 1.25rem;
+        }
+        &_renew-slot {
+            margin-right: 10px;
+        }
+        &_disabled {
+            cursor: not-allowed;
+            color: $color__green-sea;
+        }
+    }
+    &__slots {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 2px 10px;
+        margin-bottom: 15px;
+
+        background-color: $color__turquoise;
+        border: 2px solid $color__green-sea;
+        border-top: none;
+
+        color: white;
+        font-family: $font__inconsolata;
+
+        @media (max-width: 767px) {
+            margin-bottom: 10px;
+        }
     }
     &__spells {
         display: flex;
@@ -46,12 +142,8 @@
 
 .spell {
     padding: 5px 10px;
-    margin: 10px;
+    margin-bottom: 10px;
 
     background-color: #eee;
     border: 1px solid #ccc;
-
-    &_unprepared {
-        background-color: black;
-    }
 }
