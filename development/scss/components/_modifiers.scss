@@ -6,7 +6,7 @@
     max-width: 250px;
     margin-left: 20px;
 
-    @media (max-width: 419px) {
+    @media (max-width: 425px) {
         margin-left: 0;
 
         max-width: none;
@@ -16,20 +16,17 @@
 .modifier-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
 
+    width: 100%;
     margin-top: 35px;
 
-    overflow: hidden;
+    //overflow: hidden;
 
     color: white;
 
-    @media (max-width: 419px) {
-        align-items: stretch;
-
+    @media (max-width: 425px) {
         margin-top: 0;
-
-        width: 100%;
     }
 
     &__title {
@@ -52,17 +49,12 @@
 
     position: relative;
 
+    width: 100%;
     margin-bottom: 5px;
 
     border: 1px solid #ccc;
 
     color: black;
-
-    &_proficiency, &_perception, &_inspiration {
-        @media (max-width: 419px) {
-            width: 100%;
-        }
-    }
 
     &__state {
         transition: all .25s ease;
@@ -83,17 +75,14 @@
         }
     }
     &__name {
+        flex: 1;
         padding: 5px 7px;
 
         background-color: #eee;
         border-right: 1px solid #ccc;
 
         text-transform: capitalize;
-
-        @media (max-width: 419px) {
-            flex: 1;
-            text-align: right;
-        }
+        text-align: right;
     }
     &__value {
         margin-right: 9px;
@@ -106,12 +95,12 @@
             display: flex;
             align-items: center;
 
-            @media (min-width: 420px) {
+            @media (min-width: 426px) {
                 justify-content: center;
             }
         }
 
-        @media (max-width: 419px) {
+        @media (max-width: 425px) {
             flex: 0;
 
             min-width: 54px;

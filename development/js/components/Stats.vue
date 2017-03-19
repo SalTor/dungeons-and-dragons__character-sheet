@@ -14,7 +14,7 @@
                             </div>
                         </div>
 
-                        <div class="field-group field-group_direction_vertical">
+                        <div class="field-group field-group_direction_vertical field-group_full-width">
                             <div class="armor-class">
                                 <div class="armor-class__mononym">Armor Class</div>
 
@@ -34,8 +34,8 @@
                             <div class="stats-container">
                                 <div class="stat" v-for="(value, stat) in user.stats">
                                     <div class="field-group stat__value-and-modifier">
-                                        <div class="stat__value"><span>{{ value }}</span></div>
                                         <div class="stat__modifier">{{ stat | modifier | sign }}</div>
+                                        <div class="stat__value"><span><span v-if="value < 10">&nbsp;</span>{{ value }}</span></div>
                                     </div>
 
                                     <div class="stat__name">{{ stat }}</div>
