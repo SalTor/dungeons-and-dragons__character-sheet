@@ -56,23 +56,8 @@
 
     color: black;
 
-    &__state {
-        transition: all .25s ease;
-
-        transform: translateY(-50%);
-        position: absolute;
-        top: 15px;
-        left: 0;
-
-        height: 30px;
-        width: 5px;
-
-        background-color: #eee;
-
-        &_active,
-        &_special {
-            background-color: #ccc;
-        }
+    &_special {
+        border-color: black;
     }
     &__name {
         flex: 1;
@@ -99,7 +84,6 @@
                 justify-content: center;
             }
         }
-
         @media (max-width: 425px) {
             flex: 0;
 
