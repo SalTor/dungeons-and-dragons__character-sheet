@@ -16,7 +16,7 @@
             "description": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
         },
         "name": "Aust",
-        "sex": "Male",
+        "sex": "male",
         "age": 200,
         "size": "medium",
         "height": "6ft 3inches",
@@ -81,7 +81,7 @@
             "total": 4
         },
         "spell_save_dc": 17,
-        "spell_attack_bonus": 8,
+        "spell_attack_bonus": 9,
         "primary_ability": "intelligence",
         "proficiency_bonus": 4,
         "saving_throw_proficiencies": ["intelligence", "wisdom"],
@@ -141,6 +141,45 @@
                     "gp": 5
                 }
             }
-        ]
+        ],
+        "prepared_spells": 13,
+        "highest_spell_slot_level": 5,
+        "spell_book": {
+            "cantrips": ["Mage hand", "Fire bolt", "Prestidigitation", "Blade ward", "Minor Illusion", "Acid Splash"],
+            "spells": {
+                "1": [
+                    {"prepared": false, "name": "Burning hands"},
+                    {"prepared": true,  "name": "Magic missile"},
+                    {"prepared": true,  "name": "Shield"},
+                    {"prepared": true,  "name": "Witchbold"},
+                    {"prepared": true,  "name": "Silent image"},
+                    {"prepared": false, "name": "Protect from Evil + Good"},
+                    {"prepared": true,  "name": "Expeditious Retreat"},
+                    {"prepared": false, "name": "Color spray"},
+                    {"prepared": false, "name": "Detect Magic", "ritual": true}
+                ],
+                "2": [
+                    {"prepared": false, "name": "Phantasmal Force"},
+                    {"prepared": true,  "name": "Web"},
+                    {"prepared": true,  "name": "Scorching ray"},
+                    {"prepared": false, "name": "Flame arrows"}
+                ],
+                "3": [
+                    {"prepared": true,  "name": "Counterspell"},
+                    {"prepared": false, "name": "Lightning bolt"},
+                    {"prepared": false, "name": "Water breathing", "ritual": true},
+                    {"prepared": true,  "name": "Dispel Magic"},
+                    {"prepared": true,  "name": "Fly"},
+                    {"prepared": false, "name": "Leomund's Tiny Hut"}
+                ],
+                "4": [
+                    {"prepared": true,  "name": "Banishment"},
+                    {"prepared": true,  "name": "Greater Invisibility"}
+                ],
+                "5": [
+                    {"prepared": false, "name": "Wall of Force"}
+                ]
+            }
+        }
     }
 ]

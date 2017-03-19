@@ -1,0 +1,57 @@
+.spell-book {
+    padding-top: 25px;
+
+    &__cantrips {
+        margin-bottom: 25px;
+    }
+    &__spells {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.cantrips {
+    &__title {
+        margin-left: 10px;
+
+        border-bottom: 1px solid black;
+
+        font-size: 1.3em;
+    }
+    &__spells {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.spell-tier {
+    margin-bottom: 45px;
+
+    @media (max-width: 768px) {
+        flex: 1;
+    }
+
+    &__title {
+        margin-left: 10px;
+
+        border-bottom: 1px solid black;
+
+        font-size: 1.3em;
+    }
+    &__spells {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.spell {
+    padding: 5px 10px;
+    margin: 10px;
+
+    background-color: #eee;
+    border: 1px solid #ccc;
+
+    &_unprepared {
+        background-color: black;
+    }
+}
