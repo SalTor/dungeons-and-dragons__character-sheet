@@ -191,7 +191,7 @@
                 "5": {
                     "slots": {"total": 1, "expended": 0},
                     "entries": [
-                        {"prepared": false, "name": "Wall of Force"}
+                        {"prepared": true, "name": "Wall of Force"}
                     ]
                 }
             }
