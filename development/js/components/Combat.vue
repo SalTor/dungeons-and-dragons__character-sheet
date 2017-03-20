@@ -54,9 +54,7 @@
         created() {
             this.loading = false
         },
-        mounted() {
-            _.map(this.user.spell_book, index => console.log(index))
-        },
+        mounted() {},
         methods: {
             spellbook(category, book) {
                 return book[category]
