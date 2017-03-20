@@ -16,15 +16,15 @@
 
                         <div class="field-group field-group_direction_vertical field-group_full-width">
                             <div class="armor-class">
-                                <div class="armor-class__mononym">Armor Class</div>
-
                                 <div class="armor-class__value">{{ user.armor_class }}</div>
+
+                                <div class="armor-class__mononym">Armor Class</div>
                             </div>
 
                             <div class="initiative">
-                                <div class="initiative__mononym">Initiative</div>
-
                                 <div class="initiative__value">{{ user.initiative_modifier | sign }}</div>
+
+                                <div class="initiative__mononym">Initiative</div>
                             </div>
                         </div>
                     </div>
@@ -33,10 +33,7 @@
                         <div class="stats-and-modifiers">
                             <div class="stats-container">
                                 <div class="stat" v-for="(value, stat) in user.stats">
-                                    <div class="field-group stat__value-and-modifier">
-                                        <div class="stat__modifier">{{ stat | modifier | sign }}</div>
-                                        <div class="stat__value"><span><span v-if="value < 10">&nbsp;</span>{{ value }}</span></div>
-                                    </div>
+                                    <div class="stat__modifier">{{ stat | modifier | sign }}</div>
 
                                     <div class="stat__name">{{ stat }}</div>
                                 </div>
@@ -44,28 +41,28 @@
 
                             <div class="modifiers-container">
                                 <div class="modifier modifier_proficiency">
-                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
+                                    <div class="modifier__value modifier__value_proficiency" :class="user.proficiency_bonus < 10 ? 'modifier__value_single-digit' : ''">{{ user.proficiency_bonus | sign }}</div>
 
-                                    <div class="modifier__value modifier__value_proficiency" :class="user.proficiency_bonus < 10 ? 'modifier__value_single-digit' : ''">{{ user.proficiency_bonus | sign }}<span v-if="user.proficiency_bonus < 10">&nbsp;</span></div>
+                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
                                 </div>
 
                                 <div class="modifier modifier_perception">
-                                    <div class="modifier__name modifier__name_perception">Perception</div>
+                                    <div class="modifier__value modifier__value_perception" :class="user.passive_wisdom < 10 ? 'modifier__value_single-digit' : ''">{{ user.passive_wisdom | sign }}</div>
 
-                                    <div class="modifier__value modifier__value_perception" :class="user.passive_wisdom < 10 ? 'modifier__value_single-digit' : ''">{{ user.passive_wisdom | sign }}<span v-if="user.passive_wisdom < 10">&nbsp;</span></div>
+                                    <div class="modifier__name modifier__name_perception">Perception</div>
                                 </div>
 
                                 <div class="modifier modifier_inspiration">
-                                    <div class="modifier__name modifier__name_inspiration">Inspiration</div>
+                                    <div class="modifier__value modifier__value_inspiration">{{ user.inspiration_modifier | sign }}</div>
 
-                                    <div class="modifier__value modifier__value_inspiration">{{ user.inspiration_modifier | sign }}<span v-if="user.inspiration_modifier < 10">&nbsp;</span></div>
+                                    <div class="modifier__name modifier__name_inspiration">Inspiration</div>
                                 </div>
 
                                 <div class="modifier-group">
                                     <div class="modifier" v-for="(value, name) in user.skill_modifiers">
-                                        <div class="modifier__name">{{ name }}</div>
+                                        <div class="modifier__value">{{ value | sign }}</div>
 
-                                        <div class="modifier__value">{{ value | sign }}<span v-if="value < 10">&nbsp;</span></div>
+                                        <div class="modifier__name">{{ name }}</div>
                                     </div>
                                 </div>
                             </div>

@@ -22,7 +22,7 @@
 
     height: 75px;
     margin-right: 10px;
-    margin-left: 65px;
+    margin-left: 47px;
 
     text-align: center;
 
@@ -63,21 +63,13 @@
         padding: 5px 10px;
 
         background-color: #eee;
-        border-right: 1px solid #ccc;
-
-        @media (max-width: 425px) {
-            text-align: right;
-        }
+        border-left: 1px solid #ccc;
     }
 
     &__value {
         flex: 0;
 
         padding: 5px 8px;
-
-        @media (max-width: 425px) {
-            min-width: 54px;
-        }
     }
 }
 
