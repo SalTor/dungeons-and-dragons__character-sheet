@@ -1,10 +1,4 @@
 .spell-book {
-    padding-top: 25px;
-
-    @media (max-width: 767px) {
-        padding-top: 0;
-    }
-
     &__cantrips {
         margin-bottom: 25px;
 

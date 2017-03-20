@@ -15,12 +15,13 @@
 
 @import "components/input";
 
-body, .pseudo-body {
+.pseudo-body {
     display: flex;
     flex-direction: column;
 
     min-height: 100vh;
     padding: 0;
+    padding-top: 75px;
     margin:  0;
 
     font-size: 16px;
@@ -28,9 +29,12 @@ body, .pseudo-body {
 }
 
 header {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+
     height: 50px;
     width: 100%;
-    margin-bottom: 25px;
 
     background-color: $color__wet-asphalt;
 }
