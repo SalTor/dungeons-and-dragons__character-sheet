@@ -25,24 +25,19 @@
     }
 }
 
-@keyframes blip-in {
+@keyframes grow-in_charge {
     from {
-        height: 0;
-        width:  0;
+        transform: scale(0.1);
     }
     to {
-        height: 100vh;
-        width:  100vh;
+        transform: scale(1);
     }
 }
-
-@keyframes blip-out {
+@keyframes grow-out_charge {
     from {
-        height: 100vh;
-        width:  100vh;
+        transform: scale(1);
     }
     to {
-        height: 0;
-        width:  0;
+        transform: scale(0.1);
     }
 }

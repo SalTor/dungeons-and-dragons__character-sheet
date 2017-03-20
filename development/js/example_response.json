@@ -195,6 +195,19 @@
                     ]
                 }
             }
-        }
+        },
+        "weapons_with_charges": [
+            {
+                "name": "Wand of Magic Missile",
+                "charges": {
+                    "total": 5,
+                    "expended": 0,
+                    "warning": {
+                        "amount": 4,
+                        "message": "Remember, after the 5th use there's a chance it'll break!"
+                    }
+                }
+            }
+        ]
     }
 ]
