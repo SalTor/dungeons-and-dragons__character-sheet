@@ -75,7 +75,7 @@
                 return book[category]
             },
             prepared(spells) {
-                return _.filter(spells, spell => spell.prepared)
+                return _.filter(spells, spell => spell.prepared || spell.ritual)
             },
             expend_spell_slot(details) {
                 if(details.slots.expended + 1 <= details.slots.total) {
