@@ -17,9 +17,7 @@ require('../../node_modules/normalize.css/normalize.css')
 require('../scss/dungeons_and_dragons_character_sheet.scss')
 
 Vue.component('app-navigation', Navigation)
-Vue.component('app-introduction', Combat)
 Vue.component('app-footer', Footer)
-Vue.component('app-dashboard', Dashboard)
 
 Vue.use(VueRouter)
 
