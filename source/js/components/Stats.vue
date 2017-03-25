@@ -99,24 +99,22 @@
             this.loading = false
         },
         mounted() {
-            let bet = function () {
-                let bar = new ProgressBar.Path(document.getElementById("heart-path"), {
-                    strokeWidth: 2,
-                    easing: 'easeInOut',
-                    duration: 1400,
-                    color: '#9fffcc',
-                    trailColor: '#eee',
-                    trailWidth: 1,
-                    svgStyle: { width: '100%', height: '100%' },
-                    from: { color: '#16A085' },
-                    to:   { color: '#e25d26' },
-                    step: (state, bar) => {
-                        bar.path.setAttribute('stroke', state.color);
-                    }
-                })
+            let bar = new ProgressBar.Path(document.getElementById("heart-path"), {
+                strokeWidth: 2,
+                easing: 'easeInOut',
+                duration: 1400,
+                color: '#9fffcc',
+                trailColor: '#eee',
+                trailWidth: 1,
+                svgStyle: { width: '100%', height: '100%' },
+                from: { color: '#16A085' },
+                to:   { color: '#e25d26' },
+                step: (state, bar) => {
+                    bar.path.setAttribute('stroke', state.color);
+                }
+            })
 
-                bar.animate(1)
-            }
+            bar.animate(1)
         }
     }
 </script>

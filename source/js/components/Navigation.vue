@@ -43,9 +43,6 @@
         },
         mixins: [ clickaway ],
         methods: {
-            hello() {
-                console.log('hello')
-            },
             close_nav() {
                 if(this.navigation__open) {
                     this.navigation__open = false
