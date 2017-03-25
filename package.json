@@ -9,6 +9,7 @@
     "dev": "concurrently 'gulp' 'webpack-dev-server'",
     "demo": "webpack -d && gulp server"
   },
+  "repository": "https://github.com/SalTor/dungeons-and-dragons__character-sheet",
   "author": "Sal Torcivia",
   "license": "MIT",
   "devDependencies": {
