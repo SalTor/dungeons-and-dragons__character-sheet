@@ -10,6 +10,7 @@
 
 <script>
     import Vue from "vue"
+    require("promise-polyfill")
     require("fetch-ie8")
 
     export default {
