@@ -17,8 +17,10 @@ Certain details of a character will be computed by a more robust system, and mad
 ```sh
 $ npm run demo
 # This will create a non-updating browser-sync session but a working, interactable demo of the app
+&
 $ npm run dev
 # This will get you set up with a webpack server that updates as project files are changed
+&
 $ npm run release
 # This will create a deployable version of the app
 ```
