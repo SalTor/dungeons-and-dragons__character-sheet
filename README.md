@@ -25,6 +25,9 @@ $ npm run release
 # This will create a deployable version of the app
 ```
 
+## Style Guide
+Please read `./source/scss/README.md` before creating new styles, as it described in further detail how to go about doing that.
+
 ## Technology Used
 This project makes use of [Vue.js](https://vuejs.org/), which is an approachable, versatile, and performant front-end JavaScript framework.
 
