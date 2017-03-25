@@ -2,9 +2,13 @@
 
 let gulp         = require('gulp'),
     rename       = require('gulp-rename'),
-    json_minify  = require('gulp-json-minify')
+    json_minify  = require('gulp-json-minify'),
+    browserSync  = require('browser-sync')
 
-gulp.task('default', [ "copy_watch" ])
+gulp.task('default', [ "copy", "confirmation" ])
+gulp.task('release', [ "default" ])
+gulp.task('dev',     [ "copy_watch" ])
+gulp.task('server',  [ "copy", "browserSync" ])
 
 gulp.task("copy", function () {
     gulp.src("development/js/example_response.json", { base: process.cwd() })
@@ -15,4 +19,25 @@ gulp.task("copy", function () {
 
 gulp.task("copy_watch", [ "copy" ], function () {
     gulp.watch(['development/js/example_response.json'], ['copy'])
+})
+
+gulp.task("browserSync", [], function () {
+    browserSync.init({
+        server: { baseDir: "./public" }
+    });
+})
+
+
+
+let console_spacer = `[        ]`,
+    console_linebreak = `=============================================================`
+
+gulp.task("confirmation", [], function () {
+    console.log(`${console_spacer}`)
+    console.log(`${console_spacer} ${console_linebreak}`)
+    console.log(`${console_spacer}`)
+    console.log(`${console_spacer} \tSample data is available and the app has been built`)
+    console.log(`${console_spacer}`)
+    console.log(`${console_spacer} ${console_linebreak}`)
+    console.log(`${console_spacer}`)
 })

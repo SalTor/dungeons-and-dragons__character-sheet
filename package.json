@@ -5,8 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "concurrently 'gulp' 'webpack-dev-server'"
+    "release": "webpack -d && gulp release",
+    "dev": "concurrently 'gulp' 'webpack-dev-server'",
+    "demo": "webpack -d && gulp server"
   },
   "author": "Sal Torcivia",
   "license": "ISC",
