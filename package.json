@@ -10,7 +10,7 @@
     "demo": "webpack -d && gulp server"
   },
   "author": "Sal Torcivia",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
