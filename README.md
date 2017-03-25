@@ -25,5 +25,10 @@ $ npm run release
 # This will create a deployable version of the app
 ```
 
+## Technology Used
+This project makes use of [Vue.js](https://vuejs.org/), which is an approachable, versatile, and performant front-end JavaScript framework.
+
+The application is built using a combination of [Webpack](https://webpack.js.org/) and [Gulp.js](http://gulpjs.com/) for the build and development process.
+
 # Contributor List
 1. [Sal Torcivia](http://saltor.nyc) (creator)
