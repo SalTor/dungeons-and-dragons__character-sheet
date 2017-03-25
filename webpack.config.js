@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './development/js/dungeons_and_dragons_character_sheet.js',
+    entry: './source/js/dungeons_and_dragons_character_sheet.js',
     output: {
         path: __dirname + '/public/build/js',
         publicPath: '/public/build/js',

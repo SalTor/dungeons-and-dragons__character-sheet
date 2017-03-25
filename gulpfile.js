@@ -1,24 +1,24 @@
-'use strict';
+"use strict";
 
-let gulp         = require('gulp'),
-    rename       = require('gulp-rename'),
-    json_minify  = require('gulp-json-minify'),
-    browserSync  = require('browser-sync')
+let gulp         = require("gulp"),
+    rename       = require("gulp-rename"),
+    json_minify  = require("gulp-json-minify"),
+    browserSync  = require("browser-sync")
 
-gulp.task('default', [ "copy", "confirmation" ])
-gulp.task('release', [ "default" ])
-gulp.task('dev',     [ "copy_watch" ])
-gulp.task('server',  [ "copy", "browserSync" ])
+gulp.task("default", [ "copy", "confirmation" ])
+gulp.task("release", [ "default" ])
+gulp.task("dev",     [ "copy_watch" ])
+gulp.task("server",  [ "copy", "browserSync" ])
 
 gulp.task("copy", function () {
-    gulp.src("development/js/example_response.json", { base: process.cwd() })
-        .pipe(rename('character_sheet__player_name.json'))
+    gulp.src("source/js/example_response.json", { base: process.cwd() })
+        .pipe(rename("character_sheet__player_name.json"))
         .pipe(json_minify())
         .pipe(gulp.dest("public/data"))
 })
 
 gulp.task("copy_watch", [ "copy" ], function () {
-    gulp.watch(['development/js/example_response.json'], ['copy'])
+    gulp.watch(["source/js/example_response.json"], ["copy"])
 })
 
 gulp.task("browserSync", [], function () {
