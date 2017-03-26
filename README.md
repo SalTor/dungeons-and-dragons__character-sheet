@@ -15,6 +15,9 @@ Certain details of a character will be computed by a more robust system, and mad
 
 ## Getting Started
 ```sh
+$ npm install
+# First and foremost, install the project's dependencies  
+
 $ npm run demo
 # This will create a non-updating browser-sync session but a working, interactable demo of the app  
 
@@ -29,7 +32,7 @@ $ npm run release
 Please read `./source/scss/README.md` before creating new styles, as it described in further detail how to go about doing that.
 
 ## Technology Used
-This project makes use of [Vue.js](https://vuejs.org/), which is an approachable, versatile, and performant front-end JavaScript framework.
+This project makes use of [Vue.js](https://vuejs.org/), which is a front-end JavaScript framework. It's used for reactive data-binding to elements of each view.
 
 The application is built using a combination of [Webpack](https://webpack.js.org/) and [Gulp.js](http://gulpjs.com/) for the build and development process.
 
