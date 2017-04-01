@@ -1,6 +1,6 @@
 # D&D Character Sheet Viewer
 
-Broadly speaking, this is the front-end of a service to manage Dungeons and Dragons character sheets. **More specifically,** this is the front-end of a service to manage Dungeons and Dragons character information.
+This is the front-end of a service to manage Dungeons and Dragons character sheets.
 
 This includes, but will not be limited to:
 
@@ -15,26 +15,26 @@ Certain details of a character will be computed by a more robust system, and mad
 
 ## Getting Started
 ```sh
-$ npm install
-# First and foremost, install the project's dependencies  
+# First and foremost, install the project's dependencies
+$ npm install  
 
-$ npm run demo
-# This will create a non-updating browser-sync session but a working, interactable demo of the app  
+# To see a local demo of the app
+$ npm run demo  
 
-$ npm run dev
-# This will get you set up with a webpack server that updates as project files are changed  
+# Work on the codebase and see your changes updated in the browser
+$ npm run dev  
 
+# Create an optimized, production-ready version of the app
 $ npm run release
-# This will create a deployable version of the app
 ```
 
 ## Style Guide
-Please read `./source/scss/README.md` before creating new styles, as it described in further detail how to go about doing that.
+Please read `./source/scss/README.md` before creating new styles, as it describes in further detail how to do so.
 
 ## Technology Used
-This project makes use of [Vue.js](https://vuejs.org/), which is a front-end JavaScript framework. It's used for reactive data-binding to elements of each view.
+This project makes use of [Vue.js](https://vuejs.org/), which is a front-end JavaScript framework used for reactive data-binding to elements within a view.
 
-The application is built using a combination of [Webpack](https://webpack.js.org/) and [Gulp.js](http://gulpjs.com/) for the build and development process.
+The application uses a combination of [Webpack](https://webpack.js.org/) and [Gulp.js](http://gulpjs.com/) for the build and development process.
 
 # Contributor List
 1. [Sal Torcivia](http://saltor.nyc) (creator)
