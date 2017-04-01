@@ -10,12 +10,17 @@
 
 <script>
     import Vue from "vue"
+    import Navigation from "./Navigation.vue"
+    import Footer from "./Footer.vue"
 
     require("promise-polyfill")
     require("fetch-ie8")
 
+    Vue.component("app-navigation", Navigation)
+    Vue.component("app-footer", Footer)
+
     export default {
-        name: 'app',
+        name: "app",
         mounted() {
             this.fetch_user_data()
         },
@@ -35,6 +40,17 @@
                         this.loading = false
                     })
             }
+        },
+        created() {
+            // Filters
+            Vue.filter("number", entry => entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            Vue.filter("sign", number => number >= 0 ? `+${number}` : `${number}`)
+            Vue.filter("modifier", saving_throw => this.user.saving_throw_modifiers[saving_throw])
+
+            // Directives
+            Vue.directive("focus", {
+                inserted: el => el.focus()
+            })
         }
     }
 </script>

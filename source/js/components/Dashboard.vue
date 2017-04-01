@@ -5,9 +5,7 @@
                 <h1>Welcome back, {{user.name}}.</h1>
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <label for="character-name" class="input__label">Character Name</label>
-                    <input id="character-name" title="Character Name"
-                           :placeholder="user.name"
-                           type="text" class="input input_disabled">
+                    <input :placeholder="user.name" id="character-name" title="Character Name" type="text" class="input">
                 </div>
             </div>
         </section>

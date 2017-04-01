@@ -93,9 +93,6 @@
             }
         },
         created() {
-            Vue.filter('sign', number => number >= 0 ? `+${number}` : `${number}`)
-            Vue.filter('modifier', saving_throw => this.user.saving_throw_modifiers[saving_throw])
-
             this.loading = false
         },
         mounted() {

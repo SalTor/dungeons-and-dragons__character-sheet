@@ -23,43 +23,7 @@
                                 </div>
                             </div>
 
-                            <div class="item" v-for="item in user.inventory">
-                                <div class="item__name item__name_removeable" @click="item_deleting(item.name)">{{ item.name }}</div>
-
-                                <transition name="fade">
-                                    <div class="item__remove" v-if="item_delete === item.name" v-on-clickaway="stop_item_delete" @click.stop="remove(item, user.inventory)">
-                                        <span>
-                                            <i class="fa fa-trash-o"></i>&nbsp;remove
-                                        </span>
-                                    </div>
-                                </transition>
-
-                                <div class="item__amount-and-value" @click="item_modifying(item.name)">
-                                    <div v-if="item.amount > 1">
-                                        {{ item.amount | number }}<i v-if="item.value">&nbsp;</i>
-                                    </div>
-                                    <div class="item__value" v-if="item.amount > 0" v-for="(amount, id) in item.value">
-                                        <span v-if="item.amount > 1">(</span><span v-if="amount > 0">{{ amount | number }}{{ id }}{{ item.amount > 1 ? " ea." : "" }}</span><span v-if="item.amount > 1">)</span>
-                                    </div>
-                                    <span class="item__increment-amount" @click.stop="item.amount++" v-if="item.amount < 2 && !item.value">+1</span>
-
-                                    <transition name="fade">
-                                        <div class="item__modifier-container" @click.stop v-on-clickaway="finish_item_modifying" v-if="item.name === item_being_modified">
-                                            <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="item.amount" :step="amount_step" min="1" @keydown="update_shift_amount($event)">
-                                        </div>
-                                    </transition>
-                                </div>
-
-                                <div class="item__context-toggle" v-if="item.context" @click="item_focus(item.name)">
-                                    <span>i</span>
-
-                                    <transition name="fade">
-                                        <div class="item__info" v-on-clickaway="finish_item_focus" v-if="item.name === item_being_focused" @click.stop>
-                                            {{ item.context }}
-                                        </div>
-                                    </transition>
-                                </div>
-                            </div>
+                            <user-item v-for="item in user.inventory" :item="item" :inventory="user.inventory" :key="calculate__unique_id()"></user-item>
                         </div>
                     </div>
 
@@ -115,6 +79,9 @@
 <script>
     import Vue from "vue"
     import { mixin as clickaway } from "vue-clickaway"
+    import Item from "./Item.vue"
+
+    Vue.component("user-item", Item)
 
     export default {
         name: "inventory",
@@ -123,11 +90,8 @@
         data() {
             return {
                 coin_being_modified: ``,
-                item_being_focused: ``,
-                item_being_modified: ``,
-                item_delete: ``,
-                item_being_created: false,
                 amount_step: 1,
+                item_being_created: false,
                 new_item_name: ``,
                 new_item_amount: 1,
                 new_item_value__currency: `gp`,
@@ -136,15 +100,6 @@
             }
         },
         created() {
-            Vue.filter("details", entry => {
-                let name = entry.name,
-                    amount = entry.amount,
-                    value = entry.value, total
-
-                console.log(value)
-
-                return `${name} - ${amount} (${value} ea., totalling ${total})`
-            })
             Vue.filter("coin_type", coin_id => {
                 let coin = ""
 
@@ -170,18 +125,9 @@
 
                 return coin
             })
-            Vue.filter("number", entry => {
-                return entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            })
-            Vue.directive('focus', {
-                inserted: el => el.focus()
-            })
         },
         mounted() {},
         methods: {
-            hello() {
-                console.log('hello')
-            },
             create_item(array) {
                 let new_item = {
                     name: this.new_item_name,
@@ -193,10 +139,7 @@
                     new_item.value[this.new_item_value__currency] = this.new_item_value__amount
                 }
 
-                console.log(array)
                 array.push(new_item)
-                console.log(array)
-                console.log(`${this.new_item_name}: x${this.new_item_amount} (worth ${this.new_item_value__amount}${this.new_item_value__currency}). ${this.new_item_context}`)
 
                 this.item_being_created = false
                 this.new_item_name = ``
@@ -204,6 +147,11 @@
                 this.new_item_value__currency = `gp`
                 this.new_item_value__amount = 0
                 this.new_item_context = undefined
+            },
+            terminate_item_creation() {
+                if(this.item_being_created) {
+                    this.item_being_created = false
+                }
             },
             update_shift_amount(event) {
                 if (event.shiftKey) {
@@ -221,53 +169,6 @@
             },
             finish_coin_modifying() {
                 this.coin_being_modified = undefined
-            },
-            item_modifying(id) {
-                if(id === this.item_being_modified) {
-                    this.item_being_modified = ``
-                } else {
-                    this.item_being_modified = id
-                }
-            },
-            finish_item_focus() {
-                this.item_being_focused = undefined
-            },
-            finish_item_modifying() {
-                this.item_being_modified = undefined
-            },
-            item_focus(item) {
-                if(item === this.item_being_focused) {
-                    this.item_being_focused = ``
-                } else {
-                    this.item_being_focused = item
-                }
-            },
-            item_modifying(item) {
-                if(item === this.item_being_modified) {
-                    this.item_being_modified = ``
-                } else {
-                    this.item_being_modified = item
-                }
-            },
-            item_deleting(item) {
-                if(item === this.item_delete) {
-                    this.item_delete = ``
-                } else {
-                    this.item_delete = item
-                }
-            },
-            stop_item_delete() {
-                this.item_delete = ``
-            },
-            remove(item, origin) {
-                this.item_delete = ``
-
-                origin.splice(origin.indexOf(item), 1)
-            },
-            terminate_item_creation() {
-                if(this.item_being_created) {
-                    this.item_being_created = false
-                }
             },
 
             coinage(type, amount) {

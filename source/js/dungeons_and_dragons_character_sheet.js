@@ -3,9 +3,6 @@ import VueRouter from "vue-router"
 
 import App from "./components/App.vue"
 
-import Navigation from "./components/Navigation.vue"
-import Footer     from "./components/Footer.vue"
-
 import NotFound  from "./components/NotFound.vue"
 import Dashboard from "./components/Dashboard.vue"
 
@@ -16,9 +13,6 @@ import Stats     from "./components/Stats.vue"
 
 require('../../node_modules/normalize.css/normalize.css')
 require('../scss/dungeons_and_dragons_character_sheet.scss')
-
-Vue.component('app-navigation', Navigation)
-Vue.component('app-footer', Footer)
 
 Vue.use(VueRouter)
 
