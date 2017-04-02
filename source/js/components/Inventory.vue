@@ -29,7 +29,7 @@
 
                     <transition name="fade">
                         <div class="inventory__item-creator" v-if="item_being_created">
-                            <form class="item-creator__field-container" v-on-clickaway="terminate_item_creation" @submit="create_item(user.inventory)">
+                            <form class="item-creator__field-container" v-on-clickaway="terminate_item_creation" @submit="create_item($event, user.inventory)">
                                 <div class="field__label-and-input">
                                     <label class="field__label item-creator__field-label">Item Name</label>
                                     <input v-model="new_item_name" class="field__input item-creator__name" placeholder="Potion of death" type="text" title="Item Name" required>
@@ -48,7 +48,7 @@
                                             <input v-model="new_item_value__amount" class="field__input field__input_inline item-creator__value" :step="amount_step" min="0" @keydown="update_shift_amount($event)" type="number"  title="Value Each">
 
                                             <div class="field__select-wrapper">
-                                                <select class="field__input_select" name="value_unit" title="Value Units" v-model="new_item_value__currency">
+                                                <select class="field__input_select" title="Value Units" v-model="new_item_value__currency">
                                                     <option value="gp">gold</option>
                                                     <option value="cp">copper</option>
                                                     <option value="sp">silver</option>
@@ -128,7 +128,9 @@
         },
         mounted() {},
         methods: {
-            create_item(array) {
+            create_item(event, array) {
+                event.preventDefault()
+
                 let new_item = {
                     name: this.new_item_name,
                     amount: this.new_item_amount,
