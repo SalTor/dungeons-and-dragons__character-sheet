@@ -32,11 +32,7 @@
                     <div class="stats-and-modifiers__container">
                         <div class="stats-and-modifiers">
                             <div class="stats-container">
-                                <div class="stat" v-for="(value, stat) in user.stats">
-                                    <div class="stat__modifier">{{ stat | modifier | sign }}</div>
-
-                                    <div class="stat__name">{{ stat }}</div>
-                                </div>
+                                <user-stat v-for="(value, stat) in user.stats" :stat="stat" :key="calculate__random_hash()"></user-stat>
                             </div>
 
                             <div class="modifiers-container">
@@ -76,6 +72,9 @@
 
 <script>
     import Vue from "vue"
+    import Stat from "./Stat.vue"
+
+    Vue.component("user-stat", Stat)
 
     let ProgressBar = require('progressbar.js')
 
@@ -90,6 +89,11 @@
         methods: {
             proficient(stat, array) {
                 return array.includes(stat)
+            },
+            calculate__random_hash() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1)
             }
         },
         created() {
