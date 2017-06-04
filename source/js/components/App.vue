@@ -45,7 +45,7 @@
             // Filters
             Vue.filter("number", entry => entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
             Vue.filter("sign", number => number >= 0 ? `+${number}` : `${number}`)
-            Vue.filter("modifier", saving_throw => this.user.saving_throw_modifiers[saving_throw])
+            Vue.filter("modifier", saving_throw => this.character.saving_throw_modifiers[saving_throw])
 
             // Directives
             Vue.directive("focus", {
