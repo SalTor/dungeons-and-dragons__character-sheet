@@ -1,7 +1,6 @@
-@import "section__header";
-@import "section__content";
-@import "section__description";
-@import "section__copy-block";
+@import "elements/section__header";
+@import "elements/section__content";
+@import "elements/section__copy-block";
 
 section {
     padding: 0 25px;

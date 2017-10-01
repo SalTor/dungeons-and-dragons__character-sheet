@@ -1,0 +1,24 @@
+.combat-stats {
+    display: flex;
+    flex-wrap: wrap;
+
+    position: relative;
+
+    padding: 9px 9px 150px 9px;
+    margin-top: 25px;
+
+    border: 1px solid #979797;
+    background-color: #F6F6F6;
+
+    &:after {
+        content: "Visit \"stats\" to edit base values.";
+        position: absolute;
+        bottom: 2px;
+        left: 6px;
+
+        color: #838383;
+        font-size: .75em;
+        font-family: "Lucida Grande", Arial, sans-serif;
+        font-weight: 300;
+    }
+}
