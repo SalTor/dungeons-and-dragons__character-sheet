@@ -60,8 +60,6 @@
 </template>
 
 <script>
-    import { filter } from "lodash"
-
     export default {
         name: "combat",
         props: [ "user" ],
@@ -75,7 +73,7 @@
                 return book[category]
             },
             prepared(spells) {
-                return filter(spells, spell => spell.prepared || spell.ritual)
+                return spells.filter(spell => spell.prepared || spell.ritual)
             },
             expend_spell_slot(details) {
                 if(details.slots.expended + 1 <= details.slots.total) {
