@@ -5,9 +5,9 @@
 .navigation-wrapper {
     z-index: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 
-    height: 50px;
+    height: 65px;
     max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
