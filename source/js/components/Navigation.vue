@@ -7,19 +7,15 @@
 
             <div class="navigation-wrapper" :class="navigation__open ? 'navigation-wrapper_open' : ''" @click="handle_nav($event)">
                 <ul class="navigation">
-                    <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/dashboard">
-                        Dashboard</router-link>
-                </ul>
+                    <router-link to="/combat" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Combat</router-link>
 
-                <ul class="navigation">
-                    <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/combat">
-                        Combat</router-link>
+                    <router-link to="/inventory" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Inventory</router-link>
 
-                    <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/inventory">
-                        Inventory</router-link>
+                    <router-link to="/stats" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Stats</router-link>
 
-                    <router-link class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li" to="/stats">
-                        Stats</router-link>
+                    <router-link to="/spellbook" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Spellbook</router-link>
+
+                    <router-link to="/background" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Background</router-link>
                 </ul>
             </div>
         </nav>
