@@ -30,9 +30,9 @@
                     <div class="combat-stats" v-if="user">
                         <article class="cb-stat hitpoints">
                             <div class="cb-stat__value">
-                                <span>+10</span>
-                                <strong>47</strong>
-                                <span>60</span>
+                                <span>{{ user.hitpoints.temp | sign }}</span>
+                                <strong>{{ user.hitpoints.current }}</strong>
+                                <span>{{ user.hitpoints.max }}</span>
                             </div>
                             <div class="cb-stat__label">
                                 <span class="sub">temp</span>
@@ -44,7 +44,7 @@
                         <div class="cb-stat-wrapper">
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <strong>9</strong>
+                                    <strong>{{ user.spell_attack_bonus }}</strong>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>spell attack bonus</span>
@@ -53,7 +53,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <strong>17</strong>
+                                    <strong>{{ user.spell_save_dc }}</strong>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>spell save dc</span>
@@ -62,7 +62,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <strong>14</strong>
+                                    <strong>{{ user.armor_class }}</strong>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>armor class</span>
@@ -71,7 +71,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <strong>+4</strong>
+                                    <strong>{{ user.initiative_modifier | sign }}</strong>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>initiative</span>
@@ -80,7 +80,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <strong>30</strong>
+                                    <strong>{{ user.speed }}</strong>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>speed</span>
@@ -89,7 +89,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <span>intelligence</span>
+                                    <span>{{ user.primary_ability }}</span>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>spellcasting ability</span>
@@ -98,7 +98,7 @@
 
                             <article class="cb-stat">
                                 <div class="cb-stat__value">
-                                    <span>+0</span>
+                                    <span>{{ user.inspiration_modifier | sign }}</span>
                                 </div>
                                 <div class="cb-stat__label">
                                     <span>inspiration</span>

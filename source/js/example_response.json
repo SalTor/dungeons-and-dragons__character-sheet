@@ -26,7 +26,8 @@
         "initiative_modifier": 4,
         "hitpoints": {
             "max": 60,
-            "current": 60
+            "current": 47,
+            "temp": 10
         },
         "experience": 56500,
         "percent_progress_until_level": 0.8828125,
