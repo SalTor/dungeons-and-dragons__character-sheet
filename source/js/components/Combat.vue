@@ -3,35 +3,27 @@
         <section>
             <div class="section__content">
                 <div class="section__description">
-                    <div class="spell-book">
-                        <div class="spell-book__cantrips" v-for="(cantrips, category) in user.spell_book" v-if="category === 'cantrips'">
-                            <div class="cantrips__title">Cantrips:</div>
-
-                            <div class="cantrips__spells">
-                                <div class="cantrip" v-for="cantrip in cantrips">{{ cantrip }}</div>
+                    <div class="spell-book" v-if="user.spell_book">
+                        <div class="spell-book__column">
+                            <div class="spell-book__category">
+                                <span>Cantrips</span>
                             </div>
+
+                            <div class="spell-book__spell" v-for="cantrip in user.spell_book.cantrips">{{ cantrip }}</div>
                         </div>
 
-                        <div class="spell-book__spells" v-for="(details, category) in user.spell_book" v-if="category === 'spells'">
-                            <div class="spell-tier" v-for="(details, category) in details" v-if="prepared(details.entries).length > 0">
-                                <div class="spell-tier__title">
-                                    <span>Level {{ category }}</span>
-                                    <span class="spell-tier__slot-modifiers">
-                                        <i class="fa fa-minus spell-tier__slot-modifier spell-tier__slot-modifier_renew-slot" @click="restore_spell_slot(details)" :class="details.slots.expended === 0 ? 'spell-tier__slot-modifier_disabled' : ''"></i>
-                                        <i class="fa fa-plus  spell-tier__slot-modifier" @click="expend_spell_slot(details)" :class="details.slots.expended === details.slots.total ? 'spell-tier__slot-modifier_disabled' : ''"></i>
-                                    </span>
-                                </div>
-                                <div class="spell-tier__slots">
-                                    <span>{{ details.slots.expended }}/{{ details.slots.total }} slots used</span>
-                                    <span><i class="fa fa-refresh spell-tier__slot-modifier spell-tier__slot-modifier_reset" @click="reset_spell_slots(details)" :class="details.slots.expended === 0 ? 'spell-tier__slot-modifier_disabled' : ''"></i></span>
-                                </div>
+                        <div class="spell-book__column" v-for="(details, category) in user.spell_book.spells">
+                            <div class="spell-book__category">
+                                <span>Level {{ category }}</span>
 
-                                <div class="spell-tier__spells">
-                                    <div class="spell" v-for="spell in prepared(details.entries)">
-                                        <div class="spell__name">{{ spell.name }}</div>
-                                    </div>
-                                </div>
+                                <span class="spell-book__slots-used">
+                                    <span>{{ details.slots.expended }}/{{ details.slots.total }}</span>
+                                    <i class="control decrement" @click="regain_spell_slot(details)" :class="details.slots.expended === 0 ? 'disabled' : ''"></i>
+                                    <i class="control increment" @click="expend_spell_slot(details)" :class="details.slots.expended === details.slots.total ? 'disabled' : ''"></i>
+                                </span>
                             </div>
+
+                            <div class="spell-book__spell" v-for="spell in prepared(details.entries)">{{ spell.name }}</div>
                         </div>
                     </div>
                 </div>
@@ -42,27 +34,22 @@
 
 <script>
     export default {
-        name: "combat",
-        props: [ "user" ],
-        data(){
+        name: 'combat',
+        props: ['user'],
+        data() {
             return {}
         },
-        created() {},
-        mounted() {},
         methods: {
-            spellbook(category, book) {
-                return book[category]
-            },
             prepared(spells) {
                 return spells.filter(spell => spell.prepared || spell.ritual)
             },
             expend_spell_slot(details) {
-                if(details.slots.expended + 1 <= details.slots.total) {
+                if (details.slots.expended + 1 <= details.slots.total) {
                     details.slots.expended++
                 }
             },
-            restore_spell_slot(details) {
-                if(details.slots.expended - 1 >= 0) {
+            regain_spell_slot(details) {
+                if (details.slots.expended - 1 >= 0) {
                     details.slots.expended--
                 }
             },

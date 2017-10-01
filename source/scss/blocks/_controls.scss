@@ -1,0 +1,22 @@
+.control {
+    color: black;
+    font-style: normal;
+    font-size: 1.25em;
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+
+    &.increment:before {
+        content: "+";
+    }
+    &.decrement:before {
+        content: "-";
+    }
+
+    &.disabled {
+        color: #cacaca;
+
+        cursor: not-allowed;
+    }
+}
