@@ -76,7 +76,7 @@
 
     Vue.component("user-stat", Stat)
 
-    let ProgressBar = require('progressbar.js')
+    const ProgressBar = require('progressbar.js')
 
     export default {
         name: "stats",
