@@ -2,7 +2,7 @@
     <main role="main">
         <section>
             <div class="section__content">
-                <div class="section__description">
+                <div class="combat-page">
                     <div class="spell-book" v-if="user.spell_book">
                         <div class="spell-book__column">
                             <div class="spell-book__category">
@@ -24,6 +24,86 @@
                             </div>
 
                             <div class="spell-book__spell" v-for="spell in prepared(details.entries)">{{ spell.name }}</div>
+                        </div>
+                    </div>
+
+                    <div class="combat-stats" v-if="user">
+                        <article class="cb-stat hitpoints">
+                            <div class="cb-stat__value">
+                                <span>+10</span>
+                                <strong>47</strong>
+                                <span>60</span>
+                            </div>
+                            <div class="cb-stat__label">
+                                <span class="sub">temp</span>
+                                <span class="focus">current hp</span>
+                                <span class="sub">max</span>
+                            </div>
+                        </article>
+
+                        <div class="cb-stat-wrapper">
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <strong>9</strong>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>spell attack bonus</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <strong>17</strong>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>spell save dc</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <strong>14</strong>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>armor class</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <strong>+4</strong>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>initiative</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <strong>30</strong>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>speed</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <span>intelligence</span>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>spellcasting ability</span>
+                                </div>
+                            </article>
+
+                            <article class="cb-stat">
+                                <div class="cb-stat__value">
+                                    <span>+0</span>
+                                </div>
+                                <div class="cb-stat__label">
+                                    <span>inspiration</span>
+                                </div>
+                            </article>
                         </div>
                     </div>
                 </div>

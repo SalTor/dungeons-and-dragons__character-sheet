@@ -1,11 +1,27 @@
-.combat-stats {
+@import "elements/cb-stat";
+
+.cb-stat-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    > .cb-stat {
+        flex-basis: 50%;
+        max-width: 150px;
+    }
+}
+
+.combat-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
 
     position: relative;
 
     padding: 9px 9px 150px 9px;
     margin-top: 25px;
+    margin-left: 27px;
 
     border: 1px solid #979797;
     background-color: #F6F6F6;

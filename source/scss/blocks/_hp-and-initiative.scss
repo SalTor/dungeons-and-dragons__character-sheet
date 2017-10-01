@@ -14,39 +14,6 @@
     }
 }
 
-.hitpoints {
-    display: flex;
-    flex-direction: column;
-
-    position: relative;
-
-    height: 75px;
-    margin-right: 10px;
-    margin-left: 47px;
-
-    text-align: center;
-
-    @media (max-width: 425px) {
-        margin-left: 0;
-        margin-bottom: 3px;
-    }
-
-    &__icon {
-        height: 75px;
-        width:  75px;
-    }
-    &__value {
-        transform: translateX(-50%);
-        position: absolute;
-        left: 50%;
-        bottom: 13px;
-
-        color: black;
-        font-size: 2em;
-        font-family: $font__inconsolata;
-    }
-}
-
 .armor-class,
 .initiative {
     display: flex;
