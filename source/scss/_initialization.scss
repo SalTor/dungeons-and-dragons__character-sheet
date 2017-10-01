@@ -4,16 +4,16 @@
 @import "base/mixins";
 @import "base/tag-specific";
 
-@import "components/navigation-container";
-@import "components/navigation";
+@import "blocks/navigation-container";
+@import "blocks/navigation";
 
-@import "components/section";
+@import "blocks/section";
 
-@import "components/button";
+@import "blocks/button";
 
-@import "components/field-group";
+@import "blocks/field-group";
 
-@import "components/input";
+@import "blocks/input";
 
 .pseudo-body {
     display: flex;
@@ -25,7 +25,7 @@
     margin:  0;
 
     font-size: 16px;
-    font-family: "Open Sans", Arial, sans-serif;
+    font-family: "Andale Mono", "Open Sans", Arial, sans-serif;
 }
 
 header {

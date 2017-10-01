@@ -1,0 +1,34 @@
+@import "elements/spell-book__column";
+@import "elements/spell-book__category";
+@import "elements/spell-book__spell";
+@import "elements/spell-book__slots-used";
+
+.spell-book {
+    display: flex;
+    flex-wrap: wrap;
+
+    position: relative;
+
+    width: 100%;
+    padding: 9px 9px 75px 9px;
+    margin-top: 25px;
+
+    border: 1px solid #979797;
+    background-color: #F6F6F6;
+
+    @media (min-width: 768px) {
+        max-width: 800px;
+    }
+
+    &:after {
+        content: "Visit \"spellbook\" to change prepared spells.";
+        position: absolute;
+        bottom: 2px;
+        left: 6px;
+
+        color: #838383;
+        font-size: .75em;
+        font-family: "Lucida Grande", Arial, sans-serif;
+        font-weight: 300;
+    }
+}
