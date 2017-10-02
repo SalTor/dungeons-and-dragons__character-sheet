@@ -19,6 +19,16 @@
     Vue.component('app-navigation', Navigation)
     Vue.component('app-footer', Footer)
 
+    // Filters
+    Vue.filter('number', entry => entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
+    Vue.filter('sign', number => number >= 0 ? `+${ number }` : `${ number }`)
+    Vue.filter('modifier', saving_throw => this.character.saving_throw_modifiers[saving_throw])
+
+    // Directives
+    Vue.directive('focus', {
+        inserted: el => el.focus()
+    })
+
     export default {
         name: 'app',
         mounted() {
@@ -26,7 +36,12 @@
         },
         data() {
             return {
-                character: [],
+                character: {
+                    death_saves: [ 0, 0 ],
+                    hitpoints: {
+                        temp: 10
+                    }
+                },
                 loading: true
             }
         },
@@ -40,17 +55,6 @@
                         this.loading = false
                     })
             }
-        },
-        created() {
-            // Filters
-            Vue.filter('number', entry => entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
-            Vue.filter('sign', number => number >= 0 ? `+${ number }` : `${ number }`)
-            Vue.filter('modifier', saving_throw => this.character.saving_throw_modifiers[saving_throw])
-
-            // Directives
-            Vue.directive('focus', {
-                inserted: el => el.focus()
-            })
         }
     }
 </script>

@@ -5,19 +5,6 @@
 
     font-family: "Avenir Next", sans-serif;
 
-    &.hitpoints {
-        width: 195px;
-
-        .cb-stat__value {
-            > span {
-                font-size: .75em;
-            }
-            > strong {
-                font-size: 1.25em;
-            }
-        }
-    }
-
     &__value {
         display: flex;
         justify-content: center;
@@ -61,6 +48,31 @@
                 font-size: 1.09375em;
                 font-weight: 400;
             }
+        }
+    }
+
+    &.hitpoints {
+        width: 195px;
+
+        .cb-stat__value {
+            > span {
+                font-size: .75em;
+            }
+            > strong {
+                font-size: 1.25em;
+            }
+        }
+    }
+    &.death-saves {
+        width: 100%;
+        margin-top: 20px;
+
+        > .cb-stat__value {
+            display: flex;
+            justify-content: space-around;
+
+            padding: 10px 0;
+            margin-bottom: 10px;
         }
     }
 }

@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="combat-stats" v-if="user">
+                    <div class="combat-stats" v-if="user.death_saves">
                         <article class="cb-stat hitpoints">
                             <div class="cb-stat__value">
                                 <span>{{ user.hitpoints.temp | sign }}</span>
@@ -105,6 +105,16 @@
                                 </div>
                             </article>
                         </div>
+
+                        <article class="cb-stat death-saves">
+                            <div class="cb-stat__value">
+                                <death-save type="successes" @update="ds__pass" :value="user.death_saves[0]" />
+                                <death-save type="failures"  @update="ds__fail" :value="user.death_saves[1]"  />
+                            </div>
+                            <div class="cb-stat__label">
+                                <span>death saves</span>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -113,28 +123,53 @@
 </template>
 
 <script>
+    import Vue from 'vue'
+    import DeathSave from './death-save.vue'
+
     export default {
         name: 'combat',
-        props: ['user'],
+        props: {
+            user: {
+                type: Object,
+                required: true
+            }
+        },
+        components: {
+            'death-save': DeathSave
+        },
         data() {
-            return {}
+            return {
+                death_saves: this.user.death_saves
+            }
         },
         methods: {
+            ds__pass() {
+                if(this.user.death_saves[0] + 1 <= 3) {
+                    const [ pass, fail ] = this.user.death_saves
+                    this.user.death_saves = [ pass + 1, fail ]
+                }
+            },
+            ds__fail() {
+                if(this.user.death_saves[1] + 1 <= 3) {
+                    const [ pass, fail ] = this.user.death_saves
+                    this.user.death_saves = [ pass, fail +1 ]
+                }
+            },
             prepared(spells) {
                 return spells.filter(spell => spell.prepared || spell.ritual)
             },
-            expend_spell_slot(details) {
-                if (details.slots.expended + 1 <= details.slots.total) {
-                    details.slots.expended++
+            expend_spell_slot(spell_category) {
+                if (spell_category.slots.expended + 1 <= spell_category.slots.total) {
+                    spell_category.slots.expended++
                 }
             },
-            regain_spell_slot(details) {
-                if (details.slots.expended - 1 >= 0) {
-                    details.slots.expended--
+            regain_spell_slot(spell_category) {
+                if (spell_category.slots.expended - 1 >= 0) {
+                    spell_category.slots.expended--
                 }
             },
-            reset_spell_slots(details) {
-                details.slots.expended = 0
+            reset_spell_slots(spell_category) {
+                spell_category.slots.expended = 0
             }
         }
     }

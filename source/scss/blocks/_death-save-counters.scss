@@ -1,0 +1,33 @@
+.death-saves {
+    cursor: pointer;
+
+    &__markers {
+        display: flex;
+
+        &.successes {
+            .death-saves__marker.marked {
+                border-color: green;
+                background-color: green;
+            }
+        }
+        &.failures {
+            .death-saves__marker.marked {
+                border-color: darkred;
+                background-color: darkred;
+            }
+        }
+    }
+    &__marker {
+        display: block;
+        height: 12px;
+        width:  12px;
+        margin: 0 5px;
+
+        border: 1px solid #979797;
+        border-radius: 50%;
+        background-color: #D8D8D8;
+    }
+    &__category {
+        font-size: .875em;
+    }
+}
