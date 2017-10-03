@@ -5,7 +5,7 @@
             <span class="death-saves__marker" :class="{ marked: value >= 2 }"></span>
             <span class="death-saves__marker" :class="{ marked: value === 3 }"></span>
         </div>
-        <span class="death-saves__category">{{ type }}</span>
+        <span class="death-saves__category">{{ category }}</span>
     </article>
 </template>
 
@@ -22,12 +22,22 @@
                 required: true
             }
         },
+        computed: {
+            category() {
+                return this.value === 3 ? 'reset' : this.type
+            }
+        },
         data() {
-            return {}
+            return {
+            }
         },
         methods: {
             update() {
-                this.$emit('update')
+                if(this.value < 3) {
+                    this.$emit('update')
+                } else {
+                    this.$emit('reset')
+                }
             }
         }
     }

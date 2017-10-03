@@ -108,8 +108,8 @@
 
                         <article class="cb-stat death-saves">
                             <div class="cb-stat__value">
-                                <death-save type="successes" @update="ds__pass" :value="user.death_saves[0]" />
-                                <death-save type="failures"  @update="ds__fail" :value="user.death_saves[1]"  />
+                                <death-save type="successes" @update="ds__pass" @reset="ds__reset_p" :value="user.death_saves[0]" />
+                                <death-save type="failures"  @update="ds__fail" @reset="ds__reset_f" :value="user.death_saves[1]" />
                             </div>
                             <div class="cb-stat__label">
                                 <span>death saves</span>
@@ -143,6 +143,14 @@
             }
         },
         methods: {
+            ds__reset_p() {
+                const [ , fail ] = this.user.death_saves
+                this.user.death_saves = [ 0, fail ]
+            },
+            ds__reset_f() {
+                const [ pass, ] = this.user.death_saves
+                this.user.death_saves = [ pass, 0 ]
+            },
             ds__pass() {
                 if(this.user.death_saves[0] + 1 <= 3) {
                     const [ pass, fail ] = this.user.death_saves
