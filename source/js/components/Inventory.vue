@@ -1,28 +1,14 @@
 <template>
     <main role="main">
         <section>
-            <div class="section__content section__content_extra-space-above">
+            <div class="section__content" v-if="user.coin_pouch">
+                <coin-pouch :coins="user.coin_pouch" />
+
                 <div class="field-wrapper field-wrapper_direction_vertical">
                     <div class="inventory">
                         <div class="inventory__create-item" @click="item_being_created = true">create item</div>
 
                         <div class="inventory__item-container">
-                            <div class="item__group item__group_coins">
-                                <div class="item__wrapper item__wrapper_coins">
-                                    <div class="item item_group item_coin" v-for="coin in user.coin_pouch">
-                                        <div class="item__name item__name_coin" :title="coin.type | coin_type">{{ coin.type | coin_type }}</div>
-
-                                        <div class="item__amount item__amount_coin" @click="coin_modifying(coin.type)" :title="coin.amount | number">{{ coin.amount | number }}
-                                            <transition name="fade">
-                                                <div class="item__modifier-container" @click.stop v-on-clickaway="finish_coin_modifying" v-if="coin.type === coin_being_modified">
-                                                    <input v-focus class="item-modifier item-modifier_edit" type="number" title="amount" v-model="coin.amount" :step="amount_step" min="0" @keydown="update_shift_amount($event)">
-                                                </div>
-                                            </transition>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <user-item v-for="item in user.inventory" :item="item" :inventory="user.inventory" :key="calculate__unique_id()"></user-item>
                         </div>
                     </div>
@@ -77,56 +63,31 @@
 </template>
 
 <script>
-    import Vue from "vue"
-    import { mixin as clickaway } from "vue-clickaway"
-    import Item from "./Item.vue"
-
-    Vue.component("user-item", Item)
+    import Vue from 'vue'
+    import { mixin as clickaway } from 'vue-clickaway'
+    import Item from './Item.vue'
+    import CoinPouch from './coin-pouch.vue'
 
     export default {
-        name: "inventory",
+        name: 'inventory',
         props: ["user"],
         mixins: [ clickaway ],
+        components: {
+            'user-item': Item,
+            'coin-pouch': CoinPouch
+        },
         data() {
             return {
-                coin_being_modified: ``,
+                coin_being_modified: '',
                 amount_step: 1,
                 item_being_created: false,
                 new_item_name: ``,
                 new_item_amount: 1,
-                new_item_value__currency: `gp`,
+                new_item_value__currency: 'gp',
                 new_item_value__amount: 0,
                 new_item_context: undefined
             }
         },
-        created() {
-            Vue.filter("coin_type", coin_id => {
-                let coin = ""
-
-                switch(coin_id) {
-                    case "gp":
-                        coin = "Gold Pieces"
-                        break
-                    case "sp":
-                        coin = "Silver Pieces"
-                        break
-                    case "cp":
-                        coin = "Copper Pieces"
-                        break
-                    case "ep":
-                        coin = "Electrum Pieces"
-                        break
-                    case "pp":
-                        coin = "Platinum Pieces"
-                        break
-                    default:
-                        break
-                }
-
-                return coin
-            })
-        },
-        mounted() {},
         methods: {
             create_item(event, array) {
                 event.preventDefault()
@@ -161,20 +122,6 @@
                 } else {
                     this.amount_step = 1
                 }
-            },
-            coin_modifying(id) {
-                if(id === this.coin_being_modified) {
-                    this.coin_being_modified = ``
-                } else {
-                    this.coin_being_modified = id
-                }
-            },
-            finish_coin_modifying() {
-                this.coin_being_modified = undefined
-            },
-
-            coinage(type, amount) {
-                return `${amount}${type}`
             },
             calculate__random_hash() {
                 return Math.floor((1 + Math.random()) * 0x10000)

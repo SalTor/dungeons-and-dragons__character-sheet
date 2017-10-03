@@ -91,13 +91,13 @@
         "skill_proficiencies": ["arcana", "history"],
         "tool_proficiences": [],
         "passive_wisdom": 3,
-        "coin_pouch": [
-            {"type": "gp", "amount": 155},
-            {"type": "cp", "amount":   0},
-            {"type": "sp", "amount":   0},
-            {"type": "ep", "amount":  90},
-            {"type": "pp", "amount":  65}
-        ],
+        "coin_pouch": {
+            "copper": 0,
+            "silver": 5,
+            "electrum": 0,
+            "gold": 312,
+            "platinum": 7
+        },
         "inventory": [
             {"name": "Healing potion",      "amount": 2},
             {"name": "Air elemental crest", "amount": 3},
