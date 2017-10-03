@@ -1,0 +1,27 @@
+.inventory__create-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: -32%;
+
+    height: 25px;
+    width: 90px;
+    padding: 0;
+    margin:  0;
+
+    border: 1px solid #D6D6D6;
+    border-radius: 3px;
+    background-color: #F4F4F4;
+
+    cursor: pointer;
+
+    > span {
+        color: #454545;
+        font-family: "Avenir Next", sans-serif;
+        font-weight: bold;
+        font-size: .75em;
+        line-height: .75;
+    }
+}

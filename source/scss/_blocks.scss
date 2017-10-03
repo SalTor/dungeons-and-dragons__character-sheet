@@ -1,11 +1,12 @@
 @import "blocks/controls";
 
-@import "blocks/spell-book";
 @import "blocks/combat-stats";
 @import "blocks/death-save-counters";
 
+@import "blocks/coin-pouch";
+@import "blocks/inventory";
+
+@import "blocks/spell-book";
+
 @import "blocks/hp-and-initiative";
 @import "blocks/stats-and-modifiers";
-
-@import "blocks/inventory";
-@import "blocks/coin-pouch";

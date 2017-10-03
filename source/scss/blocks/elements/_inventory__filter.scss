@@ -1,0 +1,29 @@
+.inventory__filter {
+    height: 36px;
+    width: 100%;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 0 2px black;
+
+    font-size: 1em;
+    font-family: "Avenir Next", sans-serif;
+    text-indent: 10px;
+
+    opacity: .5;
+
+    transition: opacity .25s ease;
+
+    @media (min-width: 768px) {
+        &:hover, &:focus {
+            opacity: 1;
+            outline: none;
+        }
+    }
+    @media (max-width: 767px) {
+        &:focus {
+            opacity: 1;
+            outline: none;
+        }
+    }
+}

@@ -1,384 +1,64 @@
+@import "./elements/inventory__filter";
+@import "./elements/inventory__create-item";
+
 .inventory {
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    position: relative;
+    width: 100%;
+    max-width: 303px;
+    margin: 0 auto;
 
-    padding-top: 50px;
-
-    max-width: 1000px;
-    margin-right: auto;
-    margin-left:  auto;
-
-    &__title {
-        margin-top: 30px;
-        margin-bottom: 15px;
-
-        font-size: 1.3em;
-        text-decoration: underline;
-    }
-
-    &__item-container {
+    &__controls {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-
-        @media (max-width: 419px) {
-            flex-direction: column;
-            align-items: stretch;
-            flex-wrap: nowrap;
-        }
-    }
-
-    &__create-item {
-        transition: all .25s ease;
-        transform: translateX(-50%);
-        position: absolute;
-        top: 0;
-        left: 50%;
-
-        display: flex;
-        justify-content: center;
         align-items: center;
 
-        height: 30px;
-        padding: 5px 30px;
-
-        cursor: pointer;
-        white-space: nowrap;
-        background-color: $color__turquoise;
-        border: 1px solid $color__turquoise;
-        border-radius: 3px;
-
-        color: white;
-        text-transform: uppercase;
+        position: relative;
     }
 
-    &__item-creator {
-        transition: all .25s ease;
+    &__no-items-found {
+        margin-top: 10px;
 
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        cursor: pointer;
-        background-color: rgba(189, 195, 199, 0.44);
-
-        &.fade-enter-active, &.fade-leave-active {
-            opacity: 1;
-        }
-        &.fade-enter, &.fade-leave-to {
-            opacity: 0;
-        }
+        color: #373737;
+        font-size: .75em;
+        text-align: center;
     }
 }
 
 .item {
     display: flex;
+    align-items: center;
 
-    position: relative;
+    height: 22px;
+    width: calc(100% - 14px);
+    padding: 0 7px;
+    margin-top: 10px;
 
-    padding: 0;
-    margin: 15px;
+    border: 1px solid #979797;
+    background-color: #EFEFEF;
 
-    &__group {
-        &_coins {
-            width: 100%;
-            margin-top: 15px;
-            margin-bottom: 45px;
-        }
-    }
-    &__wrapper {
-        &_coins {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            max-width: 520px;
-            margin-right: auto;
-            margin-left:  auto;
-
-            @media (max-width: 529px) {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    }
-
-    &_coin {
-        min-width: 230px;
-        margin: 15px;
-    }
-
-    &__name,
-    &__amount,
-    &__amount-and-value {
-        font-size: 1.2em;
-    }
+    cursor: pointer;
 
     &__name {
-        display: flex;
-
-        padding: 7px 10px;
-
-        user-select: none;
-        background-color: #eee;
-        border: 1px solid #ccc;
-
-        &_removeable {
-            cursor: pointer;
-        }
-        &_coin {
-            flex: 1;
-
-            white-space: nowrap;
-        }
-
-        @media (max-width: 419px) {
-            flex: 1;
-        }
-    }
-
-    &__amount,
-    &__amount-and-value {
-        display: flex;
-        align-items: center;
-
-        position: relative;
-
-        padding: 5px 10px;
-
-        cursor: pointer;
-        white-space: nowrap;
-        border: 1px solid #ccc;
-        border-left: none;
-
-        font-family: $font__inconsolata;
-
-        &_coin {
-            justify-content: flex-end;
-        }
-    }
-    &__increment-amount {
-        font-family: $font__inconsolata;
-    }
-
-
-    &__remove {
-        z-index: 2;
-        transition: all .25s ease;
-        position: absolute;
-        top: 1px;
-        right: 1px;
-        bottom: 1px;
-        left: 1px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        cursor: pointer;
-        background-color: rgb(255, 255, 255);
-
-        color: red;
-
-        &.fade-enter-active, &.fade-leave-active {
-            opacity: 1;
-        }
-        &.fade-enter, &.fade-leave-to {
-            opacity: 0;
-        }
-    }
-
-    &__context-toggle {
-        display: flex;
-        align-items: center;
-
-        position: relative;
-
-        padding: 5px 6px;
-
-        cursor: pointer;
-        border: 1px solid #ccc;
-        border-left: none;
-
-        span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            height: 15px;
-            width:  15px;
-            padding: 2px;
-
-            background-color: #b5b5b5;
-            border-radius: 50%;
-
-            color: white;
-            font-family: $font__inconsolata;
-        }
-    }
-
-    &__info {
-        transition: all .25s ease;
-        transform: translateX(-50%);
-        position: absolute;
-        bottom: 125%;
-        left: 50%;
-
-        display: block;
-
-        width: 170px;
-        padding: 5px;
-
-        background-color: white;
-        border: 1px solid #ccc;
-
-        color: black;
-        text-align: center;
-
-        &.fade-enter-active, &.fade-leave-active {
-            opacity: 1;
-        }
-        &.fade-enter, &.fade-leave-to {
-            opacity: 0;
-        }
-
-        &:after {
-            transform-origin: center center;
-            transform: rotate(45deg) translateX(-50%);
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-
-            height: 10px;
-            width:  10px;
-
-            background-color: white;
-            border: 1px solid #ccc;
-            border-top: none;
-            border-left: none;
-        }
-
-        @media (max-width: 419px) {
-            left: -35vw;
-        }
-    }
-
-    &__context {
-        transition: all .25s ease;
-        position: absolute;
-        bottom: -100%;
-
-        height: 20px;
-        width: 100%;
-        padding-top: 5px;
-        padding-bottom: 5px;
-
-        overflow-y: scroll;
-        background-color: #e1e1e1;
-        border-top: 1px solid #ccc;
-
-        span {
-            display: block;
-            padding: 10px;
-        }
-
-        &_active {
-            bottom: 15px;
-        }
-    }
-
-    &__modifier-container {
-        transition: all .25s ease;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        position: absolute;
-        top: -55px;
-        left: 50%;
-
-        padding: 8px;
-
-        background-color: white;
-        border: 1px solid #ccc;
-
-        &:after {
-            transform-origin: center center;
-            transform: rotate(45deg) translateX(-50%);
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-
-            height: 10px;
-            width:  10px;
-
-            background-color: white;
-            border: 1px solid #ccc;
-            border-top: none;
-            border-left: none;
-        }
-
-        &.fade-enter-active, &.fade-leave-active {
-            opacity: 1;
-        }
-        &.fade-enter, &.fade-leave-to {
-            opacity: 0;
-        }
+        font-size: .75em;
+        font-family: "Avenir Next", sans-serif;
     }
 }
 
-.item-modifier {
-    &:not(:last-child) {
-        margin-right: 10px;
-    }
+.item-view {
+    display: flex;
+    justify-content: center;
 
-    &[type="number"] {
-        max-width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-        text-align: right;
-    }
-}
+    background-color: #EFEFEF;
+    border: 1px solid #979797;
 
-.item-creator {
-    &__field-container {
-        min-height: 200px;
-        width: 100%;
-        max-width:  300px;
-        padding: 25px;
+    transform: translateX(-50%);
 
-        display: flex;
-        flex-direction: column;
+    > h1 {
 
-        background-color: white;
-
-        @media (max-width: 350px) {
-            max-width: 250px;
-        }
-    }
-    &__field-label {
-        font-size: 1.2em;
-    }
-    &__value,
-    &__amount {
-        max-width: 105px;
-
-        text-align: right;
-    }
-    &__name {
-        font-style: italic;
-        text-indent: 10px;
     }
 }
