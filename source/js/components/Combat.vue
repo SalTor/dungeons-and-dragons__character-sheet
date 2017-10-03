@@ -138,9 +138,7 @@
             'death-save': DeathSave
         },
         data() {
-            return {
-                death_saves: this.user.death_saves
-            }
+            return {}
         },
         methods: {
             ds__reset_p() {
