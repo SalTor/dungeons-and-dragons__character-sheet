@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "cross-env NODE_ENV=production webpack && gulp release",
-    "dev": "concurrently 'gulp' 'webpack-dev-server --progress --open'",
+    "dev": "concurrently 'gulp' 'webpack-dev-server --progress --open --hot'",
     "demo": "cross-env NODE_ENV=production webpack && gulp server"
   },
   "repository": "https://github.com/SalTor/dungeons-and-dragons__character-sheet",
