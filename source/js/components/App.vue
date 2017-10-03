@@ -22,7 +22,6 @@
     // Filters
     Vue.filter('number', entry => entry.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
     Vue.filter('sign', number => number >= 0 ? `+${ number }` : `${ number }`)
-    Vue.filter('modifier', saving_throw => this.character.saving_throw_modifiers[saving_throw])
 
     // Directives
     Vue.directive('focus', {
@@ -31,6 +30,13 @@
 
     export default {
         name: 'app',
+        created() {
+            Vue.filter('modifier', saving_throw => {
+                if(this.character.hasOwnProperty('saving_throw_modifiers')) {
+                    return this.character.saving_throw_modifiers[saving_throw]
+                }
+            })
+        },
         mounted() {
             this.fetch_user_data()
         },

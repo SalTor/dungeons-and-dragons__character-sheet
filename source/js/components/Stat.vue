@@ -7,14 +7,13 @@
 </template>
 
 <script>
-    import Vue from "vue"
+    import Vue from 'vue'
 
     export default {
-        name: "user-stat",
-        props: ["stat"],
+        name: 'user-stat',
+        props: ['stat'],
         data() {
             return {}
-        },
-        methods: {}
+        }
     }
 </script>
