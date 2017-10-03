@@ -4,7 +4,7 @@
         "sub_race": "High Elf",
         "class": {
             "category": "Wizard",
-            "description": "A scholarly magic-user capable of manipulating the structures of reality",
+            "description": "A scholarly magic-user capable of manipulating the structures of reality.",
             "starting_wealth": "4d4 x 10gp"
         },
         "background": {
