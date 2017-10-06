@@ -1,7 +1,7 @@
 'use strict';
 
 const webpack = require('webpack')
-const BabiliPlugin = require('babili-webpack-plugin')
+const BabiliPlugin = require('babel-preset-minify')
 
 const production = process.env.NODE_ENV === 'production'
 
