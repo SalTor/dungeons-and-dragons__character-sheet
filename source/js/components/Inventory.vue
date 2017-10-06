@@ -4,7 +4,7 @@
             <div class="section__content" v-if="user.coin_pouch">
                 <coin-pouch :coins="user.coin_pouch" />
 
-                <inventory-manager :items="user.inventory" />
+                <inventory-manager :items="user.inventory" @delete="deleteItem" @update="updateItem" @create="createItem" />
             </div>
         </section>
     </main>
@@ -28,6 +28,9 @@
             return {}
         },
         methods: {
+            deleteItem(id) { this.$emit('delItem', id) },
+            updateItem(details) { this.$emit('updateItem', details) },
+            createItem(details) { this.$emit('createItem', details) }
         }
     }
 </script>

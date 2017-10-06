@@ -12,23 +12,30 @@
                 autocapitalize="off"
                 spellcheck="false"
             >
-            <button class="inventory__create-item"><span>+ New Entry</span></button>
+            <button @click="openItemCreationPrompt" class="inventory__create-item"><span>+ New Entry</span></button>
         </div>
 
         <div class="inventory__items">
-            <item v-for="entry in results"
-                  :details="entry" :key="createID()"
-                  @view="focusItem"
-            />
+            <item v-for="entry in results" :details="entry" @view="focusItem" :key="createID()" />
 
             <div v-if="results.length === 0" class="inventory__no-items-found">No items matching "{{ entriesFilter }}" were found.</div>
         </div>
 
         <transition name="fade">
-            <create-item v-if="displayCreationPrompt" />
-            <view-item v-if="itemBeingFocused"
-                :details="itemInFocus"
+            <edit-coin-pouch
+                v-if="editCoinPouch"
+            />
+
+            <item-prompt :type="'create'" v-if="displayCreationPrompt"
+                @close="closeItemCreationPrompt"
+                @create="createItem"
+            />
+
+            <item-prompt :type="'view'" v-if="itemBeingFocused"
+                :item="itemInFocus"
                 @close="unfocusItem"
+                @update="updateItemDetails"
+                @delete="deleteItem"
             />
         </transition>
     </div>
@@ -36,8 +43,8 @@
 
 <script>
     import InventoryItem from './inventory-item.vue'
-    import ItemCreator from './item-creator.vue'
     import ItemView from './item-view.vue'
+    import CoinPouchView from './coin-pouch-edit.vue'
 
     export default {
         name: 'item-library',
@@ -46,30 +53,49 @@
         },
         components: {
             'item': InventoryItem,
-            'create-item': ItemCreator,
-            'view-item': ItemView
+            'item-prompt': ItemView,
+            'edit-coin-pouch': CoinPouchView
         },
         computed: {
             results() {
                 return this.items.filter(this.entriesFuzzyMatch)
+                    .sort(({name:a},{name:b})=>a===b?0:a<b?-1:1)
             },
-            itemBeingFocused() {
-                return Object.keys(this.itemInFocus).length !== 0
-            }
+            itemBeingFocused() { return Object.keys(this.itemInFocus).length !== 0 }
         },
         data() {
             return {
                 displayCreationPrompt: false,
                 entriesFilter: '',
-                itemInFocus: {}
+                itemInFocus: {},
+                editCoinPouch: false
             }
         },
         methods: {
+            openItemCreationPrompt() { this.displayCreationPrompt = true },
+            closeItemCreationPrompt() { this.displayCreationPrompt = false },
+            createItem(details) {
+                const id = this.createID()
+
+                this.$emit('create', { id, ...details })
+
+                this.closeItemCreationPrompt()
+            },
             unfocusItem() {
                 this.itemInFocus = {}
             },
             focusItem(details) {
                 this.itemInFocus = details
+            },
+            updateItemDetails(details) {
+                this.$emit('update', details)
+
+                this.unfocusItem()
+            },
+            deleteItem(id) {
+                this.$emit('delete', id)
+
+                this.unfocusItem()
             },
             entriesFuzzyMatch({ name }) {
                 const search = this.entriesFilter.toUpperCase()

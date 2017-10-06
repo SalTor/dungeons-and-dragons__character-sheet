@@ -99,49 +99,46 @@
             "platinum": 7
         },
         "inventory": [
-            {"name": "Healing potion",      "amount": 2},
-            {"name": "Air elemental crest", "amount": 3},
-            {"name": "Scroll of Transmute rock", "amount": 1},
-            {"name": "Scroll of Maximilian's earth and grasp", "amount": 1},
-            {"name": "Scroll of Earth bind", "amount": 1},
+            {"id": "6e084afc-fcea-49d2-5dad-8e2f35757167", "name": "Healing potion",      "amount": 2},
+            {"id": "366b5cf8-9d7e-0df6-7dca-4e6e86ef361e", "name": "Air elemental crest", "amount": 3},
+            {"id": "e9d51148-8bcd-756c-05f3-1ec6e0e0aa82","name": "Scroll of Transmute rock", "amount": 1},
+            {"id": "fe3b9256-c714-6189-6bf9-7ea7d7b921d1", "name": "Scroll of Maximilian's earth and grasp", "amount": 1},
+            {"id": "96bc060f-80f5-9a5e-8c82-027deac6b1a2", "name": "Scroll of Earth bind", "amount": 1},
             {
+                "id": "b230a8a7-a622-6894-5575-6e2742dd1860",
                 "name": "Gold bracelet",
                 "amount": 2,
-                "value": {
-                    "gp": 30
-                }
+                "price": "30gp"
             },
             {
+                "id": "83134b59-525d-ca5d-94c0-11a30b9ba04a",
                 "name": "Vestment",
-                "context": "Obtained from fighting Earth Cultists.",
+                "notes": "Obtained from fighting Earth Cultists.",
                 "amount": 2,
-                "value": {
-                    "gp": 40
-                }
+                "price": "40gp"
             },
             {
+                "id": "f1de3eea-62eb-7258-bac5-3e916480d94c",
                 "name": "Turquoise stone",
                 "amount": 13,
-                "value": {
-                    "gp": 10
-                }
+                "price": "10gp"
             },
-            {"name": "Scroll of Expeditious Retreat", "amount": 1},
-            {"name": "Scroll of Entangle", "amount": 1},
-            {"name": "Scroll of Shield", "amount": 1},
-            {"name": "Drift globe", "amount": 1},
-            {"name": "Dagger of light", "amount": 1},
+            {"id": "e9204795-ba46-6725-7adc-8dda43dac93c", "name": "Scroll of Expeditious Retreat", "amount": 1},
+            {"id": "be4f9859-655c-1365-e16e-6c1e00396a0b", "name": "Scroll of Entangle", "amount": 1},
+            {"id": "a2b5aa89-614d-6b11-81ec-f88ee8d23582", "name": "Scroll of Shield", "amount": 1},
+            {"id": "5f47bc6e-c054-b9fd-8059-ac68e9a99e65", "name": "Drift globe", "amount": 1},
+            {"id": "931e4505-61f1-c511-e496-d01befad62aa", "name": "Dagger of light", "amount": 1},
             {
+                "id": "03042216-fb2a-b342-94e3-7aaff7e833cc",
                 "name": "A key",
-                "context": "Found in a room in a monastery up North.",
+                "notes": "Found in a room in a monastery up North.",
                 "amount": 1
             },
             {
+                "id": "0a20a933-2978-8f8b-1d8e-3543794be8ec",
                 "name": "Mirabar tradebar",
                 "amount": 4,
-                "value": {
-                    "gp": 5
-                }
+                "price": "5gp"
             }
         ],
         "prepared_spells": 13,

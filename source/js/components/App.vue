@@ -2,7 +2,7 @@
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
         <app-navigation></app-navigation>
 
-        <router-view :user="character"></router-view>
+        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" />
 
         <app-footer></app-footer>
     </div>
@@ -52,6 +52,22 @@
             }
         },
         methods: {
+            createItem(details) {
+                this.character.inventory.push(details)
+            },
+            deleteItem(id) {
+                const inven = this.character.inventory
+                this.character.inventory = inven.filter(i => i.id !== id)
+            },
+            updateItem(details) {
+                const { name, amount, price, notes, id } = details
+
+                const current_item = this.character.inventory.filter(({ id: d }) => d === id)[0]
+                current_item.name = name
+                current_item.amount = amount
+                current_item.price = price
+                current_item.notes = notes
+            },
             fetch_user_data() {
                 fetch('./data/character_sheet__player_name.json')
                     .then(response => response.json())
