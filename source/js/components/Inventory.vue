@@ -4,7 +4,7 @@
             <div class="section__content" v-if="coins && items">
                 <coin-pouch :coins="coins" @open="openCoinPouch" />
 
-                <inventory-manager :items="items" @delete="deleteItem" @update="updateItem" @create="createItem" />
+                <inventory-manager :items="items" />
             </div>
         </section>
 
@@ -47,8 +47,6 @@
         },
         methods: {
             deleteItem(id) { this.$emit('delItem', id) }
-            , updateItem(details) { this.$emit('updateItem', details) }
-            , createItem(details) { this.$emit('createItem', details) }
             , openCoinPouch() { this.editCoinPouch = true }
             , closeCoinPouch() { this.editCoinPouch = false  }
         }
