@@ -108,8 +108,8 @@
 
                         <article class="cb-stat death-saves">
                             <div class="cb-stat__value">
-                                <death-save type="successes" @update="ds__pass" @reset="ds__reset_p" :value="user.death_saves[0]" />
-                                <death-save type="failures"  @update="ds__fail" @reset="ds__reset_f" :value="user.death_saves[1]" />
+                                <death-save type="successes" :value="user.death_saves[0]" />
+                                <death-save type="failures"  :value="user.death_saves[1]" />
                             </div>
                             <div class="cb-stat__label">
                                 <span>death saves</span>
@@ -123,16 +123,14 @@
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
     import Vue from 'vue'
     import DeathSave from './death-save.vue'
 
     export default {
         name: 'combat',
         props: {
-            user: {
-                type: Object,
-                required: true
-            }
+            user: { type: Object, required: true }
         },
         components: {
             'death-save': DeathSave
@@ -141,29 +139,7 @@
             return {}
         },
         methods: {
-            ds__reset_p() {
-                const [ , fail ] = this.user.death_saves
-                this.user.death_saves = [ 0, fail ]
-            },
-            ds__reset_f() {
-                const [ pass, ] = this.user.death_saves
-                this.user.death_saves = [ pass, 0 ]
-            },
-            ds__pass() {
-                if(this.user.death_saves[0] + 1 <= 3) {
-                    const [ pass, fail ] = this.user.death_saves
-                    this.user.death_saves = [ pass + 1, fail ]
-                }
-            },
-            ds__fail() {
-                if(this.user.death_saves[1] + 1 <= 3) {
-                    const [ pass, fail ] = this.user.death_saves
-                    this.user.death_saves = [ pass, fail +1 ]
-                }
-            },
-            prepared(spells) {
-                return spells.filter(spell => spell.prepared || spell.ritual)
-            },
+            prepared(spells) { return spells.filter(spell => spell.prepared || spell.ritual) },
             expend_spell_slot(spell_category) {
                 if (spell_category.slots.expended + 1 <= spell_category.slots.total) {
                     spell_category.slots.expended++

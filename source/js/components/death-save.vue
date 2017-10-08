@@ -10,33 +10,30 @@
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
+
     export default {
         name: 'death-save',
         props: {
-            type: {
-                type: String,
-                required: true
-            },
-            value: {
-                type: Number,
-                required: true
-            }
+            type: { type: String, required: true },
+            value: { type: Number, required: true }
         },
         computed: {
-            category() {
-                return this.value === 3 ? 'reset' : this.type
-            }
+            category() { return this.value === 3 ? 'reset' : this.type }
         },
         data() {
             return {
+                which: this.type === 'successes' ? 'pass' : 'fail'
             }
         },
         methods: {
             update() {
-                if(this.value < 3) {
-                    this.$emit('update')
+                const { which, value } = this
+
+                if(value < 3) {
+                    bus.$emit(`death-saves::${ which }`)
                 } else {
-                    this.$emit('reset')
+                    bus.$emit(`death-saves::reset-${ which }`)
                 }
             }
         }
