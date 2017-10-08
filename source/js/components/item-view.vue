@@ -119,16 +119,10 @@
             }
         },
         methods: {
-            removeItem() {
-                this.$emit('delete', this.id)
-            },
-            toggleNotes() { this.notes = isString(this.notes) ? null : '' },
-            togglePrice() { this.price = isString(this.price) ? null : '' },
-            closePrompt(event) {
-                if(event.path[3].className !== 'item-view') {
-                    this.$emit('close')
-                }
-            },
+            removeItem() { this.$emit('delete', this.id) }
+            , toggleNotes() { this.notes = isString(this.notes) ? null : '' }
+            , togglePrice() { this.price = isString(this.price) ? null : '' }
+            , closePrompt() { this.$emit('close') },
             saveItemDetails(event) {
                 const { price, notes } = this
                 const invalid_price = isString(price) && !price.match(this.price_validation)
