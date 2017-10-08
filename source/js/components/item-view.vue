@@ -53,37 +53,37 @@
             total_value() {
                 const price_match = this.price.match(this.price_validation)
 
-                if(price_match) {
-                    const units = this.price.match(this.coin_validation)[0]
-                    const value = parseFloat(this.price)
-                    const total = (isNumeric(this.amount) ? this.amount : 1) * (isNumeric(value) ? value : 0)
-
-                    return total + units
-                } else {
+                if(!price_match) {
                     return 'no value'
                 }
+
+                const units = this.price.match(this.coin_validation)[0]
+                const value = parseFloat(this.price)
+                const total = (isNumeric(this.amount) ? this.amount : 1) * (isNumeric(value) ? value : 0)
+
+                return total + units
             },
             save_button() { return this.any_changes || this.new_item },
             any_changes() {
-                if(this.item) {
-                    const { name: current_name,
-                        amount: current_amount,
-                        price: current_price,
-                        notes: current_notes } = this
-
-                    const { name: original_name = '',
-                        amount: original_amount = 1,
-                        price: original_price = null,
-                        notes: original_notes = null } = this.item
-
-                    if(current_name !== original_name) return true
-                    if(current_amount !== original_amount) return true
-                    if(current_price !== original_price) return true
-
-                    return current_notes !== original_notes
-                } else {
+                if(!this.item) {
                     return false
                 }
+
+                const { name: current_name,
+                    amount: current_amount,
+                    price: current_price,
+                    notes: current_notes } = this
+
+                const { name: original_name = '',
+                    amount: original_amount = 1,
+                    price: original_price = null,
+                    notes: original_notes = null } = this.item
+
+                if(current_name !== original_name) return true
+                if(current_amount !== original_amount) return true
+                if(current_price !== original_price) return true
+
+                return current_notes !== original_notes
             }
         },
         watch: {
