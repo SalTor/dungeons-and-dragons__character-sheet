@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
+    import Vue from 'vue'
     import { isNumeric } from '../helper-functions'
     import { mixin as clickaway } from 'vue-clickaway'
 
@@ -71,11 +73,11 @@
         },
         methods: {
             format(coin) { return `${ isNumeric(parseInt(coin)) ? parseInt(coin) : 0 }` },
-            closePouch() { this.$emit('close') },
+            closePouch() { bus.$emit('coin-pouch:close') },
             save(event) {
                 if(this.any_changes) {
                     event.preventDefault()
-                    this.$emit('update', this)
+                    bus.$emit('coin-pouch:update', this)
                 }
             }
         }

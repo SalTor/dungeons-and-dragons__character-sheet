@@ -9,12 +9,13 @@
         </section>
 
         <transition name="fade">
-            <edit-coin-pouch v-if="coin_pouch" :coins="coins" @close="closeCoinPouch" @update="updateCoinPouch" />
+            <edit-coin-pouch v-if="coin_pouch" :coins="coins" />
         </transition>
     </main>
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
     import Vue from 'vue'
     import CoinPouch from './coin-pouch.vue'
     import ItemLibrary from './item-library.vue'
@@ -35,6 +36,10 @@
             , items() { return this.user.inventory }
             , coin_pouch() { return this.editCoinPouch && this.coins }
         },
+        created() {
+            bus.$on('coin-pouch:update', this.closeCoinPouch)
+            bus.$on('coin-pouch:close',  this.closeCoinPouch)
+        },
         data() {
             return {
                 editCoinPouch: false
@@ -46,11 +51,6 @@
             , createItem(details) { this.$emit('createItem', details) }
             , openCoinPouch() { this.editCoinPouch = true }
             , closeCoinPouch() { this.editCoinPouch = false  }
-            , updateCoinPouch(new_coins) {
-                this.editCoinPouch = false
-
-                this.$emit('updateCoins', new_coins)
-            }
         }
     }
 </script>

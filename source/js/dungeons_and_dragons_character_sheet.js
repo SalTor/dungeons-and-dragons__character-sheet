@@ -31,6 +31,8 @@ const router = new VueRouter({
     base: __dirname + 'public'
 })
 
+export const bus = new Vue()
+
 new Vue({
     el: '#dungeons_and_dragons__character_sheet',
     router,

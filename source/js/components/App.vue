@@ -2,13 +2,14 @@
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
         <app-navigation></app-navigation>
 
-        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" @updateCoins="updateCoins" />
+        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" />
 
         <app-footer></app-footer>
     </div>
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
     import Vue from 'vue'
     import Navigation from './Navigation.vue'
     import Footer from './Footer.vue'
@@ -24,9 +25,7 @@
     Vue.filter('sign', number => number >= 0 ? `+${ number }` : `${ number }`)
 
     // Directives
-    Vue.directive('focus', {
-        inserted: el => el.focus()
-    })
+    Vue.directive('focus', { inserted: el => el.focus() })
 
     export default {
         name: 'app',
@@ -36,6 +35,8 @@
                     return this.character.saving_throw_modifiers[saving_throw]
                 }
             })
+
+            bus.$on('coin-pouch:update', this.updateCoins)
         },
         mounted() {
             this.fetch_user_data()
