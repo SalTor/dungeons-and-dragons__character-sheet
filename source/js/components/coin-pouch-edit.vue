@@ -25,7 +25,7 @@
             </div>
 
             <div class="prompt__controls">
-                <button @click="save" class="control cta" :class="{ disabled: !any_changes }" :title="save_hover_text">save</button>
+                <button @click="save" class="control cta" :class="{ disabled: !any_changes }" :title="save_hover_text" type="button">save</button>
             </div>
         </form>
     </div>
@@ -41,7 +41,7 @@
         computed: {
             any_changes() {
                 const coins = Object.keys(this.coins)
-                const mismatches = coins.filter(coin => parseInt(this[coin]) !== this.coins[coin])
+                const mismatches = coins.filter(coin => parseInt(this[coin]) !== parseInt(this.coins[coin]))
 
                 return mismatches.length > 0
             }
@@ -62,8 +62,9 @@
         },
         methods: {
             closePouch() { this.$emit('close') },
-            save() {
+            save(event) {
                 if(this.any_changes) {
+                    event.preventDefault()
                     this.$emit('update', this)
                 }
             }
