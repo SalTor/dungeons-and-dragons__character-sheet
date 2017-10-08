@@ -12,7 +12,7 @@
                 autocapitalize="off"
                 spellcheck="false"
             >
-            <button @click="openItemCreationPrompt" class="inventory__create-item"><span>+ New Entry</span></button>
+            <button @click="openItemCreatePrompt" class="inventory__create-item"><span>+ New Entry</span></button>
         </div>
 
         <div class="inventory__items">
@@ -22,22 +22,14 @@
         </div>
 
         <transition name="fade">
-            <item-prompt :type="'create'" v-if="displayCreationPrompt"
-                @close="closeItemCreationPrompt"
-                @create="createItem"
-            />
-
-            <item-prompt :type="'view'" v-if="itemBeingFocused"
-                :item="itemInFocus"
-                @close="unfocusItem"
-                @update="updateItemDetails"
-                @delete="deleteItem"
-            />
+            <item-prompt type="create" v-if="createItem" />
+            <item-prompt type="update" v-if="itemToView" :item="itemToView" />
         </transition>
     </div>
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
     import InventoryItem from './inventory-item.vue'
     import ItemView from './item-view.vue'
 
@@ -52,46 +44,27 @@
         },
         computed: {
             results() {
-                return this.items.filter(this.entriesFuzzyMatch)
+                return this.items.filter(this.itemFuzzyMatch)
                     .sort(({name:a},{name:b})=>a===b?0:a<b?-1:1)
-            },
-            itemBeingFocused() { return Object.keys(this.itemInFocus).length !== 0 }
+            }
         },
         data() {
             return {
-                displayCreationPrompt: false,
+                createItem: false,
+                itemToView: null,
                 entriesFilter: '',
-                itemInFocus: {},
                 editCoinPouch: false
             }
         },
+        created() {
+            bus.$on('item:update', this.closeItemUpdatePrompt)
+            bus.$on('item:delete', this.closeItemUpdatePrompt)
+            bus.$on('item:create', this.closeItemCreatePrompt)
+            bus.$on('item:close-updater', this.closeItemUpdatePrompt)
+            bus.$on('item:close-creator', this.closeItemCreatePrompt)
+        },
         methods: {
-            openItemCreationPrompt() { this.displayCreationPrompt = true },
-            closeItemCreationPrompt() { this.displayCreationPrompt = false },
-            createItem(details) {
-                const id = this.createID()
-
-                this.$emit('create', { id, ...details })
-
-                this.closeItemCreationPrompt()
-            },
-            unfocusItem() {
-                this.itemInFocus = {}
-            },
-            focusItem(details) {
-                this.itemInFocus = details
-            },
-            updateItemDetails(details) {
-                this.$emit('update', details)
-
-                this.unfocusItem()
-            },
-            deleteItem(id) {
-                this.$emit('delete', id)
-
-                this.unfocusItem()
-            },
-            entriesFuzzyMatch({ name }) {
+            itemFuzzyMatch({ name }) {
                 const search = this.entriesFilter.toUpperCase()
                 const text   = name.toUpperCase()
 
@@ -107,14 +80,18 @@
                 }
 
                 return true
-            },
-            createID() {
+            }
+            , openItemCreatePrompt() { this.createItem = true }
+            , closeItemCreatePrompt() { this.createItem = false }
+            , closeItemUpdatePrompt() { this.itemToView = null }
+            , focusItem(details) { this.itemToView = details }
+            , createID() {
                 return this.createRandomHash() + this.createRandomHash()
                     + '-' + this.createRandomHash() + '-' + this.createRandomHash()
                     + '-' + this.createRandomHash() + '-' + this.createRandomHash()
                     + this.createRandomHash() + this.createRandomHash()
-            },
-            createRandomHash() {
+            }
+            , createRandomHash() {
                 return Math.floor((1 + Math.random()) * 0x10000)
                     .toString(16)
                     .substring(1)

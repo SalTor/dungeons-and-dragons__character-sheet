@@ -23,7 +23,7 @@
 
                 <div class="prompt__changes">
                     <button class="control cta" v-if="save_button" @click="saveItemDetails" type="submit">{{ save_text }}</button>
-                    <button class="control danger" v-if="item_exists" @click="removeItem" type="button">delete</button>
+                    <button class="control danger" v-if="item_exists" @click="deleteItem" type="button">delete</button>
                 </div>
             </div>
         </form>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import { bus } from '../dungeons_and_dragons_character_sheet'
     import { mixin as clickaway } from 'vue-clickaway'
     import { isNumeric, isString } from '../helper-functions'
 
@@ -47,7 +48,7 @@
             save_text() { return this.item_exists ? 'save changes' : 'create' },
             show_notes() { return isString(this.notes) },
             show_price() { return isString(this.price) },
-            item_exists() { return this.type === 'view' },
+            item_exists() { return this.type === 'update' },
             new_item() { return this.type === 'create' },
             total_value() {
                 const price_match = this.price.match(this.price_validation)
@@ -108,7 +109,7 @@
                 notes
             }
 
-            if(this.type === 'view') {
+            if(this.type === 'update') {
                 item_details.id = this.item.id
             }
 
@@ -119,10 +120,6 @@
             }
         },
         methods: {
-            removeItem() { this.$emit('delete', this.id) }
-            , toggleNotes() { this.notes = isString(this.notes) ? null : '' }
-            , togglePrice() { this.price = isString(this.price) ? null : '' }
-            , closePrompt() { this.$emit('close') },
             saveItemDetails(event) {
                 const { price, notes } = this
                 const invalid_price = isString(price) && !price.match(this.price_validation)
@@ -134,11 +131,27 @@
                     event.preventDefault()
 
                     if(this.item_exists) {
-                        this.$emit('update', this)
+                        bus.$emit('item:update', this)
                     } else {
-                        this.$emit('create', this)
+                        const id = this.createID()
+                        bus.$emit('item:create', { id, ...this })
                     }
                 }
+            }
+            , toggleNotes() { this.notes = isString(this.notes) ? null : '' }
+            , togglePrice() { this.price = isString(this.price) ? null : '' }
+            , deleteItem()  { bus.$emit('item:delete', this.id) }
+            , closePrompt() { bus.$emit(`item:close-${ this.item ? 'updater' : 'creator' }`) }
+            , createID() {
+                return this.createRandomHash() + this.createRandomHash()
+                    + '-' + this.createRandomHash() + '-' + this.createRandomHash()
+                    + '-' + this.createRandomHash() + '-' + this.createRandomHash()
+                    + this.createRandomHash() + this.createRandomHash()
+            }
+            , createRandomHash() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1)
             }
         }
     }

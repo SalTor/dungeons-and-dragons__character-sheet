@@ -2,7 +2,7 @@
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
         <app-navigation></app-navigation>
 
-        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" />
+        <router-view :user="character" />
 
         <app-footer></app-footer>
     </div>
@@ -37,6 +37,9 @@
             })
 
             bus.$on('coin-pouch:update', this.updateCoins)
+            bus.$on('item:create', this.createItem)
+            bus.$on('item:update', this.updateItem)
+            bus.$on('item:delete', this.deleteItem)
         },
         mounted() {
             this.fetch_user_data()
