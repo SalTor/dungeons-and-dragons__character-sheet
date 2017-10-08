@@ -11,7 +11,7 @@
                 <div v-if="show_price" class="prompt__item-total-price">
                     <input type="text" placeholder="0gp" v-model="price" title="1gp/cp/sp/ep/pp" spellcheck="false" pattern="^\d+(\.\d{1,2})?[csegp]p$" required>
 
-                    <p>= {{ total_value }}</p>
+                    <p v-if="parseInt(amount) > 1">= {{ total_value }}</p>
                 </div>
 
                 <textarea v-if="show_notes" name="item notes" placeholder="Notes" rows="3" v-model="notes" title="Item notes" required></textarea>
