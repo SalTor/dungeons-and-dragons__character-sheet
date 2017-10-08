@@ -1,0 +1,48 @@
+@import "elements/prompt__item-amount";
+@import "elements/prompt__item-total-price";
+@import "elements/prompt__item-details";
+@import "elements/prompt__coins";
+
+.prompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 25%;
+    left: 50%;
+
+    min-height: 100px;
+    width: 350px;
+    padding: 15px;
+    padding-bottom: 5px;
+
+    background-color: #EFEFEF;
+    border: 1px solid #979797;
+
+    transform: translateX(-50%);
+
+    &__item-amt-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 10px;
+    }
+    &__item-name {
+        min-width: 75%;
+        max-width: 80%;
+    }
+
+    &__controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    &__changes {
+        display: flex;
+        justify-content: flex-end;
+
+        width: 100%;
+    }
+}

@@ -1,0 +1,18 @@
+.prompt__item-total-price {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    font-family: "Andale Mono", "Open Sans", Arial, sans-serif;
+    font-size: 1.1em;
+
+    > input {
+        max-width: 15%;
+        padding-right: 5px;
+        margin-right: 10px;
+
+        font-family: "Andale Mono", "Open Sans", Arial, sans-serif;
+        text-align: right;
+    }
+}

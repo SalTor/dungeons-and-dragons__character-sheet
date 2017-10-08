@@ -1,14 +1,14 @@
 <template>
-    <div class="item-view" v-on-clickaway="closePrompt">
+    <div class="prompt" v-on-clickaway="closePrompt">
         <form>
-            <div class="item-view__details">
-                <div class="item-view__amt-name">
-                    <input type="number" placeholder="1" v-model="amount" title="Amount" min="1" class="item-view__amount" required>
+            <div class="prompt__item-details">
+                <div class="prompt__item-amt-name">
+                    <input type="number" placeholder="1" v-model="amount" title="Amount" min="1" class="prompt__item-amount" required>
                     <div style="text-align: center;margin: 0 5px;">x</div>
-                    <input type="text" placeholder="Name" v-model="name" title="Item name" spellcheck="false" class="item-view__name" required>
+                    <input type="text" placeholder="Name" v-model="name" title="Item name" spellcheck="false" class="prompt__item-name" required>
                 </div>
 
-                <div v-if="show_price" class="item-view__total-price">
+                <div v-if="show_price" class="prompt__item-total-price">
                     <input type="text" placeholder="0gp" v-model="price" title="1gp/cp/sp/ep/pp" spellcheck="false" pattern="^\d+(\.\d{1,2})?[csegp]p$" required>
 
                     <p>= {{ total_value }}</p>
@@ -17,13 +17,13 @@
                 <textarea v-if="show_notes" name="item notes" placeholder="Notes" rows="3" v-model="notes" title="Item notes" required></textarea>
             </div>
 
-            <div class="item-view__controls">
-                <button @click="toggleNotes" type="button">{{ btn_text_notes }}</button>
-                <button @click="togglePrice" type="button">{{ btn_text_price }}</button>
+            <div class="prompt__controls">
+                <button @click="toggleNotes" class="control" type="button">{{ btn_text_notes }}</button>
+                <button @click="togglePrice" class="control" type="button">{{ btn_text_price }}</button>
 
-                <div class="item-view__changes">
-                    <button class="cta" v-if="save_button" @click="saveItemDetails" type="submit">{{ save_text }}</button>
-                    <button class="danger" v-if="item_exists" @click="removeItem" type="button">delete</button>
+                <div class="prompt__changes">
+                    <button class="control cta" v-if="save_button" @click="saveItemDetails" type="submit">{{ save_text }}</button>
+                    <button class="control danger" v-if="item_exists" @click="removeItem" type="button">delete</button>
                 </div>
             </div>
         </form>

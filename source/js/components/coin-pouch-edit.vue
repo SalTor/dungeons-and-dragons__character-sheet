@@ -1,23 +1,31 @@
 <template>
-    <div class="item-view">
+    <div class="prompt" v-on-clickaway="closePouch">
         <form>
-            <div class="item-view__details">
-                <div class="item-view__amt-name">
-                    <input type="number" placeholder="Amount" title="Amount" min="1" class="item-view__amount">
-                    <input type="text" placeholder="Name" title="Item name" spellcheck="false" class="item-view__name" required>
+            <div class="prompt__coins">
+                <div class="coin">
+                    <input v-model="copper" id="coins_copper" type="number" title="Copper coins" min="0">
+                    <label for="coins_copper">copper</label>
                 </div>
-
-                <div>
-                    <input type="text" placeholder="Unit price. Ex: 20gp" title="Unit price" spellcheck="false">
+                <div class="coin">
+                    <input v-model="silver" id="coins_silver" type="number" title="Silver coins" min="0">
+                    <label for="coins_silver">silver</label>
                 </div>
-
-                <textarea name="item notes" placeholder="Notes" rows="3" title="Item notes"></textarea>
+                <div class="coin">
+                    <input v-model="electrum" id="coins_electrum" type="number" title="Electrum coins" min="0">
+                    <label for="coins_electrum">electrum</label>
+                </div>
+                <div class="coin">
+                    <input v-model="gold" id="coins_gold" type="number" title="Gold coins" min="0">
+                    <label for="coins_gold">gold</label>
+                </div>
+                <div class="coin">
+                    <input v-model="platinum" id="coins_platinum" type="number" title="Platinum coins" min="0">
+                    <label for="coins_platinum">platinum</label>
+                </div>
             </div>
 
-            <div class="item-view__controls">
-                <!--<button v-if="anyChanges" @click="saveItemDetails" type="submit">save</button>-->
-                <!--<button v-if="!notes" @click="showNotes" type="button">+ notes</button>-->
-                <!--<button @click="removeItem" type="button">delete</button>-->
+            <div class="prompt__controls">
+                <button @click="save" class="control cta" :class="{ disabled: !any_changes }" :title="save_hover_text">save</button>
             </div>
         </form>
     </div>
@@ -28,6 +36,37 @@
 
     export default {
         name: 'coin-pouch-view',
-        mixins: [clickaway]
+        mixins: [clickaway],
+        props: { coins: { type: Object, required: true } },
+        computed: {
+            any_changes() {
+                const coins = Object.keys(this.coins)
+                const mismatches = coins.filter(coin => parseInt(this[coin]) !== this.coins[coin])
+
+                return mismatches.length > 0
+            }
+        },
+        data() {
+            const coins = {
+                copper: this.coins.copper,
+                silver: this.coins.silver,
+                electrum: this.coins.electrum,
+                gold: this.coins.gold,
+                platinum: this.coins.platinum
+            }
+
+            return {
+                save_hover_text: this.any_changes ? '' : 'No changes to save.',
+                ...coins
+            }
+        },
+        methods: {
+            closePouch() { this.$emit('close') },
+            save() {
+                if(this.any_changes) {
+                    this.$emit('update', this)
+                }
+            }
+        }
     }
 </script>

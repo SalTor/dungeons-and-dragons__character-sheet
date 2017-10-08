@@ -22,10 +22,6 @@
         </div>
 
         <transition name="fade">
-            <edit-coin-pouch
-                v-if="editCoinPouch"
-            />
-
             <item-prompt :type="'create'" v-if="displayCreationPrompt"
                 @close="closeItemCreationPrompt"
                 @create="createItem"
@@ -44,7 +40,6 @@
 <script>
     import InventoryItem from './inventory-item.vue'
     import ItemView from './item-view.vue'
-    import CoinPouchView from './coin-pouch-edit.vue'
 
     export default {
         name: 'item-library',
@@ -53,8 +48,7 @@
         },
         components: {
             'item': InventoryItem,
-            'item-prompt': ItemView,
-            'edit-coin-pouch': CoinPouchView
+            'item-prompt': ItemView
         },
         computed: {
             results() {

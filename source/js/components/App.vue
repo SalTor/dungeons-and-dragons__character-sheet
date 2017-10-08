@@ -2,7 +2,7 @@
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
         <app-navigation></app-navigation>
 
-        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" />
+        <router-view :user="character" @delItem="deleteItem" @updateItem="updateItem" @createItem="createItem" @updateCoins="updateCoins" />
 
         <app-footer></app-footer>
     </div>
@@ -44,9 +44,9 @@
             return {
                 character: {
                     death_saves: [ 0, 0 ],
-                    hitpoints: {
-                        temp: 10
-                    }
+                    hitpoints: { temp: 10 },
+                    inventory: null,
+                    coin_pouch: null
                 },
                 loading: true
             }
@@ -76,6 +76,11 @@
 
                         this.loading = false
                     })
+            },
+            updateCoins(new_coins) {
+                const { copper, silver, electrum, gold, platinum } = new_coins
+
+                this.character.coin_pouch = { copper, silver, electrum, gold, platinum }
             }
         }
     }

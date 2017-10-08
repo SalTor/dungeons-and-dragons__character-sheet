@@ -4,3 +4,12 @@
              &::-moz-placeholder { @content }
               &:-moz-placeholder { @content }
 }
+
+@mixin mx__input-number-no-html5-buttons {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        margin: 0;
+    }
+}
