@@ -49,11 +49,11 @@
             , btn_text_save() { return this.any_changes ? 'save' : 'no changes' }
         },
         watch: {
-            copper(coin) {   this.copper   = isNumeric(parseInt(coin)) ? coin : '0' },
-            silver(coin) {   this.silver   = isNumeric(parseInt(coin)) ? coin : '0' },
-            electrum(coin) { this.electrum = isNumeric(parseInt(coin)) ? coin : '0' },
-            gold(coin) {     this.gold     = isNumeric(parseInt(coin)) ? coin : '0' },
-            platinum(coin) { this.platinum = isNumeric(parseInt(coin)) ? coin : '0' }
+            copper(coin) {   this.copper   = this.format(coin) },
+            silver(coin) {   this.silver   = this.format(coin) },
+            electrum(coin) { this.electrum = this.format(coin) },
+            gold(coin) {     this.gold     = this.format(coin) },
+            platinum(coin) { this.platinum = this.format(coin) }
         },
         data() {
             const coins = {
@@ -70,6 +70,7 @@
             }
         },
         methods: {
+            format(coin) { return `${ isNumeric(parseInt(coin)) ? parseInt(coin) : 0 }` },
             closePouch() { this.$emit('close') },
             save(event) {
                 if(this.any_changes) {
