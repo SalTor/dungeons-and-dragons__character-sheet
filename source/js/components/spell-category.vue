@@ -5,8 +5,8 @@
 
             <span class="spell-book__slots-used">
                 <span>{{ expended }}/{{ total }}</span>
-                <i class="control decrement" @click="regain_spell_slot" :class="{ disabled: fresh_start }"></i>
-                <i class="control increment" @click="expend_spell_slot" :class="{ disabled: cannot_cast}"></i>
+                <i class="control decrement" @click="regainSpellSlot" :class="{ disabled: expended === 0     }"></i>
+                <i class="control increment" @click="expendSpellSlot" :class="{ disabled: expended === total }"></i>
             </span>
         </div>
 
@@ -22,9 +22,7 @@
         computed: {
             spells() { return this.details.entries },
             expended() { return this.details.slots.expended },
-            prepared_spells() { return this.spells.filter(({ ritual, prepared }) => ritual || prepared) },
-            cannot_cast() { return this.expended === this.total },
-            fresh_start() { return this.expended === 0 }
+            prepared_spells() { return this.spells.filter(({ ritual, prepared }) => ritual || prepared) }
         },
         data() {
             return {
@@ -32,21 +30,21 @@
             }
         },
         methods: {
-            expend_spell_slot() {
+            expendSpellSlot() {
                 const { expended, total } = this
 
                 if (expended + 1 <= total) {
-                    bus.$emit('spell-slot::lose', this.level)
+                    bus.$emit('spell-slot::expend', this.level)
                 }
             },
-            regain_spell_slot() {
+            regainSpellSlot() {
                 const { expended } = this
 
                 if (expended - 1 >= 0) {
-                    bus.$emit('spell-slot::gain', this.level)
+                    bus.$emit('spell-slot::regain', this.level)
                 }
             },
-            reset_spell_slots() {
+            resetSpellSlots() {
                 bus.$emit('spell-slot::reset', this.level)
             }
         }

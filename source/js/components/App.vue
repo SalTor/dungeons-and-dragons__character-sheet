@@ -44,9 +44,9 @@
             bus.$on('death-saves::reset-fail', this.resetDSF)
             bus.$on('death-saves::pass', this.increaseDSP)
             bus.$on('death-saves::fail', this.increaseDSF)
-            bus.$on('spell-slot::gain', this.gainSpellSlot)
-            bus.$on('spell-slot::lose', this.loseSpellSlot)
-            bus.$on('spell-slot::reset', this.resetSpellSlot)
+            bus.$on('spell-slot::regain', this.regainSpellSlot)
+            bus.$on('spell-slot::expend', this.expendSpellSlot)
+            bus.$on('spell-slot::reset',  this.resetSpellSlot)
         },
         mounted() {
             this.fetch_user_data()
@@ -99,8 +99,8 @@
             }
             , createItem(details) { this.character.inventory.push(details) }
             , deleteItem(id) { this.character.inventory = this.character.inventory.filter(i => i.id !== id) }
-            , gainSpellSlot(level) { this.character.spell_book.spells[level].slots.expended-- }
-            , loseSpellSlot(level) { this.character.spell_book.spells[level].slots.expended++ }
+            , regainSpellSlot(level) { this.character.spell_book.spells[level].slots.expended-- }
+            , expendSpellSlot(level) { this.character.spell_book.spells[level].slots.expended++ }
             , resetSpellSlot(level) { this.character.spell_book.spells[level].slots.expended = 0 }
         }
     }
