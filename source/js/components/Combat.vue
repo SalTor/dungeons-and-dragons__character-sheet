@@ -3,28 +3,16 @@
         <section>
             <div class="section__content">
                 <div class="combat-page">
-                    <div class="spell-book" v-if="user.spell_book">
-                        <div class="spell-book__column">
+                    <div class="spell-book">
+                        <div class="spell-book__column" v-if="cantrips">
                             <div class="spell-book__category">
                                 <span>Cantrips</span>
                             </div>
 
-                            <div class="spell-book__spell" v-for="cantrip in user.spell_book.cantrips">{{ cantrip }}</div>
+                            <div class="spell-book__spell" v-for="cantrip in cantrips">{{ cantrip }}</div>
                         </div>
 
-                        <div class="spell-book__column" v-for="(details, category) in user.spell_book.spells">
-                            <div class="spell-book__category">
-                                <span>Level {{ category }}</span>
-
-                                <span class="spell-book__slots-used">
-                                    <span>{{ details.slots.expended }}/{{ details.slots.total }}</span>
-                                    <i class="control decrement" @click="regain_spell_slot(details)" :class="details.slots.expended === 0 ? 'disabled' : ''"></i>
-                                    <i class="control increment" @click="expend_spell_slot(details)" :class="details.slots.expended === details.slots.total ? 'disabled' : ''"></i>
-                                </span>
-                            </div>
-
-                            <div class="spell-book__spell" v-for="spell in prepared(details.entries)">{{ spell.name }}</div>
-                        </div>
+                        <spell-group v-for="(details, level) in spells" :details="details" :level="level" :key="level" />
                     </div>
 
                     <div class="combat-stats" v-if="user.death_saves">
@@ -108,8 +96,8 @@
 
                         <article class="cb-stat death-saves">
                             <div class="cb-stat__value">
-                                <death-save type="successes" :value="user.death_saves[0]" />
-                                <death-save type="failures"  :value="user.death_saves[1]" />
+                                <death-save type="pass" :value="user.death_saves.pass" />
+                                <death-save type="fail" :value="user.death_saves.fail" />
                             </div>
                             <div class="cb-stat__label">
                                 <span>death saves</span>
@@ -125,6 +113,7 @@
 <script>
     import { bus } from '../dungeons_and_dragons_character_sheet'
     import Vue from 'vue'
+    import SpellCategory from './spell-category.vue'
     import DeathSave from './death-save.vue'
 
     export default {
@@ -133,26 +122,23 @@
             user: { type: Object, required: true }
         },
         components: {
-            'death-save': DeathSave
+            'death-save': DeathSave,
+            'spell-group': SpellCategory
+        },
+        computed: {
+            cantrips() {
+                const spell_book = this.user.hasOwnProperty('spell_book')
+
+                return spell_book ? this.user.spell_book.cantrips : null
+            },
+            spells() {
+                const spell_book = this.user.hasOwnProperty('spell_book')
+
+                return spell_book ? this.user.spell_book.spells : {}
+            }
         },
         data() {
             return {}
-        },
-        methods: {
-            prepared(spells) { return spells.filter(spell => spell.prepared || spell.ritual) },
-            expend_spell_slot(spell_category) {
-                if (spell_category.slots.expended + 1 <= spell_category.slots.total) {
-                    spell_category.slots.expended++
-                }
-            },
-            regain_spell_slot(spell_category) {
-                if (spell_category.slots.expended - 1 >= 0) {
-                    spell_category.slots.expended--
-                }
-            },
-            reset_spell_slots(spell_category) {
-                spell_category.slots.expended = 0
-            }
         }
     }
 </script>

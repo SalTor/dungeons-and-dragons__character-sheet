@@ -29,7 +29,10 @@
             "current": 47,
             "temp": 10
         },
-        "death_saves": [ 0, 0 ],
+        "death_saves": {
+            "pass": 0,
+            "fail": 0
+        },
         "experience": 56500,
         "percent_progress_until_level": 0.8828125,
         "level": 9,
