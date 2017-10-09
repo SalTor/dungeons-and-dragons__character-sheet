@@ -2,11 +2,14 @@
 
 const webpack = require('webpack')
 const BabiliPlugin = require('babili-webpack-plugin')
+const Promise = require('es6-promise-promise')
 
 const production = process.env.NODE_ENV === 'production'
 
 const config = {
-    plugins: [],
+    plugins: [
+        new webpack.ProvidePlugin({ Promise: 'es6-promise-promise' })
+    ],
     resolve: {}
 }
 
