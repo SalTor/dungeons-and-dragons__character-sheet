@@ -13,7 +13,8 @@
     left: 50%;
 
     min-height: 100px;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     padding: 15px;
     padding-bottom: 5px;
 
@@ -21,6 +22,10 @@
     border: 1px solid #979797;
 
     transform: translateX(-50%);
+
+    @media (max-width: 420px) {
+        width: 75%;
+    }
 
     &__item-amt-name {
         display: flex;
