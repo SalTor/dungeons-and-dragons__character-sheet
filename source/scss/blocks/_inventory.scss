@@ -1,6 +1,10 @@
 @import "./elements/inventory__filter";
 @import "./elements/inventory__create-item";
 
+.inventory-page {
+    padding: 0 15px;
+}
+
 .inventory {
     display: flex;
     flex-direction: column;

@@ -1,10 +1,12 @@
 <template>
     <main role="main">
         <section>
-            <div class="section__content" v-if="coins && items">
-                <coin-pouch :coins="coins" @open="openCoinPouch" />
+            <div class="section__content">
+                <div class="inventory-page" v-if="coins && items">
+                    <coin-pouch :coins="coins" @open="openCoinPouch" />
 
-                <inventory-manager :items="items" />
+                    <inventory-manager :items="items" />
+                </div>
             </div>
         </section>
 

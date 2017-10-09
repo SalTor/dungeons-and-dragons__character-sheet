@@ -24,4 +24,9 @@
         font-size: .75em;
         line-height: .75;
     }
+
+    @media (max-width: 520px) {
+        right: 0;
+        top: -30px;
+    }
 }
