@@ -1,5 +1,8 @@
 .combat-page {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 371px;
 
-    width: 100%;
+    @media (max-width: 950px) {
+        grid-template-columns: 1fr;
+    }
 }

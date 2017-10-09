@@ -1,6 +1,6 @@
 .cb-stat {
-    margin-right: 7px;
-    margin-left:  7px;
+    width: 100%;
+    margin: 0 auto;
     margin-bottom: 15px;
 
     font-family: "Avenir Next", sans-serif;
@@ -51,8 +51,13 @@
         }
     }
 
+    @media (max-width: 560px) {
+        margin: 5px;
+    }
+
     &.hitpoints {
-        width: 195px;
+        max-width: 195px;
+        margin: 10px auto;
 
         .cb-stat__value {
             > span {
@@ -65,7 +70,8 @@
     }
     &.death-saves {
         width: 100%;
-        margin-top: 20px;
+        max-width: 350px;
+        margin: 10px auto;
 
         > .cb-stat__value {
             display: flex;

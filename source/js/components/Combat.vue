@@ -83,15 +83,6 @@
                                     <span>spellcasting ability</span>
                                 </div>
                             </article>
-
-                            <article class="cb-stat">
-                                <div class="cb-stat__value">
-                                    <span>{{ user.inspiration_modifier | sign }}</span>
-                                </div>
-                                <div class="cb-stat__label">
-                                    <span>inspiration</span>
-                                </div>
-                            </article>
                         </div>
 
                         <article class="cb-stat death-saves">

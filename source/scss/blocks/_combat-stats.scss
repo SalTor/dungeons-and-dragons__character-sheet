@@ -12,19 +12,26 @@
 }
 
 .combat-stats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr;
 
     position: relative;
 
+    max-width: 370px;
     padding: 9px 9px 150px 9px;
+    margin: 0 auto;
     margin-top: 25px;
-    margin-left: 27px;
 
     border: 1px solid #979797;
     background-color: #F6F6F6;
+
+    @media (max-width: 560px) {
+        grid-row: 1/2;
+
+        max-width: none;
+        padding-bottom: 25px;
+        margin: 0;
+    }
 
     &:after {
         content: "Visit \"stats\" to edit base values.";
