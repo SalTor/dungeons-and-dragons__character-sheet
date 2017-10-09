@@ -30,12 +30,6 @@
     export default {
         name: 'app',
         created() {
-            Vue.filter('modifier', saving_throw => {
-                if(this.character.hasOwnProperty('saving_throw_modifiers')) {
-                    return this.character.saving_throw_modifiers[saving_throw]
-                }
-            })
-
             bus.$on('coin-pouch:update', this.updateCoins)
             bus.$on('item:create', this.createItem)
             bus.$on('item:update', this.updateItem)

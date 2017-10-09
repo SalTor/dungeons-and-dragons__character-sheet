@@ -1,8 +1,8 @@
 <template>
     <div class="stat">
-        <div class="stat__modifier">{{ stat | modifier | sign }}</div>
+        <div class="stat__modifier">{{ value | sign }}</div>
 
-        <div class="stat__name">{{ stat }}</div>
+        <div class="stat__name">{{ name }}</div>
     </div>
 </template>
 
@@ -11,7 +11,10 @@
 
     export default {
         name: 'user-stat',
-        props: ['stat'],
+        props: {
+            name:  { type: String, required: true },
+            value: { type: Number, required: true }
+        },
         data() {
             return {}
         }

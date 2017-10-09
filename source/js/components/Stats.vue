@@ -1,62 +1,41 @@
 <template>
     <main role="main">
         <section>
-            <div class="section__content section__content_extra-space-above">
-                <div class="field-group field-group_direction_vertical-center" v-if="user.hitpoints">
-                    <div class="hp-ac-initiative">
-                        <div class="field-group field-group_direction_vertical field-group_full-width">
-                            <div class="armor-class">
-                                <div class="armor-class__value">{{ user.armor_class }}</div>
+            <div class="section__content">
+                <div class="stats" v-if="stats_are_prepared">
+                    <div class="stats__primary">
+                        <div class="stats__saving-throws">
+                            <h2>Saving throws</h2>
 
-                                <div class="armor-class__mononym">Armor Class</div>
+                            <div class="stats-container">
+                                <user-stat v-for="(value, stat) in saving_throws" :name="stat" :value="value" :key="stat" />
                             </div>
+                        </div>
 
-                            <div class="initiative">
-                                <div class="initiative__value">{{ user.initiative_modifier | sign }}</div>
+                        <div class="stats__combat">
+                            <h2>Combat</h2>
 
-                                <div class="initiative__mononym">Initiative</div>
+                            <div class="stats-container">
+                                <user-stat name="Proficiency bonus" :value="proficiency_bonus" />
+                                <user-stat name="Perception" :value="passive_wisdom" />
                             </div>
                         </div>
                     </div>
 
-                    <div class="stats-and-modifiers__container">
-                        <div class="stats-and-modifiers">
-                            <div class="stats-container">
-                                <user-stat v-for="(value, stat) in user.stats" :stat="stat" :key="createID()" />
-                            </div>
+                    <div class="stats__skills">
+                        <h2>Skills</h2>
 
-                            <div class="modifiers-container">
-                                <div class="modifier modifier_proficiency">
-                                    <div class="modifier__value modifier__value_proficiency" :class="user.proficiency_bonus < 10 ? 'modifier__value_single-digit' : ''">{{ user.proficiency_bonus | sign }}</div>
-
-                                    <div class="modifier__name modifier__name_proficiency">Proficiency Bonus</div>
-                                </div>
-
-                                <div class="modifier modifier_perception">
-                                    <div class="modifier__value modifier__value_perception" :class="user.passive_wisdom < 10 ? 'modifier__value_single-digit' : ''">{{ user.passive_wisdom | sign }}</div>
-
-                                    <div class="modifier__name modifier__name_perception">Perception</div>
-                                </div>
-
-                                <div class="modifier modifier_inspiration">
-                                    <div class="modifier__value modifier__value_inspiration">{{ user.inspiration_modifier | sign }}</div>
-
-                                    <div class="modifier__name modifier__name_inspiration">Inspiration</div>
-                                </div>
-
-                                <div class="modifier-group">
-                                    <div class="modifier" v-for="(value, name) in user.skill_modifiers">
-                                        <div class="modifier__value">{{ value | sign }}</div>
-
-                                        <div class="modifier__name">{{ name }}</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="stats-container">
+                            <user-stat v-for="(value, skill) in skills" :name="skill" :value="value" :key="skill" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <transition name="fade">
+
+        </transition>
     </main>
 </template>
 
@@ -72,17 +51,19 @@
         components: {
             'user-stat': Stat
         },
+        computed: {
+            stats_are_prepared() { return this.proficiency_bonus && this.passive_wisdom && this.saving_throws && this.skills },
+            proficiency_bonus() { return this.user.proficiency_bonus || null },
+            passive_wisdom() { return this.user.passive_wisdom || null },
+            saving_throws() { return this.user.saving_throw_modifiers || null },
+            skills() { return this.user.skill_modifiers || null  }
+        },
         data() {
             return {}
         },
         methods: {
             proficient(stat, array) {
                 return array.includes(stat)
-            },
-            createID() {
-                return Math.floor((1 + Math.random()) * 0x10000)
-                    .toString(16)
-                    .substring(1)
             }
         }
     }
