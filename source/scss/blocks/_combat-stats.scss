@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1210px) {
         width: 500px;
     }
 
