@@ -3,7 +3,11 @@
 .cb-stat-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+
+    @media (min-width: 768px) {
+        width: 500px;
+    }
 
     > .cb-stat {
         flex-basis: 50%;
@@ -12,11 +16,13 @@
 }
 
 .combat-stats {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 370px;
 
     position: relative;
 
+    width: 100%;
     max-width: 370px;
     padding: 9px 9px 150px 9px;
     margin: 0 auto;
@@ -25,11 +31,18 @@
     border: 1px solid #979797;
     background-color: #F6F6F6;
 
-    @media (max-width: 560px) {
-        grid-row: 1/2;
+    @media (max-width: 1210px) {
+        order: 1;
+        flex-basis: auto;
+        max-width: calc(100% - 18px);
 
-        max-width: none;
         padding-bottom: 25px;
+    }
+    @media (max-width: 1210px) and (min-width: 768px) {
+        align-items: center;
+    }
+    @media (max-width: 560px) {
+        max-width: none;
         margin: 0;
     }
 

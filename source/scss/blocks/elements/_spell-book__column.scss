@@ -1,8 +1,10 @@
 .spell-book__column {
     display: flex;
     flex-direction: column;
+    flex-basis: 250px;
 
     margin: 8px;
+
 
     @media (max-width: 560px) {
         width: 100%;

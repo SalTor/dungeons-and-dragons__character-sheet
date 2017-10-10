@@ -1,13 +1,13 @@
 <template>
     <div class="spell-book__column">
         <div class="spell-book__category">
-            <span>Level {{ level }}</span>
+            <div>Level {{ level }}</div>
 
-            <span class="spell-book__slots-used">
+            <div class="spell-book__slots-used">
                 <span>{{ expended }}/{{ total }}</span>
                 <i class="control decrement" @click="regainSpellSlot" :class="{ disabled: expended === 0     }"></i>
                 <i class="control increment" @click="expendSpellSlot" :class="{ disabled: expended === total }"></i>
-            </span>
+            </div>
         </div>
 
         <div class="spell-book__spell" v-for="spell in prepared_spells">{{ spell.name }}</div>
