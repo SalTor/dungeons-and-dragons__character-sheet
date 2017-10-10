@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
 
-    @media (max-width: 445px) {
+    @media (max-width: 500px) {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -10,50 +10,46 @@
 
     &__saving-throws, &__combat, &__skills {
         > .stats-container {
-            display: grid;
-            grid-gap: 5px 7px;
+            display: flex;
+            flex-wrap: wrap;
         }
     }
     &__primary {
+        flex: 1 0 40%;
         margin-right: 15px;
+
+        @media (max-width: 1120px) {
+            flex: 1 0 50%;
+        }
+        @media (max-width: 900px) {
+            flex: 0 0 auto;
+        }
+        @media (max-width: 900px) {
+            flex: 0 0 auto;
+        }
     }
     &__saving-throws, &__combat {
         margin-bottom: 28px;
 
         > .stats-container {
-            grid-template-columns: 202px 202px;
+            max-width: 450px;
 
-            @media (max-width: 705px) {
-                display: flex;
+            @media (max-width: 900px) {
                 flex-direction: column;
-
-                .stat {
-                    margin-bottom: 5px;
-                }
             }
         }
     }
     &__skills {
-        @media (max-width: 705px) {
-            margin-left: 5px;
+        flex: 1 0 60%;
+
+        @media (max-width: 1120px) {
+            flex: 1 0 50%;
         }
+        @media (max-width: 900px) {
+            flex: 0 0 auto;
 
-        > .stats-container {
-            grid-template-columns: repeat(3, 202px);
-
-            @media (max-width: 1120px) {
-                grid-template-columns: repeat(2, 202px);
-            }
-            @media (max-width: 915px) {
-                grid-template-columns: 202px;
-            }
-            @media (max-width: 705px) {
-                display: flex;
+            > .stats-container {
                 flex-direction: column;
-
-                .stat {
-                    margin-bottom: 5px;
-                }
             }
         }
     }
@@ -61,10 +57,11 @@
 
 .stat {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 
     width: 200px;
+    margin: 5px;
 
     border: 1px solid #ccc;
 
@@ -72,6 +69,7 @@
 
     &__name {
         flex: 1;
+
         padding: 5px 10px;
 
         background-color: #eee;
@@ -81,21 +79,13 @@
         text-align: left;
     }
     &__modifier {
-        flex: 0;
-        display: flex;
-
-        width: 100%;
+        flex-basis: auto;
 
         font-family: $font__inconsolata;
+        text-align: left;
 
         @media (min-width: 426px) {
-            margin-right: 9px;
-            margin-left: 9px;
-        }
-        @media (max-width: 425px) {
-            padding: 5px 8px;
-
-            text-align: left;
+            padding: 0 9px;
         }
     }
 }
