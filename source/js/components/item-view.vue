@@ -95,7 +95,7 @@
                 if(isString(this.price) && this.price.match(this.price_validation)) {
                     const value = parseFloat(this.price)
                     const units = this.price.match(this.coin_validation)[0]
-                    this.price = value + units
+                    this.price = (isNumeric(value) ? value : 0) + units
                 }
             }
         },

@@ -2,7 +2,7 @@
     <div class="inventory">
         <div class="inventory__controls">
             <input
-                title="Item filter"
+                label="Item filter"
                 placeholder="Filter by name"
                 v-model="entriesFilter"
                 class="inventory__filter"

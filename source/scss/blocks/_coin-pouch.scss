@@ -25,11 +25,14 @@
         content: "click anywhere to edit";
 
         position: absolute;
-        bottom: -17px;
+        bottom: -18px;
+        left: 50%;
 
         color: #B0B0B0;
         font-family: "Avenir Next", sans-serif;
         font-size: .75em;
+
+        transform: translateX(-50%);
     }
 }
 

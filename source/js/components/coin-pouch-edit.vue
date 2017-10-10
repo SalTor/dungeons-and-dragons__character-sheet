@@ -25,7 +25,7 @@
             </div>
 
             <div class="prompt__controls">
-                <button @click="save" class="control cta" :class="{ disabled: !any_changes }" :title="save_hover_text" type="button">{{ btn_text_save }}</button>
+                <button @click="save" class="control cta" :class="{ disabled: !any_changes }" name="Save changes." type="button">{{ btn_text_save }}</button>
             </div>
         </form>
     </div>
@@ -67,7 +67,6 @@
             }
 
             return {
-                save_hover_text: this.any_changes ? '' : 'No changes to save.',
                 ...coins
             }
         },

@@ -4,6 +4,7 @@
     justify-content: center;
 
     position: absolute;
+    top: 50%;
     right: -32%;
 
     height: 25px;
@@ -16,6 +17,12 @@
     background-color: #F4F4F4;
 
     cursor: pointer;
+
+    transform: translateY(-50%);
+
+    &:focus {
+        outline: none;
+    }
 
     > span {
         color: #454545;
