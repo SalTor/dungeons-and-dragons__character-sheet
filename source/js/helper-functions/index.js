@@ -1,5 +1,7 @@
 'use strict'
 
+Number.isNaN = require('is-nan')
+
 export const isDefined = o => (typeof o !== 'undefined') && o !== null
 
 export const isNumeric = n => isDefined(n) && !Number.isNaN(n) && (typeof n === 'number')
