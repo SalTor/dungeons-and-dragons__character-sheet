@@ -2,9 +2,10 @@
     <main role="main">
         <section>
             <div class="section__content">
-                <article v-if="user.class">
+                <article>
                     <h1>{{ user.name }}</h1>
-                    <p>Level {{ user.level }} {{ user.class.category }}, {{ user.class.description }}</p>
+                    <p v-for="name in classes">{{ name }}</p>
+                    <br>
                     <p>{{ user.personality_trait }}</p>
                 </article>
 
@@ -37,9 +38,24 @@
 
     export default {
         name: "background",
-        props: ["user"],
+        props: {
+            user: {
+                type: Object,
+                default() {
+                    return {
+                        classes: []
+                    }
+                }
+            }
+        },
         data() {
             return {}
+        },
+        computed: {
+            classes() {
+                const arr = this.user.classes || []
+                return arr.map(({ category, description, level }) => `I am a level ${ level } ${ category }, ${ description }`)
+            },
         }
     }
 </script>

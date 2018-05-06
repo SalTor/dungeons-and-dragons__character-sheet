@@ -2,11 +2,14 @@
     {
         "race": "Elf",
         "sub_race": "High Elf",
-        "class": {
-            "category": "Wizard",
-            "description": "A scholarly magic-user capable of manipulating the structures of reality.",
-            "starting_wealth": "4d4 x 10gp"
-        },
+        "classes": [
+            {
+                "category": "Wizard",
+                "level": 9,
+                "description": "A scholarly magic-user capable of manipulating the structures of reality.",
+                "starting_wealth": "4d4 x 10gp"
+            }
+        ],
         "background": {
             "category": "Sage",
             "description": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study."
@@ -34,8 +37,8 @@
             "fail": 0
         },
         "experience": 56500,
-        "percent_progress_until_level": 0.8828125,
         "level": 9,
+        "percent_progress_until_level": 0.8828125,
         "languages": [ "Draconic", "Common" ],
         "alignment": "Neutral",
         "personality_trait": "I am horribly, horribly awkward in social situations.",
