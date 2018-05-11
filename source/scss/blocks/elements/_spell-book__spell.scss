@@ -8,4 +8,9 @@
     background-color: #DFDFDF;
 
     font-size: 1em;
+
+    &.--spell-book {
+        display: inline-block;
+        font-size: 1.1em;
+    }
 }
