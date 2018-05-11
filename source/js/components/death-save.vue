@@ -36,7 +36,7 @@
                 if(value < 3) {
                     bus.$emit(`death-saves::${ type }`)
                 } else {
-                    bus.$emit(`death-saves::reset-${ type }`)
+                    bus.$emit('death-saves::reset')
                 }
             }
         }

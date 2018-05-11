@@ -34,8 +34,7 @@
             bus.$on('item:create', this.createItem)
             bus.$on('item:update', this.updateItem)
             bus.$on('item:delete', this.deleteItem)
-            bus.$on('death-saves::reset-pass', this.resetDSP)
-            bus.$on('death-saves::reset-fail', this.resetDSF)
+            bus.$on('death-saves::reset', this.resetDS)
             bus.$on('death-saves::pass', this.increaseDSP)
             bus.$on('death-saves::fail', this.increaseDSF)
             bus.$on('spell-slot::regain', this.regainSpellSlot)
@@ -66,10 +65,8 @@
 
                 this.character.coin_pouch = { copper, silver, electrum, gold, platinum }
             },
-            resetDSP() {
+            resetDS() {
                 this.character.death_saves.pass = 0
-            },
-            resetDSF() {
                 this.character.death_saves.fail = 0
             },
             increaseDSP() {
