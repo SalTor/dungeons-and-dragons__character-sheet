@@ -1,10 +1,10 @@
 <template>
     <div id="dungeons_and_dragons__character_sheet" class="pseudo-body">
-        <app-navigation></app-navigation>
+        <app-navigation :user="character" />
 
         <router-view :user="character" />
 
-        <app-footer></app-footer>
+        <app-footer />
     </div>
 </template>
 

@@ -13,7 +13,7 @@
 
                     <router-link to="/stats" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Stats</router-link>
 
-                    <router-link to="/spellbook" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Spellbook</router-link>
+                    <router-link to="/spellbook" v-if="user.spell_book" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Spellbook</router-link>
 
                     <router-link to="/background" class="navigation__menu-item" active-class="navigation__menu-item_active" tag="li">Background</router-link>
                 </ul>
@@ -27,6 +27,16 @@
 
     export default {
         name: 'navigation',
+        props: {
+            user: {
+                type: Object,
+                default() {
+                    return {
+                        spell_book: null
+                    }
+                }
+            }
+        },
         data() {
             return {
                 navigation__open: false,

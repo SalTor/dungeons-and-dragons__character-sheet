@@ -30,7 +30,7 @@
                         </article>
 
                         <div class="cb-stat-wrapper">
-                            <article class="cb-stat">
+                            <article v-if="spellcaster" class="cb-stat">
                                 <div class="cb-stat__value">
                                     <strong>{{ user.spell_attack_bonus }}</strong>
                                 </div>
@@ -39,7 +39,7 @@
                                 </div>
                             </article>
 
-                            <article class="cb-stat">
+                            <article v-if="spellcaster" class="cb-stat">
                                 <div class="cb-stat__value">
                                     <strong>{{ user.spell_save_dc }}</strong>
                                 </div>
@@ -126,6 +126,9 @@
                 const spell_book = this.user.hasOwnProperty('spell_book')
 
                 return spell_book ? this.user.spell_book.spells : {}
+            },
+            spellcaster() {
+                return this.user.hasOwnProperty('spell_book')
             }
         },
         data() {
