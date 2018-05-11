@@ -46,7 +46,7 @@
             aggregate_spells() {
                 const spell_book = this.user.spell_book.spells
                 const categories = Object.keys(spell_book)
-                const spells = this.user.spell_book.cantrips
+                const spells = [...this.user.spell_book.cantrips]
 
                 categories.forEach((cat_id) => {
                     const category = spell_book[cat_id].entries
